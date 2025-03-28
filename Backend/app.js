@@ -1,6 +1,7 @@
 //pacchetti 
 import express from 'express';
 import cors from 'cors'
+import productRouter from './routers/productRouter.js';
 
 //impostiamo express e la porta del server
 const app = express();
@@ -13,6 +14,8 @@ app.use(cors({
 // Middleware
 app.use(express.static('public')); // File statici (es. immagini)
 app.use(express.json()); // Parsa i body JSON
+
+app.use('/products', productRouter) 
 
 //attivazione del server
 app.listen(port, () => {
