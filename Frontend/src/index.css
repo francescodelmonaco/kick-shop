@@ -1,13 +1,37 @@
+* {
+    background-color: #3452A3;
+}
+
+/* btn navbar */
+.navbar-toggler:hover,
+.navbar-toggler-icon:hover {
+    color: white !important;
+
+}
+
 ul {
     list-style-type: none !important;
 }
 
+li:hover {
+    color: white;
+}
 
 /* logo */
 nav a img {
     transition: transform 0.5s ease;
+
 }
 
 nav a img:hover {
     transform: rotate(360deg);
+
+}
+
+
+
+.bckgrd {
+    background-image: url(../public/bunner-balls.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
 }

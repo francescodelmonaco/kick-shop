@@ -4,7 +4,7 @@ export default function Header() {
     return (
         <header>
 
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+            <nav className="navbar navbar-expand-lg bg-body-">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to={`/`}>
                         <img className="img-fluid rounded" width="70px" src="/logo.png" alt="Logo Kick Shop" />
@@ -18,21 +18,21 @@ export default function Header() {
                                 <Link className="nav-link active" aria-current="page" to={`/`}>Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={`/Man`}>Uomo</Link>
+                                <Link className="nav-link active" aria-current="page" to={`/man`}>Uomo</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={`/Woman`}>Donna</Link>
+                                <Link className="nav-link active" aria-current="page" to={`/woman`}>Donna</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={`/Summer`}>Estate</Link>
+                                <Link className="nav-link active" aria-current="page" to={`/summer`}>Estate</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={`/Winter`}>Inverno</Link>
+                                <Link className="nav-link active" aria-current="page" to={`/winter`}>Inverno</Link>
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
+                            <button className="btn btn-outline-primary" type="submit">Cerca</button>
                         </form>
                     </div>
                 </div>

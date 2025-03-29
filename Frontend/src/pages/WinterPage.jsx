@@ -1,5 +1,5 @@
 export default function WinterPage() {
     return (
-        <h1 className="text-center my-3">Winter products</h1>
+        <h1 className="text-center m-3">Winter Collection</h1>
     )
 }
