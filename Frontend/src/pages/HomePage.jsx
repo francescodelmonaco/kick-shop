@@ -12,16 +12,16 @@ export default function HomePage() {
 
             <ul className="d-flex justify-content-center gap-5">
                 <li>
-                    <Link class="btn btn-secondary" to={`/man`}>Uomo</Link>
+                    <Link class="btn btn-primary" to={`/man`}>Uomo</Link>
                 </li>
                 <li>
-                    <Link class="btn btn-secondary" to={`/woman`}>Donna</Link>
+                    <Link class="btn btn-primary" to={`/woman`}>Donna</Link>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-secondary">Estate</button>
+                    <Link class="btn btn-primary" to={`/summer`}>Esatate</Link>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-secondary">Inverno</button>
+                    <Link class="btn btn-primary" to={`/winter`}>Inverno</Link>
                 </li>
             </ul>
         </>

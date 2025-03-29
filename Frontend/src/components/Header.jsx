@@ -17,6 +17,18 @@ export default function Header() {
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to={`/`}>Home</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to={`/Man`}>Uomo</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to={`/Woman`}>Donna</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to={`/Summer`}>Estate</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to={`/Winter`}>Inverno</Link>
+                            </li>
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
