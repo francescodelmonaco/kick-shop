@@ -24,10 +24,21 @@ export default function SingleProduct() {
 
     // rendering prodotti in html
     const renderProducts = () => {
+        const { id, name, description, price, gender, season, brand } = product;
         return (
             <>
-                <h1 className="text-center my-3">Product name</h1>
-                <ProductCard product={product} />
+                <figure>
+                    <img src="/puma-carbon.jpg" alt={name} />
+                </figure>
+
+                <aside>
+                    <h2>{name}</h2>
+                    <p>{brand}</p>
+                    <p>Descrizione: {description}</p>
+                    <p>Prezzo: {price} €</p>
+                    <p>Genere: {gender}</p>
+                    <p>Stagione: {season}</p>
+                </aside>
             </>
         )
     }
@@ -37,7 +48,7 @@ export default function SingleProduct() {
 
     return (
         <>
-            <div className="container-fluid">
+            <div className="container-fluid d-flex gap-5 my-3">
                 {renderProducts()}
             </div>
         </>
