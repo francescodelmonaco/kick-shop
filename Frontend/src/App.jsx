@@ -6,6 +6,8 @@ import HomePage from "../src/pages/HomePage"
 import SingleProduct from "../src/pages/SingleProduct"
 import ManPage from "./pages/ManPage"
 import WomanPage from "./pages/WomanPage"
+import SummerPage from "./pages/SummerPage"
+import WinterPage from "./pages/WinterPage"
 
 function App() {
     return (
@@ -17,6 +19,8 @@ function App() {
                         <Route path="/:id" Component={SingleProduct} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
+                        <Route path="/summer" Component={SummerPage} />
+                        <Route path="/winter" Component={WinterPage} />
                     </Route>
                 </Routes>
             </BrowserRouter>
