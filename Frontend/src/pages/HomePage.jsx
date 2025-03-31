@@ -35,7 +35,7 @@ export default function HomePage() {
     }
 
     //Invocazione chiamata al caricamento del componente in pagina
-    useEffect(fetchBooks, []);
+    useEffect(fetchProducts, []);
 
     return (
         <>
