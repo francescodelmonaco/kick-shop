@@ -1,7 +1,7 @@
 export default function HeroSection() {
     return (
 
-        <main>
+        <>
             <div className="position-relative">
                 <figure >
                     <img src="/hero-section-1.webp" alt="Hero image 1" className="w-100" />
@@ -11,6 +11,6 @@ export default function HeroSection() {
             </div>
 
 
-        </main>
+        </>
     )
 }

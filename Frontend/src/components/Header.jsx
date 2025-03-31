@@ -32,7 +32,7 @@ export default function Header() {
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
-                            <button className="btn btn-outline-primary" type="submit">Cerca</button>
+                            <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
                 </div>
