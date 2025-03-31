@@ -1,107 +1,82 @@
 import connection from "../data/db.js";
 
-
-
 function index(req, res) {
-  // Query per recuperare i prodotti
   const productSql = 'SELECT * FROM products';
-
-  // Query per recuperare le immagini dei prodotti
   const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
+  const sizesSql = 'SELECT * FROM sizes WHERE product_id = ?';
 
-  connection.query(productSql, (err, results) => {
+  connection.query(productSql, (err, products) => {
     if (err) {
-      return res.status(500).json({
-        error: 'Errore lato server nella funzione INDEX',
-      });
+      return res.status(500).json({ error: 'Errore lato server nella funzione INDEX' });
     }
 
-    if (results.length === 0) {
-      return res.status(404).json({
-        error: 'Nessun prodotto trovato',
-        status: 404,
-        message: 'Nessun prodotto trovato',
-      });
+    if (products.length === 0) {
+      return res.status(404).json({ error: 'Nessun prodotto trovato' });
     }
 
-    let products = results;
     let count = 0;
-
-    // Per ogni prodotto, recuperiamo le sue immagini
     products.forEach((product, index) => {
       connection.query(imagesSql, [product.id], (err, imagesResults) => {
         if (err) {
-          return res.status(500).json({
-            error: 'Errore lato server nella funzione SHOW (immagini)',
-          });
+          return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
         }
-
-        // Aggiungiamo le immagini al prodotto
         product.images = imagesResults.map(image => ({
           ...image,
           image_url: req.imagePath + image.image_url,
         }));
 
-        count++;
+        connection.query(sizesSql, [product.id], (err, sizesResults) => {
+          if (err) {
+            return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+          }
+          product.sizes = sizesResults;
+          count++;
 
-        // Se abbiamo processato tutti i prodotti, restituiamo la risposta
-        if (count === products.length) {
-          res.json(products);
-        }
+          if (count === products.length) {
+            res.json(products);
+          }
+        });
       });
     });
   });
 }
 
 function show(req, res) {
-  const { slug } = req.params; // Usare lo slug invece dell'ID
-
-  // Query per recuperare il prodotto con lo slug
+  const { slug } = req.params;
   const productSql = 'SELECT * FROM products WHERE slug = ?';
-
-  // Query per recuperare le immagini del prodotto
   const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
+  const sizesSql = 'SELECT * FROM sizes WHERE product_id = ?';
+  
 
   connection.query(productSql, [slug], (err, productResults) => {
     if (err) {
-      return res.status(500).json({
-        error: 'Errore lato server nella funzione SHOW',
-      });
+      return res.status(500).json({ error: 'Errore lato server nella funzione SHOW' });
     }
 
     if (productResults.length === 0) {
-      return res.status(404).json({
-        error: 'Prodotto non trovato',
-      });
+      return res.status(404).json({ error: 'Prodotto non trovato' });
     }
 
     const product = productResults[0];
 
-    // Recuperiamo le immagini del prodotto
     connection.query(imagesSql, [product.id], (err, imagesResults) => {
       if (err) {
-        return res.status(500).json({
-          error: 'Errore lato server nella funzione SHOW (immagini)',
-        });
+        return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
       }
-
-      // Aggiungiamo le immagini direttamente all'oggetto prodotto
       product.images = imagesResults.map(image => ({
         ...image,
-        image_url: req.imagePath + image.image_url, // Aggiungi il percorso completo
+        image_url: req.imagePath + image.image_url,
       }));
 
-      // Invia il prodotto con le immagini complete
-      res.json({
-        ...product,
-       
+      connection.query(sizesSql, [product.id], (err, sizesResults) => {
+        if (err) {
+          return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+        }
+        product.sizes = sizesResults;
+        res.json(product);
       });
     });
   });
 }
 
-
-
-export {
-  index, show
-}
+export { index, show };
