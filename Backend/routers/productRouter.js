@@ -11,6 +11,6 @@ import {index, show} from '../controllers/productController.js'
 router.get('/', index);
 
 //SHOW
-router.get('/:id', show);
+router.get('/:slug', show);
 
 export default router;
