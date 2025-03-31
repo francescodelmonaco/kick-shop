@@ -46,7 +46,7 @@ function show(req, res) {
   const productSql = 'SELECT * FROM products WHERE slug = ?';
   const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
   const sizesSql = 'SELECT * FROM sizes WHERE product_id = ?';
-  
+
 
   connection.query(productSql, [slug], (err, productResults) => {
     if (err) {
@@ -79,4 +79,47 @@ function show(req, res) {
   });
 }
 
-export { index, show };
+function storeOrder(req, res) {
+
+  const {
+    userName,
+    userSurname,
+    userEmail,
+    addressShipping,
+    addressInvoice,
+    telephone,
+    city,
+    province,
+    payment_method
+
+  } = req.body
+
+  const sql = `
+    INSERT INTO orders (
+      user_name, 
+      user_surname,
+      user_email,
+      address_shipping,
+      address_invoice,
+      telephone,
+      city,
+      province
+    ) VALUES (?,?,?,?,?,?,?,?);
+  `
+  connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province, payment_method ], (err, results) => {
+    if (err) {
+      return res.status(500).json({
+        error: 'Database Errore StorrReviews'
+      });
+    }
+
+    // Restituiamo una risposta con il messaggio di successo e l'ID della recensione appena inserita
+    res.status(201);
+    res.json({
+      message: 'review added',
+      id: results.insertId,  // ID della recensione appena creata
+    });
+  });
+}
+
+export { index, show, storeOrder };
