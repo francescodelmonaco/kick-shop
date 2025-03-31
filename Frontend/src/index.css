@@ -1,5 +1,11 @@
-* {
-    /* background-color: #3452A3; */
+:root {
+    --blue: #3452A3;
+    --white: #fff;
+}
+
+/* header */
+header {
+    background-color: var(--blue);
 }
 
 /* btn navbar */
@@ -32,4 +38,10 @@ nav a img:hover {
     background-image: url(../public/bunner-balls.webp);
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+/* hero */
+.hero-border {
+    border-top: 5px solid var(--blue);
+    border-bottom: 5px solid var(--blue);
 }

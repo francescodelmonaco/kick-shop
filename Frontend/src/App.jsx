@@ -17,12 +17,11 @@ function App() {
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
-                        <Route path="/product/:id" Component={SingleProduct} />
+                        <Route path="/products/:slug" Component={SingleProduct} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />
                         <Route path="/winter" Component={WinterPage} />
-                        <Route path="/product/:id" Component={ProductCard} /> {/* da modificare */}
                     </Route>
                 </Routes>
             </BrowserRouter>
