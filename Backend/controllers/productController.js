@@ -7,7 +7,7 @@ function index(req, res) {
   const productSql = 'SELECT * FROM products';
 
   // Query per recuperare le immagini dei prodotti
-  const imagesSql = 'SELECT * FROM product_images WHERE product_id = ?';
+  const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
 
   connection.query(productSql, (err, results) => {
     if (err) {
@@ -37,7 +37,7 @@ function index(req, res) {
         }
 
         // Aggiungiamo le immagini al prodotto
-        product.product_images = imagesResults.map(image => ({
+        product.images = imagesResults.map(image => ({
           ...image,
           image_url: req.imagePath + image.image_url,
         }));
@@ -60,7 +60,7 @@ function show(req, res) {
   const productSql = 'SELECT * FROM products WHERE slug = ?';
 
   // Query per recuperare le immagini del prodotto
-  const imagesSql = 'SELECT * FROM product_images WHERE product_id = ?';
+  const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
 
   connection.query(productSql, [slug], (err, productResults) => {
     if (err) {
