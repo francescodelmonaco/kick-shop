@@ -4,37 +4,35 @@ import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 export default function HomePage() {
-    const [products, setProduct] = useState([]);
+    const [products, setProducts] = useState([]);
 
     // fetch per prodotti
     const fetchProducts = () => {
-        console.log('Fetching products...')
+        // console.log('Fetching products...')
 
         axios
             .get('http://localhost:3000/products')
             .then((res) => {
-                setProduct(res.data)
+                setProducts(res.data)
             })
             .catch((error) => {
                 console.log(error)
             })
     }
 
-
     // rendering prodotti in html
     const renderProducts = () => {
         return products.map((product) => {
             return (
-                <div className="col" key={product.id}>
+                <div className="col g-3" key={product.id}>
                     <ProductCard product={product} />
                 </div>
             )
         })
     }
 
-    //Invocazione chiamata al caricamento del componente in pagina
+    // invocazione chiamata al caricamento del componente in pagina
     useEffect(fetchProducts, []);
 
     return (
@@ -45,29 +43,33 @@ export default function HomePage() {
 
             <h2 className="text-center my-3">Categorie</h2>
 
-            <ul className="d-flex justify-content-center gap-5">
-
+            <ul className="d-flex justify-content-center gap-lg-5 gap-sm-2">
                 <li>
-                    <Link class="btn btn-outline-light" to={`/man`}>Uomo</Link>
+                    <Link className="btn btn-outline-primary" to={`/man`}>Uomo</Link>
                     <figure>
                         <img src="/man" alt="" className="w-100" />
                     </figure>
                 </li>
+
                 <li>
-                    <Link class="btn btn-outline-light" to={`/woman`}>Donna</Link>
+                    <Link className="btn btn-outline-primary" to={`/woman`}>Donna</Link>
                 </li>
+
                 <li>
-                    <Link class="btn btn-outline-light" to={`/summer`}>Esatate</Link>
+                    <Link className="btn btn-outline-primary" to={`/summer`}>Estate</Link>
                 </li>
+
                 <li>
-                    <Link class="btn btn-outline-light" to={`/winter`}>Inverno</Link>
+                    <Link className="btn btn-outline-primary" to={`/winter`}>Inverno</Link>
                 </li>
             </ul>
 
+            <div className="mx-5">
+                <h2 className="text-center">Tutta la collezione</h2>
 
-            <h2>Tutta la collezione</h2>
-            <div className="row row-cols-3">
-                {renderProducts()}
+                <div className="row row-cols-lg-3">
+                    {renderProducts()}
+                </div>
             </div>
         </>
     )
