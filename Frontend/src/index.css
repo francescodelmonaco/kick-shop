@@ -1,5 +1,5 @@
 * {
-    background-color: #3452A3;
+    /* background-color: #3452A3; */
 }
 
 /* btn navbar */
@@ -27,8 +27,6 @@ nav a img:hover {
     transform: rotate(360deg);
 
 }
-
-
 
 .bckgrd {
     background-image: url(../public/bunner-balls.webp);

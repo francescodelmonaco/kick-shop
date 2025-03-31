@@ -18,7 +18,7 @@ export default function HomePage() {
                     <Link class="btn btn-outline-light" to={`/woman`}>Donna</Link>
                 </li>
                 <li>
-                    <Link class="btn btn-outline-light" to={`/summer`}>Esatate</Link>
+                    <Link class="btn btn-outline-light" to={`/summer`}>Estate</Link>
                 </li>
                 <li>
                     <Link class="btn btn-outline-light" to={`/winter`}>Inverno</Link>
