@@ -8,6 +8,7 @@ import ManPage from "./pages/ManPage"
 import WomanPage from "./pages/WomanPage"
 import SummerPage from "./pages/SummerPage"
 import WinterPage from "./pages/WinterPage"
+import ProductCard from "./components/ProductCard"
 
 function App() {
     return (
@@ -16,11 +17,12 @@ function App() {
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
-                        <Route path="/:id" Component={SingleProduct} />
+                        <Route path="/product/:id" Component={SingleProduct} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />
                         <Route path="/winter" Component={WinterPage} />
+                        <Route path="/product/:id" Component={ProductCard} /> {/* da modificare */}
                     </Route>
                 </Routes>
             </BrowserRouter>

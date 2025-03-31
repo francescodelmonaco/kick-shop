@@ -1,38 +1,82 @@
 import connection from "../data/db.js";
 
-function index (req, res) {
-    const sql = "SELECT * FROM products";
-    
-  connection.query(sql, (err, results) => {
-    if (err)
-      return res.status(500).json({
-        error: 'Errore lato server INDEX function',
-    }); 
-    res.json(results);})
-} 
+function index(req, res) {
+  const productSql = 'SELECT * FROM products';
+  const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
+  const sizesSql = 'SELECT * FROM sizes WHERE product_id = ?';
 
+  connection.query(productSql, (err, products) => {
+    if (err) {
+      return res.status(500).json({ error: 'Errore lato server nella funzione INDEX' });
+    }
 
-function show (req, res){
-    const {id} = req.params;
-    const sql = "SELECT * FROM products WHERE id = ?"; 
-    connection.query(sql, [id], (err, results) => {
-        if (err)
-          return res.status(500).json({
-            error: 'Errore lato server SHOW function',
-        }); 
+    if (products.length === 0) {
+      return res.status(404).json({ error: 'Nessun prodotto trovato' });
+    }
 
-        
-    if (results.length === 0)
-        return res.status(404).json({
-          error: 'Product not found',
-          status:404,
-          message: 'Product not found',
+    let count = 0;
+    products.forEach((product, index) => {
+      connection.query(imagesSql, [product.id], (err, imagesResults) => {
+        if (err) {
+          return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
+        }
+        product.images = imagesResults.map(image => ({
+          ...image,
+          image_url: req.imagePath + image.image_url,
+        }));
+
+        connection.query(sizesSql, [product.id], (err, sizesResults) => {
+          if (err) {
+            return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+          }
+          product.sizes = sizesResults;
+          count++;
+
+          if (count === products.length) {
+            res.json(products);
+          }
         });
-
-        res.json(results);
-    })
+      });
+    });
+  });
 }
 
-export {
-    index, show
+function show(req, res) {
+  const { slug } = req.params;
+  const productSql = 'SELECT * FROM products WHERE slug = ?';
+  const imagesSql = 'SELECT * FROM images WHERE product_id = ?';
+  const sizesSql = 'SELECT * FROM sizes WHERE product_id = ?';
+  
+
+  connection.query(productSql, [slug], (err, productResults) => {
+    if (err) {
+      return res.status(500).json({ error: 'Errore lato server nella funzione SHOW' });
+    }
+
+    if (productResults.length === 0) {
+      return res.status(404).json({ error: 'Prodotto non trovato' });
+    }
+
+    const product = productResults[0];
+
+    connection.query(imagesSql, [product.id], (err, imagesResults) => {
+      if (err) {
+        return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
+      }
+      product.images = imagesResults.map(image => ({
+        ...image,
+        image_url: req.imagePath + image.image_url,
+      }));
+
+      connection.query(sizesSql, [product.id], (err, sizesResults) => {
+        if (err) {
+          return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+        }
+        product.sizes = sizesResults;
+        res.json(product);
+      });
+    });
+  });
 }
+
+export { index, show };
