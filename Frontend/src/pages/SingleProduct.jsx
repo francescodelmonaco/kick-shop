@@ -28,7 +28,7 @@ export default function SingleProduct() {
         return (
             <>
                 <figure>
-                    <img src="/puma-carbon.jpg" alt={name} />
+                    <img src="/puma-carbon.jpg" alt={name} className="w-100" />
                 </figure>
 
                 <aside>
@@ -48,7 +48,7 @@ export default function SingleProduct() {
 
     return (
         <>
-            <div className="container-fluid d-flex gap-5 my-3">
+            <div className="container-fluid d-flex gap-5 my-3 flex-lg-row flex-md-column flex-sm-column">
                 {renderProducts()}
             </div>
         </>

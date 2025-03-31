@@ -45,3 +45,8 @@ nav a img:hover {
     border-top: 5px solid var(--blue);
     border-bottom: 5px solid var(--blue);
 }
+
+/* card */
+a {
+    text-decoration: none;
+}

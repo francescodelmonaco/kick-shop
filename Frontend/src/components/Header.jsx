@@ -31,6 +31,9 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" aria-current="page" to={`/winter`}>Inverno</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" aria-current="page" to={`/cart`}>Carrello</NavLink>
+                            </li>
                         </ul>
 
                         <form className="d-flex" role="search">

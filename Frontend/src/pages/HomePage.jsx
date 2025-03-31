@@ -43,7 +43,7 @@ export default function HomePage() {
 
             <h2 className="text-center my-3">Categorie</h2>
 
-            <ul className="d-flex justify-content-center gap-5">
+            <ul className="d-flex justify-content-center gap-lg-5 gap-sm-2">
                 <li>
                     <Link className="btn btn-outline-primary" to={`/man`}>Uomo</Link>
                     <figure>
@@ -67,7 +67,7 @@ export default function HomePage() {
             <div className="mx-5">
                 <h2 className="text-center">Tutta la collezione</h2>
 
-                <div className="row row-cols-3">
+                <div className="row row-cols-lg-3">
                     {renderProducts()}
                 </div>
             </div>

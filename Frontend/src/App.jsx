@@ -8,7 +8,7 @@ import ManPage from "./pages/ManPage"
 import WomanPage from "./pages/WomanPage"
 import SummerPage from "./pages/SummerPage"
 import WinterPage from "./pages/WinterPage"
-import ProductCard from "./components/ProductCard"
+import CartPage from "./pages/CartPage"
 
 function App() {
     return (
@@ -22,6 +22,7 @@ function App() {
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />
                         <Route path="/winter" Component={WinterPage} />
+                        <Route path="/cart" Component={CartPage} />
                     </Route>
                 </Routes>
             </BrowserRouter>
