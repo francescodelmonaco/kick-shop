@@ -20,9 +20,9 @@ function index(req, res) {
         if (err) {
           return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
         }
-        product.images = imagesResults.map(image => ({
+        product.images = imagesResults.map((image, idx) => ({
           ...image,
-          image_url: req.imagePath + image.image_url,
+          image_url: `${req.imagePath}${product.slug}-${idx + 1}.webp`,
         }));
 
         connection.query(sizesSql, [product.id], (err, sizesResults) => {
@@ -65,7 +65,7 @@ function show(req, res) {
       }
       product.images = imagesResults.map(image => ({
         ...image,
-        image_url: req.imagePath + image.image_url,
+        image_url:`${req.imagePath}${product.slug}.webp`,
       }));
 
       connection.query(sizesSql, [product.id], (err, sizesResults) => {
