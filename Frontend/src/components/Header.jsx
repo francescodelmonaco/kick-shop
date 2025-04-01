@@ -17,22 +17,22 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/`}>Home</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/`}>Home</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/man`}>Uomo</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/man`}>Uomo</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/woman`}>Donna</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/woman`}>Donna</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/summer`}>Estate</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/summer`}>Estate</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/winter`}>Inverno</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/winter`}>Inverno</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" aria-current="page" to={`/cart`}>Carrello</NavLink>
+                                <NavLink className="nav-link text-light" aria-current="page" to={`/cart`}>Carrello</NavLink>
                             </li>
                         </ul>
 

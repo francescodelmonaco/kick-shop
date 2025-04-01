@@ -7,23 +7,23 @@ export default function ProductCard({ product }) {
         <div className="card h-100" key={id}>
             <Link className="card-body" to={`/products/${slug}`}>
                 <div id="carouselExample" className="carousel slide" data-bs-theme="dark">
-                    <div className="carousel-inner">
-                        {
-                            // Inverte l'ordine delle immagini
-                            images.reverse().map((image, index) => {
-                                const { id, image_url } = image;
+                    {
+                        // Inverte l'ordine delle immagini
+                        images.reverse().map((image, index) => {
+                            const { id, image_url } = image;
 
-                                // Aggiungi la classe "active" solo per la prima immagine
-                                const className = index === 0 ? 'carousel-item active' : 'carousel-item';
+                            // Aggiungi la classe "active" solo per la prima immagine
+                            const className = index === 0 ? 'carousel-item active' : 'carousel-item';
 
-                                return (
+                            return (
+                                <div className="carousel-inner">
                                     <div key={id} className={className}>
-                                        <img src={image_url} alt={name} className="w-100" />
+                                        <img src={image_url} alt={name} className="w-100 mb-3" />
                                     </div>
-                                );
-                            })
-                        }
-                    </div>
+                                </div>
+                            );
+                        })
+                    }
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span className="visually-hidden">Previous</span>
@@ -35,12 +35,12 @@ export default function ProductCard({ product }) {
                 </div>
 
                 <h5 className="card-title">{name}</h5>
-                <p>{brand}</p>
+                <p>Brand: {brand}</p>
                 <p>Prezzo: {price} €</p>
                 <p>Genere: {gender}</p>
             </Link>
 
-            <div className="d-flex gap-3 justify-content-center mb-3">
+            <div className="d-flex justify-content-around mb-3">
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Dettagli</Link>
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Carrello</Link>
             </div>

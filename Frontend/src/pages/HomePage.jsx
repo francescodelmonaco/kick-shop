@@ -64,10 +64,10 @@ export default function HomePage() {
                 </li>
             </ul>
 
-            <div className="mx-5">
-                <h2 className="text-center">Tutta la collezione</h2>
+            <h2 className="text-center">Tutta la collezione</h2>
 
-                <div className="row row-cols-lg-3">
+            <div className="mx-5">
+                <div className="row row-cols-lg-4">
                     {renderProducts()}
                 </div>
             </div>
