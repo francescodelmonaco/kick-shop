@@ -1,4 +1,3 @@
-import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -28,7 +27,7 @@ export default function SingleProduct() {
         return (
             <>
                 <figure>
-                    <img src="/puma-carbon.jpg" alt={name} className="w-100" />
+                    <img src="/src/assets/img/puma-carbon.jpg" alt={name} className="w-100" />
                 </figure>
 
                 <aside>
