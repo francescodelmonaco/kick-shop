@@ -9,7 +9,7 @@ export default function ManPage() {
         <>
             <h1 className="text-center my-3">Man Collection</h1>
             <figure>
-                <img src="/src/assets/img/hero-section-2-man.webp" alt="Hero image 2" className="w-100" />
+                <img src="/src/assets/img/hero-section-2-man.webp" alt="Hero image 2" className="w-100 hero-border" />
             </figure>
         </>
     )
