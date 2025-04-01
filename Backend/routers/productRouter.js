@@ -12,5 +12,7 @@ router.get('/', index);
 router.get('/:slug', show);
 
 
+
+
 //esportazione del Router
 export default router;
