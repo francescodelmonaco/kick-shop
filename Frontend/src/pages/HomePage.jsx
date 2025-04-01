@@ -41,6 +41,7 @@ export default function HomePage() {
 
             <HeroSection />
 
+            {/* categorie */}
             <h2 className="text-center my-3">Categorie</h2>
 
             <ul className="d-flex justify-content-center gap-lg-5 gap-sm-2">
