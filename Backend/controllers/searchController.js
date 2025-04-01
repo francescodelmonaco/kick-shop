@@ -26,33 +26,46 @@ function search(req, res) {
       if (searchResults.length === 0){
         return res.status(404).json({error: 'Prodotto non trovato'});
       }
-      
-      // Se trova almeno un prodotto, prende il primo risultato
-      const product = searchResults[0];
 
-      // Query per recuperare le immagini associate al prodotto trovato
-      connection.query(imagesSql, [product.id], (err, imagesResults) => {
-        if (err) {
-          return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
-        }
-        
-        // Aggiunge le immagini al prodotto, costruendo gli URL corretti
-        product.images = imagesResults.map((image, idx) => ({
-          ...image,
-          image_url: `${req.imagePath}${product.slug}-${idx + 1}.webp`,
-        }));
-  
-        // Query per recuperare le taglie disponibili per il prodotto
-        connection.query(sizesSql, [product.id], (err, sizesResults) => {
+      // Array per memorizzare i prodotti con immagini e taglie
+      const productsWithDetails = [];
+
+      // Itera su tutti i prodotti trovati
+      let processedCount = 0;  // Conta quanti prodotti sono stati elaborati
+
+      searchResults.forEach((product) => {
+        // Query per recuperare le immagini associate al prodotto trovato
+        connection.query(imagesSql, [product.id], (err, imagesResults) => {
           if (err) {
-            return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+            return res.status(500).json({ error: 'Errore lato server nel recupero immagini' });
           }
           
-          // Aggiunge le taglie al prodotto
-          product.sizes = sizesResults;
-          
-          // Restituisce il prodotto con immagini e taglie incluse
-          res.json(product); 
+          // Aggiunge le immagini al prodotto, costruendo gli URL corretti
+          product.images = imagesResults.map((image, idx) => ({
+            ...image,
+            image_url: `${req.imagePath}${product.slug}-${idx + 1}.webp`,
+          }));
+  
+          // Query per recuperare le taglie disponibili per il prodotto
+          connection.query(sizesSql, [product.id], (err, sizesResults) => {
+            if (err) {
+              return res.status(500).json({ error: 'Errore lato server nel recupero taglie' });
+            }
+            
+            // Aggiunge le taglie al prodotto
+            product.sizes = sizesResults;
+            
+            // Aggiunge il prodotto con immagini e taglie all'array
+            productsWithDetails.push(product);
+            
+            // Incrementa il contatore
+            processedCount++;
+
+            // Quando tutti i prodotti sono stati processati, restituisce la risposta
+            if (processedCount === searchResults.length) {
+              res.json(productsWithDetails);
+            }
+          });
         });
       });
   });
