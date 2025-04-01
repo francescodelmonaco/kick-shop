@@ -1,5 +1,7 @@
-import mysql from 'mysql2'
+// Importazione del pacchetto MySQL
+import mysql from 'mysql2';
 
+// Creazione della connessione al database con le variabili d'ambiente
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -7,9 +9,11 @@ const connection = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+// Connessione al database e gestione degli errori
 connection.connect((err) => {
     if (err) throw err;
     console.log('Connesso al database');
-  });
+});
 
-export default connection
+// Esportazione della connessione per essere utilizzata in altri file
+export default connection;

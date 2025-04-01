@@ -7,12 +7,12 @@ import {index, show} from '../controllers/productController.js'
 
 
 
-//INDEX
+//rotta per visualizzare tutti i prodotti metodo GET
 router.get('/', index);
 
-//SHOW
+//rotta per il singolo prodotto metodo GET
 router.get('/:slug', show);
 
 
-
+//esportazione del Router
 export default router;
