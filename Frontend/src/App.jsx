@@ -3,7 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayout"
 
 // pages
 import HomePage from "../src/pages/HomePage"
-import SingleProduct from "../src/pages/SingleProduct"
+import ProductPage from "./pages/ProductPage"
 import ManPage from "./pages/ManPage"
 import WomanPage from "./pages/WomanPage"
 import SummerPage from "./pages/SummerPage"
@@ -17,7 +17,7 @@ function App() {
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
-                        <Route path="/products/:slug" Component={SingleProduct} />
+                        <Route path="/products/:slug" Component={ProductPage} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />

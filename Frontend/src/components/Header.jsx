@@ -7,7 +7,7 @@ export default function Header() {
             <nav className="navbar navbar-expand-lg bg-body-">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to={`/`}>
-                        <img className="img-fluid rounded" width="60px" src="/logo.png" alt="Logo Kick Shop" />
+                        <img className="img-fluid rounded" width="60px" src="/src/assets/img/logo.png" alt="Logo Kick Shop" />
                     </Link>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
