@@ -44,34 +44,58 @@ export default function HomePage() {
             {/* categorie */}
             <h2 className="text-center my-3">Categorie</h2>
 
-            <ul className="d-flex justify-content-center gap-lg-5 gap-sm-2">
-                <li>
-                    <Link className="btn btn-outline-primary" to={`/man`}>Uomo</Link>
-                    <figure>
-                        <img src="/man" alt="" className="w-100" />
-                    </figure>
-                </li>
+            <div className="container-fluid">
+                <ul className="row">
+                    <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <Link className="w-100 position-relative" to={`/man`}>
+                            <figure >
+                                <img src="/src/assets/img/man.jpg" alt="Man category" className="w-100" />
+                            </figure>
 
-                <li>
-                    <Link className="btn btn-outline-primary" to={`/woman`}>Donna</Link>
-                </li>
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
+                        </Link>
 
-                <li>
-                    <Link className="btn btn-outline-primary" to={`/summer`}>Estate</Link>
-                </li>
+                    </li>
 
-                <li>
-                    <Link className="btn btn-outline-primary" to={`/winter`}>Inverno</Link>
-                </li>
-            </ul>
+                    <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <Link className="w-100 position-relative" to={`/woman`}>
+                            <figure >
+                                <img src="/src/assets/img/woman.jpg" alt="Man category" className="w-100" />
+                            </figure>
 
-            <h2 className="text-center">Tutta la collezione</h2>
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
+                        </Link>
+                    </li>
 
-            <div className="mx-5 mb-5">
-                <div className="row row-cols-lg-4">
-                    {renderProducts()}
-                </div>
+                    <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <Link className="w-100 position-relative" to={`/summer`}>
+                            <figure >
+                                <img src="/src/assets/img/summer.jpg" alt="Man category" className="w-100" />
+                            </figure>
+
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
+                        </Link>
+                    </li>
+
+                    <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                        <Link className="w-100 position-relative" to={`/winter`}>
+                            <figure >
+                                <img src="/src/assets/img/winter.jpg" alt="Man category" className="w-100" />
+                            </figure>
+
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
+                        </Link>
+                    </li>
+                </ul>
             </div>
+
+            {/* <h2 className="text-center">Tutta la collezione</h2>
+
+<div className="mx-5 mb-5">
+<div className="row row-cols-lg-4">
+{renderProducts()}
+</div>
+</div> */}
         </>
     )
 }
