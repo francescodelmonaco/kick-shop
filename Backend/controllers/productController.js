@@ -80,7 +80,6 @@ function show(req, res) {
 }
 
 function storeOrder(req, res) {
-
   const {
     userName,
     userSurname,
@@ -89,10 +88,8 @@ function storeOrder(req, res) {
     addressInvoice,
     telephone,
     city,
-    province,
-    payment_method
-
-  } = req.body
+    province
+  } = req.body;
 
   const sql = `
     INSERT INTO orders (
@@ -105,21 +102,22 @@ function storeOrder(req, res) {
       city,
       province
     ) VALUES (?,?,?,?,?,?,?,?);
-  `
-  connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province, payment_method ], (err, results) => {
+  `;
+
+  connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province], (err, results) => {
     if (err) {
       return res.status(500).json({
-        error: 'Database Errore StorrReviews'
+        error: 'Errore nel database',
+        details: err.message
       });
     }
-
-    // Restituiamo una risposta con il messaggio di successo e l'ID della recensione appena inserita
-    res.status(201);
-    res.json({
-      message: 'review added',
-      id: results.insertId,  // ID della recensione appena creata
+    res.status(201).json({
+      status: "success",
+      message: "Ordine aggiunto con successo",
+      orderId: results.insertId
     });
   });
 }
+
 
 export { index, show, storeOrder };
