@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import productRouter from './routers/productRouter.js';
+import searchRouter from './routers/searchRouter.js'
 import orderRouter from "./routers/orderRouter.js";
 import imagePathMiddleware from './middlewares/imagePath.js';
 
@@ -22,6 +23,7 @@ app.use(imagePathMiddleware); // Middleware per la gestione degli URL delle imma
 // Definizione delle rotte
 app.use('/products', productRouter); // Rotta per la gestione dei prodotti
 app.use('/checkout', orderRouter); // Rotta per la gestione degli ordini
+app.use('/search', searchRouter); //
 
 // Avvio del server
 app.listen(port, () => {

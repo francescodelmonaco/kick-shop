@@ -94,5 +94,8 @@ function show(req, res) {
   });
 }
 
+
+
+
 // Esporta le funzioni per essere utilizzate in altri file
 export { index, show };
