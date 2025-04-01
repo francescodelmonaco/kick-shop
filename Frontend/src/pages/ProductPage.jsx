@@ -23,24 +23,46 @@ export default function SingleProduct() {
 
     // rendering prodotti in html
     const renderProducts = () => {
-        const { id, name, description, price, gender, season, brand } = product;
+        const { id, name, description, price, gender, season, brand, sizes, images } = product;
         return (
-            <> <div key={id}>
-                <figure>
-                    <img src="/src/assets/img/puma-carbon.jpg" alt={name} className="w-100" />
-                </figure>
+            <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 my-3">
+                <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
+                    <div className="carousel-inner">
+                        {
+                            images && images.map((image, index) => {
+                                const { id: imageId, image_url } = image;
+
+                                // Aggiungi la classe "active" solo per la prima immagine
+                                const className = index === 0 ? 'carousel-item active' : 'carousel-item';
+
+                                return (
+                                    <div key={imageId} className={className}>
+                                        <img src={image_url} alt={name} className="w-100 mb-3" />
+                                    </div>
+                                );
+                            })
+                        }
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target={`#carousel-${id}`} data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target={`#carousel-${id}`} data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
 
                 <aside>
                     <h2>{name}</h2>
-                    <p>{brand}</p>
-                    <p>Descrizione: {description}</p>
+                    <p>Brand: {brand}</p>
                     <p>Prezzo: {price} €</p>
                     <p>Genere: {gender}</p>
+                    {/* <p>Taglie: {sizes}</p> */}
                     <p>Stagione: {season}</p>
+                    <p>Descrizione: {description}</p>
                 </aside>
             </div>
-
-            </>
         )
     }
 
@@ -49,7 +71,7 @@ export default function SingleProduct() {
 
     return (
         <>
-            <div className="container-fluid d-flex gap-5 my-3 flex-lg-row flex-md-column flex-sm-column">
+            <div>
                 {renderProducts()}
             </div>
         </>
