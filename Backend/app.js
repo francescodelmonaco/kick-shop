@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors'
 import productRouter from './routers/productRouter.js';
+import orderRouter from "./routers/orderRouter.js"
 import imagePathMiddleware from './middlewares/imagePath.js'
 
 
@@ -25,6 +26,7 @@ app.use(imagePathMiddleware); // Gestione URL immagini
 
 
 app.use('/products', productRouter) 
+app.use('/checkout', orderRouter) 
 
 //attivazione del server
 app.listen(port, () => {
