@@ -9,14 +9,18 @@ export default function ProductCard({ product }) {
                 <div id="carouselExample" className="carousel slide" data-bs-theme="dark">
                     <div className="carousel-inner">
                         {
-                            images.map((image) => {
+                            // Inverte l'ordine delle immagini
+                            images.reverse().map((image, index) => {
                                 const { id, image_url } = image;
 
+                                // Aggiungi la classe "active" solo per la prima immagine
+                                const className = index === 0 ? 'carousel-item active' : 'carousel-item';
+
                                 return (
-                                    <div key={id} className="carousel-item active">
+                                    <div key={id} className={className}>
                                         <img src={image_url} alt={name} className="w-100" />
                                     </div>
-                                )
+                                );
                             })
                         }
                     </div>

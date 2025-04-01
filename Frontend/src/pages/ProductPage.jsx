@@ -25,7 +25,7 @@ export default function SingleProduct() {
     const renderProducts = () => {
         const { id, name, description, price, gender, season, brand } = product;
         return (
-            <>
+            <> <div key={id}>
                 <figure>
                     <img src="/src/assets/img/puma-carbon.jpg" alt={name} className="w-100" />
                 </figure>
@@ -38,6 +38,8 @@ export default function SingleProduct() {
                     <p>Genere: {gender}</p>
                     <p>Stagione: {season}</p>
                 </aside>
+            </div>
+
             </>
         )
     }
