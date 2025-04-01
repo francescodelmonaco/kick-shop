@@ -1,7 +1,7 @@
-import HeroSection from "../components/HeroSection";
 import { Link } from "react-router-dom";
-import ProductCard from "../components/ProductCard";
 import { useState, useEffect } from 'react';
+import HeroSection from "../components/HeroSection";
+import ProductCard from "../components/ProductCard";
 import axios from 'axios';
 
 export default function HomePage() {
@@ -67,7 +67,7 @@ export default function HomePage() {
 
             <h2 className="text-center">Tutta la collezione</h2>
 
-            <div className="mx-5">
+            <div className="mx-5 mb-5">
                 <div className="row row-cols-lg-4">
                     {renderProducts()}
                 </div>

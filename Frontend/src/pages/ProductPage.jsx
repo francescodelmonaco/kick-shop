@@ -41,14 +41,14 @@ export default function SingleProduct() {
 
     // rendering prodotti in html
     const renderRelatedProducts = () => {
-        return relatedProducts.map((product) => {
-            return (
-                <div className="col g-3" key={product.id}>
-                    <ProductCard product={product} />
+        return relatedProducts
+            .filter((relatedProduct) => relatedProduct.brand === product.brand && relatedProduct.id !== product.id) // Filtra per brand e rimuove il prodotto principale
+            .map((relatedProduct) => (
+                <div className="col g-3" key={relatedProduct.id}>
+                    <ProductCard product={relatedProduct} />
                 </div>
-            )
-        })
-    }
+            ));
+    };
 
     // invocazione chiamata al caricamento del componente in pagina
     useEffect(fetchProducts, []);
@@ -58,7 +58,7 @@ export default function SingleProduct() {
         const { id, name, description, price, gender, season, brand, sizes, images } = product;
         return (
             <>
-                <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 my-3 mx-5">
+                <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 my-3">
                     <div id={`carousel-${id}`} className="carousel slide w-50" data-bs-theme="dark">
                         <div className="carousel-inner">
                             {images && images.map((image, index) => {
@@ -98,8 +98,10 @@ export default function SingleProduct() {
                 {/* prodotti correlati */}
                 <h2 className="text-center my-3">Prodotti correlati</h2>
 
-                <div>
-                    {renderRelatedProducts()}
+                <div className="mx-5">
+                    <div className="row row-cols-lg-4 mb-5">
+                        {renderRelatedProducts()}
+                    </div>
                 </div>
             </>
 
