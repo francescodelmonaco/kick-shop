@@ -1,6 +1,11 @@
 :root {
     --blue: #3452A3;
     --white: #fff;
+    --light-blue: #8f9fc9;
+}
+
+main {
+    background-color: var(--light-blue);
 }
 
 /* header */
@@ -32,18 +37,6 @@ nav a img {
 nav a img:hover {
     transform: rotate(360deg);
 
-}
-
-.bckgrd {
-    background-image: url(../public/bunner-balls.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/* hero */
-.hero-border {
-    border-top: 5px solid var(--blue);
-    border-bottom: 5px solid var(--blue);
 }
 
 /* card */

@@ -37,12 +37,12 @@ export default function HomePage() {
 
     return (
         <>
-            <h1 className="text-center my-3">Home page</h1>
+            <h1 className="text-center py-3">Home page</h1>
 
             <HeroSection />
 
             {/* categorie */}
-            <h2 className="text-center my-3">Categorie</h2>
+            <h2 className="text-center py-3">Categorie</h2>
 
             <div className="container-fluid">
                 <ul className="row">
