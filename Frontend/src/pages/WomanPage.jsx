@@ -40,7 +40,7 @@ export default function ManPage() {
             <h1 className="text-center py-3">Woman Collection</h1>
 
             <figure>
-                <img src="/src/assets/img/hero-section-3-woman.webp" alt="Hero image 3" className="w-100 hero-border" />
+                <img src="/src/assets/img/hero-woman.webp" alt="Hero image 3" className="w-100 hero-border" />
             </figure>
 
             <div className="px-5">
