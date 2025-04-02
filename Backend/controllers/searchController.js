@@ -12,8 +12,8 @@ function search(req, res) {
 
   // Se è stato fornito un termine di ricerca, aggiunge una clausola WHERE per filtrare i prodotti
   if (searchTerm){
-    sql += ' WHERE name LIKE ?';
-    params.push(`%${searchTerm}%`); // Usa il carattere jolly per la ricerca parziale
+    sql += ' WHERE name LIKE ? OR description LIKE ? OR description LIKE ?';
+    params.push(`%${searchTerm}%`, `%${searchTerm.split(' ')[0]}%`, `%${searchTerm.split(' ')[1]}%`); // Usa il carattere jolly per la ricerca parziale
   }  
 
   // Esegue la query per cercare i prodotti nel database
