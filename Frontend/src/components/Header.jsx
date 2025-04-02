@@ -36,7 +36,7 @@ export default function Header() {
                             </li> */}
                         </ul>
 
-                        <form className="d-flex" role="search">
+                        <form className="d-flex px-2" role="search">
                             <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>

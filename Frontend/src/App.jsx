@@ -8,6 +8,7 @@ import WomanPage from "./pages/WomanPage";
 import SummerPage from "./pages/SummerPage";
 import WinterPage from "./pages/WinterPage";
 import CartSection from "./components/CartSection";
+import Checkout from "./pages/CheckoutPage";
 
 function App() {
     const [cart, setCart] = useState([]);
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />
                         <Route path="/winter" Component={WinterPage} />
+                        <Route path="/checkout" Component={Checkout} />
                     </Route>
                 </Routes>
             </BrowserRouter>

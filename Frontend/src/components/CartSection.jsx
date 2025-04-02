@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function CartSection({ cart = [] }) {
     return (
         <>
@@ -26,6 +28,8 @@ export default function CartSection({ cart = [] }) {
                         </ul>
                     )}
                 </div>
+
+                <Link className="btn btn-primary mx-3 my-3" to={"/checkout"}>Checkout</Link>
             </div>
         </>
     );

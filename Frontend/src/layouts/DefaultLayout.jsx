@@ -8,7 +8,7 @@ export default function DefaultLayout() {
         <>
             <Header />
 
-            <main>
+            <main className="container-fluid">
                 <Outlet />
             </main>
 
