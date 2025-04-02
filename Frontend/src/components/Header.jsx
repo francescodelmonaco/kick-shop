@@ -31,9 +31,9 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink className="nav-link text-light" aria-current="page" to={`/winter`}>Inverno</NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink className="nav-link text-light" aria-current="page" to={`/cart`}>Carrello</NavLink>
-                            </li>
+                            </li> */}
                         </ul>
 
                         <form className="d-flex" role="search">
@@ -41,6 +41,16 @@ export default function Header() {
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
+
+                    <button
+                        className="btn btn-outline-light"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight"
+                    >
+                        Carrello
+                    </button>
                 </div>
             </nav>
 

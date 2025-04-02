@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 
-export default function SingleProduct() {
+export default function ProductPage({ addToCart }) {
     // CHIAMATA SINGOLO PRODOTTO
     const { slug } = useParams();
     const [product, setProduct] = useState([]);
@@ -95,6 +95,15 @@ export default function SingleProduct() {
                         {/* <p>Taglie: {sizes}</p> */}
                         <p> <strong>Stagione: </strong>{season}</p>
                         <p> <strong>Descrizione: </strong>{description}</p>
+
+                        {/* bottone per aggiunta del prodotto al carrello */}
+                        <button
+                            className="btn btn-primary"
+                            onClick={() => addToCart(product)}
+                        >
+                            Aggiungi al carrello
+                        </button>
+
                         <hr className="w-100" />
                     </aside>
                 </div>

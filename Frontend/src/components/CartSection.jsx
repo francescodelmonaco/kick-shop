@@ -1,17 +1,32 @@
-export default function CartSection() {
+export default function CartSection({ cart = [] }) {
     return (
-    <>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Carrello</button>
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasRightLabel">Prodotti Carrello</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasRightLabel">
+                        Prodotti Carrello
+                    </h5>
+                    <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div className="offcanvas-body">
+                    {cart.length === 0 ? (
+                        <p>Il carrello è vuoto.</p>
+                    ) : (
+                        <ul className="list-group">
+                            {cart.map((item, index) => (
+                                <li key={index} class="list-group-item list-group-item-dark" aria-current="true">
+                                    <strong>{item.name}</strong> - {item.price} €
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
             </div>
-            <div class="offcanvas-body">
-                ...
-            </div>
-        </div>
-    </>
-    )
+        </>
+    );
 }
