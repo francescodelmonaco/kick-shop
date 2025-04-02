@@ -8,19 +8,42 @@ function isValidEmail(email) {
 
 // Funzione per memorizzare un nuovo ordine nel database
 function storeOrder(req, res) {
-    // Estrae i dati dalla richiesta
-    const {
-      userName,
-      userSurname,
-      userEmail,
-      addressShipping,
-      addressInvoice,
-      telephone,
-      city,
-      province,
-      carts,
-      total
-    } = req.body;
+  const {
+    userName,
+    userSurname,
+    userEmail,
+    addressShipping,
+    addressInvoice,
+    telephone,
+    city,
+    province,
+    carts
+  } = req.body;
+
+  const cartsJson = JSON.stringify(carts);
+  const productIds = carts.map(cart => cart.id_product);
+  const quantita_prodotto = carts.map(cart => cart.quantity);
+
+  // Query per ottenere i prezzi dei prodotti
+  const priceProductsql = `
+    SELECT id, price 
+    FROM products 
+    WHERE id IN (?);
+  `;
+
+  connection.query(priceProductsql, [productIds], (err, priceResults) => {
+    if (err) {
+      return res.status(500).json({
+        error: 'Errore nel recupero dei prezzi',
+        details: err.message
+      });
+    }
+
+    // Calcola il prezzo totale
+    let totalPrice = 0;
+    priceResults.forEach((product, index) => {
+      totalPrice += product.price * quantita_prodotto[index];
+    });
 
     const cartsJson = JSON.stringify(carts);
   
@@ -33,7 +56,7 @@ function storeOrder(req, res) {
     }
   
     // Query SQL per inserire un nuovo ordine
-    const sql = `
+    const insertOrderSql = `
       INSERT INTO orders (
         user_name, 
         user_surname,
@@ -45,26 +68,31 @@ function storeOrder(req, res) {
         province,
         carts,
         total
-      ) VALUES (?,?,?,?,?,?,?,?,?,?);
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
-  
-    // Esegue la query con i parametri forniti
-    connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province, cartsJson, total], (err, results) => {
+
+    // Esegue la query di inserimento con il totale già calcolato
+    connection.query(insertOrderSql, [
+      userName, userSurname, userEmail, addressShipping, 
+      addressInvoice, telephone, city, province, cartsJson, totalPrice
+    ], (err, results) => {
       if (err) {
         return res.status(500).json({
-          error: 'Errore nel database',
+          error: 'Errore nell inserimento dell ordine',
           details: err.message
         });
       }
-      
+
       // Restituisce una risposta di successo con l'ID dell'ordine
       res.status(201).json({
         status: "success",
         message: "Ordine aggiunto con successo",
-        orderId: results.insertId
+        orderId: results.insertId,
+        total: totalPrice
       });
     });
-  }
-  
+  });
+}
+
 // Esporta la funzione per essere utilizzata in altri file
 export default storeOrder;
