@@ -58,7 +58,7 @@ export default function SingleProduct() {
         const { id, name, description, price, gender, season, brand, sizes, images } = product;
         return (
             <>
-                <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 my-3">
+                <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 py-3">
                     <div id={`carousel-${id}`} className="carousel slide w-50" data-bs-theme="dark">
                         <div className="carousel-inner">
                             {images && images.map((image, index) => {

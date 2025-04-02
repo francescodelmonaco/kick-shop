@@ -37,7 +37,7 @@ export default function HomePage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Home page</h1>
+            <h1 className="text-center py-3">Kick Shop</h1>
 
             <HeroSection />
 
@@ -52,7 +52,7 @@ export default function HomePage() {
                                 <img src="/src/assets/img/man.jpg" alt="Man category" className="w-100" />
                             </figure>
 
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
+                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
                         </Link>
 
                     </li>
@@ -63,7 +63,7 @@ export default function HomePage() {
                                 <img src="/src/assets/img/woman.jpg" alt="Man category" className="w-100" />
                             </figure>
 
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
+                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
                         </Link>
                     </li>
 
@@ -73,7 +73,7 @@ export default function HomePage() {
                                 <img src="/src/assets/img/summer.jpg" alt="Man category" className="w-100" />
                             </figure>
 
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
+                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
                         </Link>
                     </li>
 
@@ -83,7 +83,7 @@ export default function HomePage() {
                                 <img src="/src/assets/img/winter.jpg" alt="Man category" className="w-100" />
                             </figure>
 
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
+                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
                         </Link>
                     </li>
                 </ul>
