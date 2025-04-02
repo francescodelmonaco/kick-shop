@@ -24,12 +24,14 @@ function storeOrder(req, res) {
         address_invoice,
         telephone,
         city,
-        province
-      ) VALUES (?,?,?,?,?,?,?,?);
+        province,
+        carts,
+        total
+      ) VALUES (?,?,?,?,?,?,?,?,?,?);
     `;
   
     // Esegue la query con i parametri forniti
-    connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province], (err, results) => {
+    connection.query(sql, [userName, userSurname, userEmail, addressShipping, addressInvoice, telephone, city, province, carts, total], (err, results) => {
       if (err) {
         return res.status(500).json({
           error: 'Errore nel database',
