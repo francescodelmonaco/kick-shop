@@ -84,14 +84,18 @@ export default function SingleProduct() {
                         </button>
                     </div>
 
-                    <aside>
+
+                    <aside className="w-50 d-flex flex-column justify-content-center align-items-start">
+                        <hr className="w-100" />
+                        {/* <h1>Dettaglio Prodotto</h1> */}
                         <h2>{name}</h2>
-                        <p>Brand: {brand}</p>
-                        <p>Prezzo: {price} €</p>
-                        <p>Genere: {gender}</p>
+                        <p> <strong>Brand: </strong>{brand}</p>
+                        <p> <strong>Prezzo: </strong>{price} €</p>
+                        <p> <strong>Genere: </strong>{gender}</p>
                         {/* <p>Taglie: {sizes}</p> */}
-                        <p>Stagione: {season}</p>
-                        <p>Descrizione: {description}</p>
+                        <p> <strong>Stagione: </strong>{season}</p>
+                        <p> <strong>Descrizione: </strong>{description}</p>
+                        <hr className="w-100" />
                     </aside>
                 </div>
 
