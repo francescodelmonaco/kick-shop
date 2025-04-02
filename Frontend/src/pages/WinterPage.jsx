@@ -15,7 +15,7 @@ export default function WinterPage() {
         axios
             .get('http://localhost:3000/products')
             .then((res) => {
-                setSummerProducts(res.data)
+                setWinterProducts(res.data)
             })
             .catch((error) => {
                 console.log(error)
@@ -23,12 +23,12 @@ export default function WinterPage() {
     }
 
     // rendering prodotti in html
-    const renderSummerProducts = () => {
-        return summerProducts
-            .filter((summerProduct) => summerProduct.season === "estate") // Filtra per genere
-            .map((summerProduct) => (
-                <div className="col g-3 pb-3" key={summerProduct.id}>
-                    <ProductCard product={summerProduct} />
+    const renderWinterProducts = () => {
+        return winterProducts
+            .filter((winterProduct) => winterProduct.season === "inverno") // Filtra per genere
+            .map((winterProduct) => (
+                <div className="col g-3 pb-3" key={winterProduct.id}>
+                    <ProductCard product={winterProduct} />
                 </div>
             ));
     };
@@ -38,15 +38,15 @@ export default function WinterPage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Collezione Estate</h1>
+            <h1 className="text-center py-3">Collezione Inverno</h1>
 
             <figure>
-                <img src="/src/assets/img/hero-section-2-woman.webp" alt="Hero image 3" className="w-100 hero-border" />
+                <img src="/src/assets/img/winterBallBunn.jpg" alt="Hero image 3" className="w-100 hero-border" />
             </figure>
 
             <div className="px-5">
                 <div className="row row-cols-lg-4 mb-5">
-                    {renderSummerProducts()}
+                    {renderWinterProducts()}
                 </div>
             </div>
         </>

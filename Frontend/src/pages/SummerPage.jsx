@@ -41,7 +41,7 @@ export default function SummerPage() {
             <h1 className="text-center py-3">Collezione Estate</h1>
 
             <figure>
-                <img src="/src/assets/img/hero-section-2-man.webp" alt="Hero image 3" className="w-100 hero-border" />
+                <img src="/src/assets/img/summerBall.jpg" alt="Hero image 3" className="w-100 hero-border" />
             </figure>
 
             <div className="px-5">
