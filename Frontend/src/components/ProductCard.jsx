@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import CartSection from "./CartSection";
+
 
 export default function ProductCard({ product }) {
     const { id, name, price, gender, brand, slug, images } = product;
@@ -43,17 +45,7 @@ export default function ProductCard({ product }) {
             <div className="d-flex justify-content-around pb-3">
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Dettagli</Link>
 
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Carrello</button>
-
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    ...
-                </div>
-                </div>
+                <CartSection />
             </div>
         </div>
     );
