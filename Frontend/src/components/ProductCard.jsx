@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import CartSection from "./CartSection";
+
 
 export default function ProductCard({ product }) {
     const { id, name, price, gender, brand, slug, images } = product;
@@ -42,7 +44,8 @@ export default function ProductCard({ product }) {
 
             <div className="d-flex justify-content-around pb-3">
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Dettagli</Link>
-                <Link to={`/products/${slug}`} className="btn btn-outline-primary">Carrello</Link>
+
+                <CartSection />
             </div>
         </div>
     );
