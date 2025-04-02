@@ -44,8 +44,6 @@ function storeOrder(req, res) {
     priceResults.forEach((product, index) => {
       totalPrice += product.price * quantita_prodotto[index];
     });
-
-    const cartsJson = JSON.stringify(carts);
   
     // Validazione email
     if (!isValidEmail(userEmail)) {
