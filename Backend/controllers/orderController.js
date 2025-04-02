@@ -1,5 +1,11 @@
 import connection from "../data/db.js";
 
+// Funzione per validare il formato dell'email
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
 // Funzione per memorizzare un nuovo ordine nel database
 function storeOrder(req, res) {
     // Estrae i dati dalla richiesta
@@ -17,6 +23,14 @@ function storeOrder(req, res) {
     } = req.body;
 
     const cartsJson = JSON.stringify(carts);
+  
+    // Validazione email
+    if (!isValidEmail(userEmail)) {
+      return res.status(400).json({
+        error: 'Email non valida',
+        details: 'Inserire un indirizzo email valido'
+      });
+    }
   
     // Query SQL per inserire un nuovo ordine
     const sql = `
