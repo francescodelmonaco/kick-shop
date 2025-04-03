@@ -46,12 +46,55 @@ export default function Header() {
                             </li>
                         </ul>
 
-                        <form className="d-flex px-2" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
+                        <form className="d-flex px-2" role="search" onSubmit={handleSubmit}>
+                            {/* carrello */}
+                            <button
+                                className="btn btn-outline-light me-2"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight"
+                            >
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+
+                            {/* whishlist */}
+                            <button
+                                className="btn btn-outline-light me-2"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight"
+                                style={{
+                                    transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                }}
+                            >
+                                <i
+                                    className="fa-solid fa-heart"
+                                    style={{
+                                        transition: "color 0.3s", // Transizione fluida per il colore
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.color = "red"; // Cambia il colore del cuoricino
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.color = ""; // Ripristina il colore originale
+                                    }}
+                                ></i>
+                            </button>
+
+                            {/* search bar */}
+                            <input
+                                className="form-control me-2"
+                                type="text"
+                                placeholder="Cerca"
+                                aria-label="Cerca"
+                                value={query}
+                                onChange={e => setQuery(e.target.value)}
+                            />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
-
                 </div>
             </nav>
         </header>
