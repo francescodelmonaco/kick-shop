@@ -3,7 +3,6 @@ import ProductCard from "../components/ProductCard";
 
 export default function ResultSearch({ items }) {
     const [filterItems, setFilterItems] = useState("");
-
     // Funzione filtri
     const filters = () => {
         if (filterItems === "name-asc") {
