@@ -51,7 +51,7 @@ export default function Header() {
                         data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight"
                     >
-                        Carrello
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </div>
             </nav>
