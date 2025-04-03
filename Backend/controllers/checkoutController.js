@@ -1,4 +1,5 @@
 import connection from "../data/db.js";
+import { sendOrderConfirmationEmail } from "../utils/mailer.js"; // Importa la funzione per inviare l'email
 
 // Funzione per validare il formato dell'email
 function isValidEmail(email) {
@@ -97,7 +98,7 @@ function storeOrder(req, res) {
         const orderId = results.insertId;
 
         // Crea l'elenco dei prodotti da inserire nella tabella "order_product"
-        const orderProducts = priceResults.map((product, index) => ([
+        const orderProducts = priceResults.map((product, index) => ([ 
           orderId,
           product.id,
           product.name,
@@ -122,7 +123,7 @@ function storeOrder(req, res) {
           const subAvSql = `UPDATE products p
             JOIN order_product op ON p.id = op.product_id
             SET p.availability = p.availability - op.quantity
-            WHERE op.order_id IN (?);`
+            WHERE op.order_id IN (?)`;
 
           connection.query(subAvSql, [orderId], (err, subResults) => {
             console.log(productIds); // Log per debug
@@ -133,6 +134,9 @@ function storeOrder(req, res) {
                 details: err.message
               });
             }
+
+            // Invia l'email di conferma
+            sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName);
 
             // Risposta finale: ordine inserito con successo e disponibilità aggiornata
             res.status(201).json({
