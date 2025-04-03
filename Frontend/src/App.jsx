@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GlobalProvider } from "./context/GlobalContext";
 
 // layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -26,7 +27,7 @@ function App() {
     };
 
     return (
-        <>
+        <GlobalProvider>
             <BrowserRouter>
                 <CartSection cart={cart} /> {/* Passa il carrello come prop */}
                 <Routes>
@@ -42,7 +43,7 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </>
+        </GlobalProvider>
     );
 }
 

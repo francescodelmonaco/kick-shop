@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom"
-import CartSection from "./CartSection";
-import Figure from 'react-bootstrap/Figure';
+
 
 
 export default function ProductCard({ product }) {
     const { id, name, price, season, gender, brand, slug, images } = product;
-
     return (
         <div className="card h-100" key={id}>
             <Link className="card-body" to={`/products/${slug}`}>

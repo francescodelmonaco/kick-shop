@@ -99,6 +99,8 @@ function storeOrder(req, res) {
           product.price
         ]));
 
+        console.log(orderProducts)
+
         const insertOrderProductSql = `
           INSERT INTO order_product (order_id, product_id, name_product, quantity, unit_price) 
           VALUES ?;

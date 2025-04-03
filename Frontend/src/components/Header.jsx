@@ -1,18 +1,8 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
+import Search from "./Search";
 
 export default function Header() {
-
-    // LOGICA SEARCH BAR
-    const [query, setQuery] = useState("");
-    const navigate = useNavigate(); // per andare alla pagina di ricerca del prodotto
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(query)
-        navigate(`search?query=${query}`);
-        setQuery(""); // resetta il contenuto della search bar
-    };
 
     return (
 
@@ -45,55 +35,42 @@ export default function Header() {
                                 <NavLink className="nav-link text-light" aria-current="page" to={`/winter`}>Inverno</NavLink>
                             </li>
                         </ul>
+                        {/* carrello */}
+                        <button
+                            className="btn btn-outline-light me-2"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
+                        >
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </button>
 
-                        <form className="d-flex px-2" role="search" onSubmit={handleSubmit}>
-                            {/* carrello */}
-                            <button
-                                className="btn btn-outline-light me-2"
-                                type="button"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight"
-                            >
-                                <i class="fa-solid fa-cart-shopping"></i>
-                            </button>
-
-                            {/* whishlist */}
-                            <button
-                                className="btn btn-outline-light me-2"
-                                type="button"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRight"
-                                aria-controls="offcanvasRight"
+                        {/* whishlist */}
+                        <button
+                            className="btn btn-outline-light me-2"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
+                            style={{
+                                transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                            }}
+                        >
+                            <i
+                                className="fa-solid fa-heart"
                                 style={{
-                                    transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                    transition: "color 0.3s", // Transizione fluida per il colore
                                 }}
-                            >
-                                <i
-                                    className="fa-solid fa-heart"
-                                    style={{
-                                        transition: "color 0.3s", // Transizione fluida per il colore
-                                    }}
-                                    onMouseEnter={(e) => {
-                                        e.target.style.color = "red"; // Cambia il colore del cuoricino
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.target.style.color = ""; // Ripristina il colore originale
-                                    }}
-                                ></i>
-                            </button>
-
-                            {/* search bar */}
-                            <input
-                                className="form-control me-2"
-                                type="text"
-                                placeholder="Cerca"
-                                aria-label="Cerca"
-                                value={query}
-                                onChange={e => setQuery(e.target.value)}
-                            />
-                            <button className="btn btn-outline-light" type="submit">Cerca</button>
-                        </form>
+                                onMouseEnter={(e) => {
+                                    e.target.style.color = "red"; // Cambia il colore del cuoricino
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.color = ""; // Ripristina il colore originale
+                                }}
+                            ></i>
+                        </button>
+                        <Search />
                     </div>
                 </div>
             </nav>
