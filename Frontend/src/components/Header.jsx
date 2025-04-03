@@ -49,26 +49,27 @@ export default function Header() {
                             <i class="fa-solid fa-cart-shopping"></i>
                             </button>
                             <button
-                                    className="btn btn-outline-light me-2"
-                                    type="button"
-                                    data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight"
+                                className="btn btn-outline-light me-2"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight"
+                                style={{
+                                    transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                }}
+                            >
+                                <i
+                                    className="fa-solid fa-heart"
                                     style={{
-                                        transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                        transition: "color 0.3s", // Transizione fluida per il colore
                                     }}
                                     onMouseEnter={(e) => {
-                                        e.target.style.backgroundColor = "red";
-                                        e.target.style.color = "white";
-                                        e.target.style.borderColor = "red";
+                                        e.target.style.color = "red"; // Cambia il colore del cuoricino
                                     }}
                                     onMouseLeave={(e) => {
-                                        e.target.style.backgroundColor = "";
-                                        e.target.style.color = "";
-                                        e.target.style.borderColor = "";
+                                        e.target.style.color = ""; // Ripristina il colore originale
                                     }}
-                                >
-                                    <i className="fa-solid fa-heart"></i>
+                                ></i>
                             </button>
                             <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
