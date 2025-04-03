@@ -47,14 +47,16 @@ export default function ProductCard({ product }) {
 
             <div className="d-flex justify-content-around pb-3">
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Dettagli</Link>
-                <Link to={`/products/${slug}`}>        
-                <button className="btn btn-outline-primary"
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight">
-                    Carrello
-                </button>
+                <Link to={`/products/${slug}`}>
+                    <button className="btn btn-outline-primary"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight"
+                        aria-controls="offcanvasRight"
+                        onClick={() => addToCart(product)}
+                        >
+                        Carrello
+                    </button>
                 </Link>
 
             </div>
