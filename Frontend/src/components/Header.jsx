@@ -1,11 +1,22 @@
-import { Link, NavLink } from "react-router-dom";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Header() {
+
+    // LOGICA SEARCH BAR
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate(); // per andare alla pagina di ricerca del prodotto
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(query)
+        navigate(`search?query=${query}`);
+        setQuery(""); // resetta il contenuto della search bar
+    };
+
     return (
 
         <header>
-
             <nav className="navbar navbar-expand-lg bg-body-">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to={`/`}>
@@ -33,13 +44,17 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink className="nav-link text-light" aria-current="page" to={`/winter`}>Inverno</NavLink>
                             </li>
-                            {/* <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/cart`}>Carrello</NavLink>
-                            </li> */}
                         </ul>
 
-                        <form className="d-flex px-2" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
+                        <form className="d-flex px-2" role="search" onSubmit={handleSubmit}>
+                            <input
+                                className="form-control me-2"
+                                type="text"
+                                placeholder="Cerca"
+                                aria-label="Cerca"
+                                value={query}
+                                onChange={e => setQuery(e.target.value)}
+                            />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
@@ -55,7 +70,6 @@ export default function Header() {
                     </button>
                 </div>
             </nav>
-
         </header>
     )
 }
