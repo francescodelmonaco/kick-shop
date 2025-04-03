@@ -1,5 +1,7 @@
 import connection from "../data/db.js";
 
+
+
 // Funzione per ottenere la lista di tutti i prodotti con immagini e taglie
 function index(req, res) {
   const productSql = 'SELECT * FROM products';
