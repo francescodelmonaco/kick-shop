@@ -6,14 +6,13 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 
-export default function CartSection({ cart = [] }) {
+export default function CartSection({ cart = [], setCart }) {
     const [quantities, setQuantities] = useState(cart.map(() => 1)); // Stato per le quantità
     const [total, setTotal] = useState(0); // Stato per il totale
 
     // Sincronizza quantities con il carrello
     useEffect(() => {
         setQuantities((prevQuantities) => {
-            // Aggiungi quantità iniziale (1) per ogni nuovo elemento nel carrello
             const newQuantities = [...prevQuantities];
             while (newQuantities.length < cart.length) {
                 newQuantities.push(1);
@@ -21,11 +20,18 @@ export default function CartSection({ cart = [] }) {
             return newQuantities;
         });
     }, [cart]);
+
     // Funzione per aggiornare la quantità di un elemento
     const handleQuantityChange = (index, value) => {
         const updatedQuantities = [...quantities];
         updatedQuantities[index] = parseInt(value);
         setQuantities(updatedQuantities);
+    };
+
+    // Funzione per rimuovere un elemento dal carrello
+    const handleRemoveItem = (index) => {
+        const updatedCart = cart.filter((_, i) => i !== index); // Rimuove l'elemento con l'indice specificato
+        setCart(updatedCart); // Aggiorna lo stato del carrello
     };
 
     // Calcola il totale ogni volta che le quantità cambiano
@@ -71,6 +77,14 @@ export default function CartSection({ cart = [] }) {
                                             <option value="5">5</option>
                                         </Form.Select>
                                     </Form.Group>
+                                    <button
+                                        className="btn btn-danger"
+                                        onClick={() => handleRemoveItem(index)} // Rimuove l'elemento
+                                    >
+                                        <i className="fa-solid fa-trash"></i>
+                                    </button>
+
+
                                 </li>
                             ))}
                         </ul>

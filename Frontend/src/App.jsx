@@ -29,7 +29,7 @@ function App() {
     return (
         <GlobalProvider>
             <BrowserRouter>
-                <CartSection cart={cart} /> {/* Passa il carrello come prop */}
+                <CartSection cart={cart} setCart={setCart} /> {/* Passa il carrello e la funzione setCart al componente CartSection */}
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
