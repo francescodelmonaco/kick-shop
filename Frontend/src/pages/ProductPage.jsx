@@ -102,6 +102,10 @@ export default function ProductPage({ addToCart }) {
                         <button
                             className="btn btn-primary"
                             onClick={() => addToCart(product)}
+                            type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
                         >
                             Aggiungi al carrello
                         </button>
