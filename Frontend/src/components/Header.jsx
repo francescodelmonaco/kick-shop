@@ -46,28 +46,12 @@ export default function Header() {
                             </li>
                         </ul>
 
-                        <form className="d-flex px-2" role="search" onSubmit={handleSubmit}>
-                            <input
-                                className="form-control me-2"
-                                type="text"
-                                placeholder="Cerca"
-                                aria-label="Cerca"
-                                value={query}
-                                onChange={e => setQuery(e.target.value)}
-                            />
+                        <form className="d-flex px-2" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
 
-                    <button
-                        className="btn btn-outline-light"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"
-                    >
-                        Carrello
-                    </button>
                 </div>
             </nav>
         </header>
