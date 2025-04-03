@@ -51,7 +51,10 @@ export default function CheckoutPage() {
                         <Form.Label>Nazione</Form.Label>
                         <Form.Select defaultValue="Choose...">
                             <option>Scegli ...</option>
-                            <option>...</option>
+                            <option>NA</option>
+                            <option>RM</option>
+                            <option>BA</option>
+                            <option>AN</option>
                         </Form.Select>
                     </Form.Group>
 
