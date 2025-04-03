@@ -1,26 +1,10 @@
-import { useState } from "react";
-import ProductCard from "../components/ProductCard";
+import { useGlobalContext } from "../context/GlobalContext";
+import ProductCard from "./ProductCard";
 import FilterButton from "./FilterButton";
 
 export default function ResultSearch({ items }) {
-    const [filterItems, setFilterItems] = useState("");
 
-    // Funzione filtri
-    const filters = () => {
-        if (filterItems === "name-asc") {
-            items.sort((a, b) => a.name.localeCompare(b.name)); // Ordina per nome A-Z
-        } else if (filterItems === "name-desc") {
-            items.sort((a, b) => b.name.localeCompare(a.name)); // Ordina per nome Z-A
-        } else if (filterItems === "price-asc") {
-            items.sort((a, b) => a.price - b.price); // Ordina per prezzo crescente
-        } else if (filterItems === "price-desc") {
-            items.sort((a, b) => b.price - a.price); // Ordina per prezzo decrescente
-        }
-
-        return items;
-    };
-
-    const filteredItems = filters(); // Ottieni i prodotti filtrati
+    const { setFilterItems, filteredItems } = useGlobalContext();
 
     return (
         <div className="px-5 pb-3">

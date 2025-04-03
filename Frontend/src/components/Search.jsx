@@ -1,5 +1,4 @@
 import { useGlobalContext } from "../context/GlobalContext";
-
 import { useNavigate } from 'react-router-dom';
 
 export default function () {

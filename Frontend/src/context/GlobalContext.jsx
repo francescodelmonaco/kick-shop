@@ -25,12 +25,36 @@ const GlobalProvider = ({ children }) => {
 
     }
 
+
+
+    // FILTRO
+    const [filterItems, setFilterItems] = useState("");
+
+    // Funzione filtri
+    const filters = () => {
+        if (filterItems === "name-asc") {
+            searchProducts.sort((a, b) => a.name.localeCompare(b.name)); // Ordina per nome A-Z
+        } else if (filterItems === "name-desc") {
+            searchProducts.sort((a, b) => b.name.localeCompare(a.name)); // Ordina per nome Z-A
+        } else if (filterItems === "price-asc") {
+            searchProducts.sort((a, b) => a.price - b.price); // Ordina per prezzo crescente
+        } else if (filterItems === "price-desc") {
+            searchProducts.sort((a, b) => b.price - a.price); // Ordina per prezzo decrescente
+        }
+
+        return searchProducts;
+    };
+
+    const filteredItems = filters(); // Ottieni i prodotti filtrati
+
     // Valori condivisi nel contesto globale
     const value = {
         query,
         setQuery,
         handleSubmit,
-        searchProducts
+        searchProducts,
+        setFilterItems,
+        filteredItems
     };
 
     return (
