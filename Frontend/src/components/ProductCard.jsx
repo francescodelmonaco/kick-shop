@@ -12,19 +12,19 @@ export default function ProductCard({ product }) {
                         <i
                             className="fa-solid fa-heart position-absolute"
                             style={{
-                                top: "10px", // Distanza dal bordo superiore
-                                right: "10px", // Distanza dal bordo destro
-                                color: "gray", // Colore iniziale
-                                fontSize: "1.5rem", // Dimensione del cuoricino
-                                cursor: "pointer", // Cambia il cursore per indicare che è cliccabile
-                                zIndex: 10, // Assicura che il cuoricino sia sopra l'immagine
-                                transition: "color 0.3s", // Transizione fluida per il colore
+                                top: "10px", 
+                                right: "10px", 
+                                color: "gray", 
+                                fontSize: "1.5rem", 
+                                cursor: "pointer",  
+                                zIndex: 10, 
+                                transition: "color 0.3s", 
                             }}
                             onMouseEnter={(e) => {
-                                e.target.style.color = "red"; // Cambia il colore del cuoricino
+                                e.target.style.color = "red"; 
                             }}
                             onMouseLeave={(e) => {
-                                e.target.style.color = "gray"; // Ripristina il colore originale
+                                e.target.style.color = "gray"; 
                             }}
                         ></i>
                         {
@@ -55,10 +55,10 @@ export default function ProductCard({ product }) {
                 </div>
 
                 <h5 className="card-title">{name}</h5>
-                <p>Brand: {brand}</p>
-                <p>Prezzo: {price} €</p>
-                <p>Genere: {gender}</p>
-                <p>{season}</p>
+                <p className="fonts">Brand: {brand}</p>
+                <p className="fonts">Prezzo: {price} €</p>
+                <p className="fonts">Genere: {gender}</p>
+                <p className="fonts">{season}</p>
             </Link>
 
             <div className="d-flex justify-content-around pb-3">
@@ -71,7 +71,7 @@ export default function ProductCard({ product }) {
                         aria-controls="offcanvasRight"
                         onClick={() => addToCart(product)}
                         >
-                        Carrello
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </Link>
 
