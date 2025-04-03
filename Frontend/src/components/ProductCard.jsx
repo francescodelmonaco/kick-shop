@@ -8,7 +8,25 @@ export default function ProductCard({ product }) {
         <div className="card h-100" key={id}>
             <Link className="card-body" to={`/products/${slug}`}>
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
-                    <div className="carousel-inner cardBox">
+                    <div className="carousel-inner cardBox position-relative">
+                        <i
+                            className="fa-solid fa-heart position-absolute"
+                            style={{
+                                top: "10px", // Distanza dal bordo superiore
+                                right: "10px", // Distanza dal bordo destro
+                                color: "gray", // Colore iniziale
+                                fontSize: "1.5rem", // Dimensione del cuoricino
+                                cursor: "pointer", // Cambia il cursore per indicare che è cliccabile
+                                zIndex: 10, // Assicura che il cuoricino sia sopra l'immagine
+                                transition: "color 0.3s", // Transizione fluida per il colore
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.color = "red"; // Cambia il colore del cuoricino
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.color = "gray"; // Ripristina il colore originale
+                            }}
+                        ></i>
                         {
                             // Inverte l'ordine delle immagini
                             images && images.reverse().map((image, index) => {
