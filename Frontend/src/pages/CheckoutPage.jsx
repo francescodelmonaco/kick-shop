@@ -48,10 +48,13 @@ export default function CheckoutPage() {
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>Nazione</Form.Label>
+                        <Form.Label>Provincia</Form.Label>
                         <Form.Select defaultValue="Choose...">
                             <option>Scegli ...</option>
-                            <option>...</option>
+                            <option>NA</option>
+                            <option>RM</option>
+                            <option>BA</option>
+                            <option>AN</option>
                         </Form.Select>
                     </Form.Group>
 
