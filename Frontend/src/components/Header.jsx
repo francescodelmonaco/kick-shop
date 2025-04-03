@@ -39,20 +39,42 @@ export default function Header() {
                         </ul>
 
                         <form className="d-flex px-2" role="search">
+                            <button
+                                className="btn btn-outline-light me-2"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight"
+                            >
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            </button>
+                            <button
+                                    className="btn btn-outline-light me-2"
+                                    type="button"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRight"
+                                    aria-controls="offcanvasRight"
+                                    style={{
+                                        transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.backgroundColor = "red";
+                                        e.target.style.color = "white";
+                                        e.target.style.borderColor = "red";
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.backgroundColor = "";
+                                        e.target.style.color = "";
+                                        e.target.style.borderColor = "";
+                                    }}
+                                >
+                                    <i className="fa-solid fa-heart"></i>
+                            </button>
                             <input className="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca" />
                             <button className="btn btn-outline-light" type="submit">Cerca</button>
                         </form>
                     </div>
 
-                    <button
-                        className="btn btn-outline-light"
-                        type="button"
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"
-                    >
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </button>
                 </div>
             </nav>
 

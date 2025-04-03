@@ -47,6 +47,11 @@ nav a img:hover {
 
 }
 
+.nav-link:hover {
+    color: black !important; /* Cambia solo il colore del testo */
+    transition: color 0.3s ease; /* Aggiunge una transizione fluida */
+}
+
 /* card */
 a {
     text-decoration: none;
