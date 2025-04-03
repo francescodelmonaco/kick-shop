@@ -43,7 +43,7 @@ export default function Header() {
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"
                         >
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i className="fa-solid fa-cart-shopping"></i>
                         </button>
 
                         {/* whishlist */}
