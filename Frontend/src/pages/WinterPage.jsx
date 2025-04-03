@@ -25,7 +25,7 @@ export default function WinterPage() {
     // rendering prodotti in html
     const renderWinterProducts = () => {
         return winterProducts
-            .filter((winterProduct) => winterProduct.season === "inverno") // Filtra per genere
+            .filter((winterProduct) => winterProduct.season === "inverno" || winterProduct.season === "autunno") // Filtra per genere
             .map((winterProduct) => (
                 <div className="col g-3 pb-3" key={winterProduct.id}>
                     <ProductCard product={winterProduct} />

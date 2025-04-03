@@ -69,7 +69,9 @@ export default function ProductPage({ addToCart }) {
 
                                 return (
                                     <div key={imageId} className={className}>
-                                        <img src={image_url} alt={name} className="w-100 mb-3" />
+                                        <figure className="boxImgProduct " >
+                                            <img src={image_url} alt={name} className="w-100 mb-3 imgBox" />
+                                        </figure>
                                     </div>
                                 );
                             })}
@@ -100,6 +102,10 @@ export default function ProductPage({ addToCart }) {
                         <button
                             className="btn btn-primary"
                             onClick={() => addToCart(product)}
+                            type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight"
                         >
                             Aggiungi al carrello
                         </button>

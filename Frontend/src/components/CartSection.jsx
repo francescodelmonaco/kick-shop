@@ -12,8 +12,9 @@ export default function CartSection({ cart = [] }) {
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                    ></button>
+                        aria-label="Close" >
+
+                    </button>
                 </div>
                 <div className="offcanvas-body">
                     {cart.length === 0 ? (
