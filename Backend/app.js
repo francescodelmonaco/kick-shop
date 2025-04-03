@@ -3,7 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import productRouter from './routers/productRouter.js';
 import searchRouter from './routers/searchRouter.js'
-import orderRouter from "./routers/orderRouter.js";
+import orderRouter from './routers/checkoutRouter.js';
 import imagePathMiddleware from './middlewares/imagePath.js';
 
 // Creazione dell'istanza di Express e definizione della porta del server
