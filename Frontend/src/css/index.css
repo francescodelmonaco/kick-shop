@@ -13,6 +13,14 @@ header {
     background-color: var(--blue);
 }
 
+#root {
+    background-color: var(--light-blue);
+
+}
+
+
+
+
 /* btn navbar */
 .navbar-toggler:hover,
 .navbar-toggler-icon:hover {
@@ -43,3 +51,24 @@ nav a img:hover {
 a {
     text-decoration: none;
 }
+
+.imgBox:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+    transform: zoom(1.4);
+   
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.boxImgProduct {
+    width: 60%;
+    margin-left: 19%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+    .categoryCard {
+        width: 95%;
+         
+    }
