@@ -48,8 +48,8 @@ export default function HomePage() {
                 <ul className="row">
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/man`}>
-                            <figure >
-                                <img src="/src/assets/img/man.jpg" alt="Man category" className="w-100" />
+                            <figure className="categoryCard">
+                                <img src="/src/assets/img/man.jpg" alt="Man category" className="w-100 imgBox" />
                             </figure>
 
                             <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
@@ -59,8 +59,8 @@ export default function HomePage() {
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/woman`}>
-                            <figure >
-                                <img src="/src/assets/img/woman.jpg" alt="Man category" className="w-100" />
+                            <figure className="categoryCard">
+                                <img src="/src/assets/img/woman.jpg" alt="Man category" className="w-100 imgBox" />
                             </figure>
 
                             <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
@@ -69,8 +69,8 @@ export default function HomePage() {
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/summer`}>
-                            <figure >
-                                <img src="/src/assets/img/summer.jpg" alt="Man category" className="w-100" />
+                            <figure className="categoryCard">
+                                <img src="/src/assets/img/summer.jpg" alt="Man category" className="w-100 imgBox" />
                             </figure>
 
                             <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
@@ -79,8 +79,8 @@ export default function HomePage() {
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/winter`}>
-                            <figure >
-                                <img src="/src/assets/img/winter.jpg" alt="Man category" className="w-100" />
+                            <figure className="categoryCard" >
+                                <img src="/src/assets/img/winter.jpg" alt="Man category" className="w-100 imgBox" />
                             </figure>
 
                             <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
