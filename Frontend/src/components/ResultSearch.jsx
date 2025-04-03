@@ -2,32 +2,31 @@ import ProductCard from "../components/ProductCard"
 
 export default function ResultSearch({ items }) {
     return (
-        <div className="mb-8">
+        <div className="px-5 pb-3">
             <p className="text-gray-400 text-sm mb-4">
-                risultati trovati: {items.length}
+                Prodotti trovati: {items.length}
             </p>
-            <ul className="flex overflow-x-auto pb-4 gap-4 scrollbar-hide">
+
+            <div className="row row-cols-lg-4 mb-5">
+
                 {
                     items && items.length > 0 ? (
                         items.map((item) => {
                             console.log(item)
 
                             return (
-                                <>
-                                    <div >
-                                        <ProductCard key={item.id} product={item} />
-                                    </div>
-                                </>
-
-
+                                <div className="col g-3 pb-3" key={item.id}>
+                                    <ProductCard product={item} />
+                                </div>
                             )
                         })
                     ) : (
-                        <p className="text-gray-400">nessun risultato</p>
+                        <p className="text-gray-400">Nessun risultato</p>
                     )
 
                 }
-            </ul>
+
+            </div>
         </div>
     )
 };

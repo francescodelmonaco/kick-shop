@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalContext";
 
@@ -19,7 +19,16 @@ import SearchPage from "./pages/SearchPage";
 import CartSection from "./components/CartSection";
 
 function App() {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        // Recupera il carrello dal localStorage al caricamento dell'app
+        const savedCart = localStorage.getItem("cart");
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    // Salva il carrello nel localStorage ogni volta che viene aggiornato
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     // Funzione per aggiungere un prodotto al carrello
     const addToCart = (product) => {
@@ -29,7 +38,7 @@ function App() {
     return (
         <GlobalProvider>
             <BrowserRouter>
-                <CartSection cart={cart} /> {/* Passa il carrello come prop */}
+                <CartSection cart={cart} setCart={setCart} /> {/* Passa il carrello e la funzione setCart al componente CartSection */}
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />

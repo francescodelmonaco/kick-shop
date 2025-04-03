@@ -8,7 +8,25 @@ export default function ProductCard({ product }) {
         <div className="card h-100" key={id}>
             <Link className="card-body" to={`/products/${slug}`}>
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
-                    <div className="carousel-inner cardBox">
+                    <div className="carousel-inner cardBox position-relative">
+                        <i
+                            className="fa-solid fa-heart position-absolute"
+                            style={{
+                                top: "10px", 
+                                right: "10px", 
+                                color: "gray", 
+                                fontSize: "1.5rem", 
+                                cursor: "pointer",  
+                                zIndex: 10, 
+                                transition: "color 0.3s", 
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.color = "red"; 
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.color = "gray"; 
+                            }}
+                        ></i>
                         {
                             // Inverte l'ordine delle immagini
                             images && images.reverse().map((image, index) => {
@@ -37,10 +55,10 @@ export default function ProductCard({ product }) {
                 </div>
 
                 <h5 className="card-title">{name}</h5>
-                <p>Brand: {brand}</p>
-                <p>Prezzo: {price} €</p>
-                <p>Genere: {gender}</p>
-                <p>{season}</p>
+                <p className="fonts">Brand: {brand}</p>
+                <p className="fonts">Prezzo: {price} €</p>
+                <p className="fonts">Genere: {gender}</p>
+                <p className="fonts">{season}</p>
             </Link>
 
             <div className="d-flex justify-content-around pb-3">
@@ -53,7 +71,7 @@ export default function ProductCard({ product }) {
                         aria-controls="offcanvasRight"
                         onClick={() => addToCart(product)}
                         >
-                        Carrello
+                        <i class="fa-solid fa-cart-shopping"></i>
                     </button>
                 </Link>
 

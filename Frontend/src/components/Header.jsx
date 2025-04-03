@@ -20,19 +20,59 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/`}>Home</NavLink>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/`}
+                                >
+                                    Home
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/man`}>Uomo</NavLink>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/man`}
+                                >
+                                    Uomo
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/woman`}>Donna</NavLink>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/woman`}
+                                >
+                                    Donna
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/summer`}>Estate</NavLink>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/summer`}
+                                >
+                                    Estate
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link text-light" aria-current="page" to={`/winter`}>Inverno</NavLink>
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/winter`}
+                                >
+                                    Inverno
+                                </NavLink>
                             </li>
                         </ul>
                         {/* carrello */}
@@ -43,7 +83,7 @@ export default function Header() {
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"
                         >
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i className="fa-solid fa-cart-shopping"></i>
                         </button>
 
                         {/* whishlist */}
