@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function CartSection({ cart = [] }) {
     return (
         <>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div className="offcanvas offcanvas-end"  id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="offcanvasRightLabel">
                         Prodotti Carrello
@@ -12,8 +12,9 @@ export default function CartSection({ cart = [] }) {
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                    ></button>
+                        aria-label="Close" >
+
+                    </button>
                 </div>
                 <div className="offcanvas-body">
                     {cart.length === 0 ? (
@@ -21,7 +22,7 @@ export default function CartSection({ cart = [] }) {
                     ) : (
                         <ul className="list-group">
                             {cart.map((item, index) => (
-                                <li key={index} class="list-group-item list-group-item-dark" aria-current="true">
+                                <li key={index} cl="list-group-item list-group-item-dark" aria-current="true">
                                     <strong>{item.name}</strong> - {item.price} €
                                 </li>
                             ))}
