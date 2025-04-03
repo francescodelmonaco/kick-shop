@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom"
 import CartSection from "./CartSection";
+import Figure from 'react-bootstrap/Figure';
 
 
 export default function ProductCard({ product }) {
-    const { id, name, price, gender, brand, slug, images } = product;
+    const { id, name, price, season, gender, brand, slug, images } = product;
 
     return (
         <div className="card h-100" key={id}>
             <Link className="card-body" to={`/products/${slug}`}>
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
-                    <div className="carousel-inner">
+                    <div className="carousel-inner cardBox">
                         {
                             // Inverte l'ordine delle immagini
                             images && images.reverse().map((image, index) => {
@@ -20,7 +21,8 @@ export default function ProductCard({ product }) {
 
                                 return (
                                     <div key={id} className={className}>
-                                        <img src={image_url} alt={name} className="w-100 mb-3" />
+                                        <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" />
+
                                     </div>
                                 );
                             })
@@ -40,12 +42,21 @@ export default function ProductCard({ product }) {
                 <p>Brand: {brand}</p>
                 <p>Prezzo: {price} €</p>
                 <p>Genere: {gender}</p>
+                <p>{season}</p>
             </Link>
 
             <div className="d-flex justify-content-around pb-3">
                 <Link to={`/products/${slug}`} className="btn btn-outline-primary">Dettagli</Link>
+                <Link to={`/products/${slug}`}>        
+                <button className="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">
+                    Carrello
+                </button>
+                </Link>
 
-                <CartSection />
             </div>
         </div>
     );

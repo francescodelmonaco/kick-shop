@@ -25,7 +25,7 @@ export default function SummerPage() {
     // rendering prodotti in html
     const renderSummerProducts = () => {
         return summerProducts
-            .filter((summerProduct) => summerProduct.season === "estate") // Filtra per genere
+            .filter((summerProduct) => summerProduct.season === "estate" || summerProduct.season === "primavera" ) // Filtra per genere
             .map((summerProduct) => (
                 <div className="col g-3 pb-3" key={summerProduct.id}>
                     <ProductCard product={summerProduct} />

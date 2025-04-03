@@ -43,3 +43,17 @@ nav a img:hover {
 a {
     text-decoration: none;
 }
+
+.imgBox:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+    transform: zoom(1.4);
+}
+
+.boxImgProduct {
+    width: 70%;
+   margin-left:14% ;
+    object-fit: cover;
+    border-radius: 10px;
+    
+}

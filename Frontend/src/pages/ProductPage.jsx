@@ -69,7 +69,9 @@ export default function ProductPage({ addToCart }) {
 
                                 return (
                                     <div key={imageId} className={className}>
-                                        <img src={image_url} alt={name} className="w-100 mb-3" />
+                                        <figure className="boxImgProduct " >
+                                            <img src={image_url} alt={name} className="w-100 mb-3 imgBox" />
+                                        </figure>
                                     </div>
                                 );
                             })}
