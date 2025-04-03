@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 
-export default function GridComplexExample() {
+export default function CheckoutPage() {
     return (
         <div className='d-flex justify-content-between gap-3'>
             <Form className='py-3 w-50'>
