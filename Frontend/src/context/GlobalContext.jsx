@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 
 // Creazione del contesto globale
@@ -7,30 +7,30 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
 
-    // MEMORIZZAZIONE DATI
+    // RICERCA
     const [query, setQuery] = useState('');
-    const [products, setProducts] =useState([]);
+    const [searchProducts, setSearchProducts] = useState([]);
 
 
     //Chiamate api per ricerca 
-    const isSearching = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault(); // Evita il refresh della pagina
+
         // http://localhost:3000/search/
         axios.get(`http://localhost:3000/search/${query}`)
-            .then(((res) => setProducts(res.data)))
+            .then(((res) => setSearchProducts(res.data)))
             .catch((error) => console.log("Errore nella ricerca:", error));
+
+        setQuery(""); // svuota search bar
+
     }
-    
-
-   
-
 
     // Valori condivisi nel contesto globale
     const value = {
+        query,
         setQuery,
-        isSearching,
-        products
-        
+        handleSubmit,
+        searchProducts
     };
 
     return (
