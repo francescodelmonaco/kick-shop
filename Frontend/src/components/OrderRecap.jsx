@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 export default function OrderRecap() {
 
-    const { cart, handleQuantityChange, handleRemoveItem, total } = useGlobalContext();
+    const { cart, handleQuantityChange, handleRemoveItem, quantities, total } = useGlobalContext();
 
     return (
         <div className="offcanvas-body">
@@ -19,7 +19,7 @@ export default function OrderRecap() {
                             <div className='d-flex gap-2'>
                                 <Form.Group as={Col} controlId="formGridState">
                                     <Form.Select
-                                        defaultValue="1"
+                                        value={quantities[index] || 1}
                                         className="form-select-sm"
                                         style={{ width: '60px' }}
                                         onChange={(e) => handleQuantityChange(index, e.target.value)}>
