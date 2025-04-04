@@ -7,9 +7,38 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
 
-    // RICERCA
+    // Memorizzazione Dati
+    //Ricerca
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
+
+    //CheckoutForm
+    const initialData = {
+        userName: '',
+        userSurname: '',
+        userEmail: '',
+        addressShipping: '',
+        addressInvoice: '',
+        telephone: '',
+        city: '',
+        province: '',
+    }
+
+    const [formData, setFormData] = useState(initialData)
+
+    const setFieldValue = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const submitCheckout = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3000/checkout', formData, {
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => console.log("Dati inviati con successo:", res))
+            .catch((err) => console.log("Errore nell'invio dei dati:", formData));
+    }
 
 
     //Chiamate api per ricerca 
@@ -52,6 +81,10 @@ const GlobalProvider = ({ children }) => {
         query,
         setQuery,
         handleSubmit,
+        searchProducts,
+        submitCheckout,
+        formData,
+        setFieldValue
         searchProducts,
         setFilterItems,
         filteredItems

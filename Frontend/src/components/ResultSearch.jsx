@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard";
 import FilterButton from "./FilterButton";
 
 export default function ResultSearch({ items }) {
-
     const { setFilterItems, filteredItems } = useGlobalContext();
 
     return (
