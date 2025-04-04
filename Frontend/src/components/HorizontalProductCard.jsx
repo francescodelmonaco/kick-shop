@@ -40,8 +40,8 @@ export default function HorizontalProductCard({ product }) {
                     <div className="col-md-9">
                         <div className="card-body">
                             <div className="d-flex justify-content-between">
-                                <h3 className="card-title">{name}</h3>
-                                <p className="card-text fs-4"><strong>{price} €</strong></p>
+                                <h5 className="card-title">{name}</h5>
+                                <h5 className="card-text price"><strong>€ {price}</strong></h5>
                             </div>
 
                             {/* metti map sizes */}

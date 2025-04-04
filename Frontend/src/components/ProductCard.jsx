@@ -8,9 +8,7 @@ export default function ProductCard({ product }) {
 
     return (
         <div className="card h-100" key={id}>
-            <Link className="card-body" to={`/products/${slug}`}
-                onClick={() => window.scrollTo(0, 0)} // Riporta lo scroll all'inizio della pagina
-            >
+            <Link className="card-body" to={`/products/${slug}`} >
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
                     <div className="carousel-inner cardBox position-relative">
                         {/* Icona del cuore */}
@@ -70,8 +68,8 @@ export default function ProductCard({ product }) {
 
                                 return (
                                     <div key={id} className={className}>
-                                        <figure className="imgBox-dimension">
-                                            <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" />
+                                        <figure className="imgBox-dimension" >
+                                            <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" onClick={() => window.scrollTo(0, 0)} />
                                         </figure>
                                     </div>
                                 );
@@ -100,10 +98,12 @@ export default function ProductCard({ product }) {
                 </div>
 
                 {/* Dettagli del prodotto */}
-                <h5 className="card-title"><strong>{name}</strong></h5>{gender}
-                <p className="fonts"><strong>a partire da:</strong> <button className="btn btn-outline-success"><strong>€{price}</strong></button></p>
+                <div className="d-flex justify-content-between" onClick={() => window.scrollTo(0, 0)}>
+                    <h5 className="card-title"><strong>{name}</strong></h5>
+                    <h5 className="fonts"><strong>€ {price}</strong></h5>
+                </div>
 
             </Link>
-        </div>
+        </div >
     );
 }

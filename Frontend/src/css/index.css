@@ -64,6 +64,22 @@ a {
     text-decoration: none;
 }
 
+.imgBox-dimension {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--white);
+    border-radius: 5px;
+}
+
+.imgBox-dimension img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 .imgBox:hover {
     transform: scale(1.05);
     transition: all 0.5s ease;

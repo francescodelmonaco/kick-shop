@@ -14,7 +14,6 @@ export default function OrderRecap() {
                 <ul className="list-group">
                     {cart.map((item, index) => (
                         <li key={index} className="list-group-item list-group-item-dark d-flex justify-content-between" aria-current="true">
-                            <img src={item.image} alt={item.name} />
                             <p><strong>{item.name}</strong> - {item.price} €</p>
 
                             <div className='d-flex gap-2'>
