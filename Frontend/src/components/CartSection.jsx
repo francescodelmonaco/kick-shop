@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Accordion from 'react-bootstrap/Accordion';
+
 
 export default function CartSection({ cart = [], setCart }) {
     const [quantities, setQuantities] = useState(cart.map(() => 1)); // Stato per le quantità
