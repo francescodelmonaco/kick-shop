@@ -45,7 +45,7 @@ export default function ProductPage({ addToCart }) {
             .filter((relatedProduct) => relatedProduct.brand === product.brand && relatedProduct.id !== product.id) // Filtra per brand e rimuove il prodotto principale
             .map((relatedProduct) => (
                 <div className="col g-3" key={relatedProduct.id}>
-                    <ProductCard product={relatedProduct} />
+                    <ProductCard product={relatedProduct} addToCart={addToCart} />
                 </div>
             ));
     };
@@ -103,9 +103,9 @@ export default function ProductPage({ addToCart }) {
                             className="btn btn-primary"
                             onClick={() => addToCart(product)}
                             type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasRight"
-                    aria-controls="offcanvasRight"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
                         >
                             Aggiungi al carrello
                         </button>

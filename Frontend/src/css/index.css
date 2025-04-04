@@ -78,9 +78,25 @@ a {
          
     }
 
-.fonts {
-    font-family: "Playfair Display", serif;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
+/* Posizionamento dell'icona del cuore */
+.heart-icon {
+    top: 10px;
+    right: 10px;
+}
+
+/* Posizionamento dell'icona del carrello */
+.cart-icon {
+    position: absolute; 
+    top: 10px;
+    left: 10px; /* Posiziona il carrello sul lato opposto */
+    color: gray;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s;
+}
+
+/* Cambia colore al passaggio del mouse */
+.cart-icon:hover {
+    color: green;
 }

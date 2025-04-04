@@ -96,7 +96,7 @@ export default function CartSection({ cart = [], setCart }) {
                     </div>
                 </div>
 
-                <Link className="btn btn-primary mx-3 my-3" to={"/checkout"}>Checkout</Link>
+                <Link className="btn btn-success mx-3 my-3" to={"/checkout"}>Checkout</Link>
             </div>
         </>
     );
