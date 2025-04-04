@@ -71,7 +71,7 @@ export default function ProductCard({ product }) {
                         aria-controls="offcanvasRight"
                         onClick={() => addToCart(product)}
                         >
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i className="fa-solid fa-cart-shopping"></i>
                     </button>
                 </Link>
 

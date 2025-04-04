@@ -19,30 +19,14 @@ import SearchPage from "./pages/SearchPage";
 import CartSection from "./components/CartSection";
 
 function App() {
-    const [cart, setCart] = useState(() => {
-        // Recupera il carrello dal localStorage al caricamento dell'app
-        const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : [];
-    });
-
-    // Salva il carrello nel localStorage ogni volta che viene aggiornato
-    useEffect(() => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }, [cart]);
-
-    // Funzione per aggiungere un prodotto al carrello
-    const addToCart = (product) => {
-        setCart((prevCart) => [...prevCart, product]); // Aggiunge il prodotto al carrello
-    };
-
     return (
         <GlobalProvider>
             <BrowserRouter>
-                <CartSection cart={cart} setCart={setCart} /> {/* Passa il carrello e la funzione setCart al componente CartSection */}
+                <CartSection />
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
-                        <Route path="/products/:slug" element={<ProductPage addToCart={addToCart} />} />
+                        <Route path="/products/:slug" Component={ProductPage} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
                         <Route path="/summer" Component={SummerPage} />

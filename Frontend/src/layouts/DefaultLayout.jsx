@@ -7,7 +7,7 @@ import BannerScroll from "../components/BannerScroll";
 export default function DefaultLayout() {
     return (
         <>
-            <BannerScroll/>
+            {/* <BannerScroll/> */}
 
             {/* Header principale sotto la barra di scorrimento */}
             <Header />

@@ -1,18 +1,10 @@
 import axios from 'axios';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
-
-// Creazione del contesto globale
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-
-    // Memorizzazione Dati
-    //Ricerca
-    const [query, setQuery] = useState('');
-    const [searchProducts, setSearchProducts] = useState([]);
-
-    //CheckoutForm
+    // Initial form data
     const initialData = {
         userName: '',
         userSurname: '',
@@ -21,27 +13,24 @@ const GlobalProvider = ({ children }) => {
         addressInvoice: '',
         telephone: '',
         city: '',
-        province: '',
-    }
-
-    const [formData, setFormData] = useState(initialData)
-
-    const setFieldValue = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        carts: [],
     };
 
-    const submitCheckout = (e) =>{
-        e.preventDefault()
-        axios.post('http://localhost:3000/checkout', formData, {
-            headers: { 'Content-Type': 'application/json' },
-        })
-        .then((res) => console.log("Dati inviati con successo:", res))
-        .catch((err) => console.log("Errore nell'invio dei dati:", formData));
-    }
+    // Memorizza dati
+    const [query, setQuery] = useState('');
+    const [searchProducts, setSearchProducts] = useState([]);
 
+    
+    const [formData, setFormData] = useState(initialData);
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem("cart");
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+    const [quantities, setQuantities] = useState([]);
+    const [total, setTotal] = useState(0);
 
-    //Chiamate api per ricerca 
+   
+
     const handleSubmit = (e) => {
         e.preventDefault(); // Evita il refresh della pagina
 
@@ -54,7 +43,75 @@ const GlobalProvider = ({ children }) => {
 
     }
 
-    // Valori condivisi nel contesto globale
+    // Cart related effects and functions
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
+
+    useEffect(() => {
+        setQuantities(cart.map(() => 1));
+    }, [cart]);
+
+    useEffect(() => {
+        const newTotal = cart.reduce((acc, item, index) => {
+            return acc + item.price * (quantities[index] || 1);
+        }, 0);
+        setTotal(newTotal);
+    }, [quantities, cart]);
+
+    const addToCart = (product) => {
+        setCart((prevCart) => [...prevCart, product]);
+    };
+    
+
+    const handleQuantityChange = (index, value) => {
+        const updatedQuantities = [...quantities];
+        updatedQuantities[index] = parseInt(value);
+        setQuantities(updatedQuantities);
+    };
+
+    const handleRemoveItem = (index) => {
+        const updatedCart = cart.filter((_, i) => i !== index);
+        setCart(updatedCart);
+    };
+
+    const setFieldValue = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const submitCheckout = (e) => {
+        e.preventDefault();
+        if (!formData.userEmail || !formData.userName) {
+            alert("Compila tutti i campi obbligatori!");
+            return;
+        }
+
+        const cartWithQuantities = cart.map((item, index) => ({
+            ...item,
+            quantity: quantities[index] || 1
+
+        }));
+       
+
+        const dataToSend = {
+            ...formData,
+            carts: cartWithQuantities
+        };
+
+        axios.post('http://localhost:3000/checkout', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => {
+                alert("Ordine completato con successo!");
+                setCart([]);
+                setFormData(initialData);
+            })
+            .catch((err) => {
+                alert(err.response?.data?.error || "Errore durante l'invio dell'ordine");
+            });
+    };
+
     const value = {
         query,
         setQuery,
@@ -62,7 +119,14 @@ const GlobalProvider = ({ children }) => {
         searchProducts,
         submitCheckout,
         formData,
-        setFieldValue
+        setFieldValue,
+        cart,
+        setCart,
+        addToCart,
+        quantities,
+        handleQuantityChange,
+        handleRemoveItem,
+        total
     };
 
     return (
@@ -72,8 +136,6 @@ const GlobalProvider = ({ children }) => {
     );
 };
 
-// Hook personalizzato per accedere al contesto globale in altri componenti
 const useGlobalContext = () => useContext(GlobalContext);
 
-// Esportazione del GlobalProvider e del custom hook per l'uso nei componenti
 export { GlobalProvider, useGlobalContext };

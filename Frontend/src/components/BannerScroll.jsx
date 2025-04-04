@@ -14,7 +14,7 @@ const BannerScroll = () => {
 
   return (
     <div className="banner-container">
-      <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
+      <div className="banner-content">
         <p className='text'>🚚 Spedizione gratuita su tutti gli ordini!</p>
       </div>
     </div>

@@ -65,30 +65,39 @@ export default function CheckoutForm() {
 
             <Form.Group className="mb-3" >
                 <Form.Label>Indirizzo di spedizione</Form.Label>
-                <Form.Control placeholder="Via ..." />
+                <Form.Control
+                    name="addressShipping"
+                    onChange={setFieldValue}
+                    value={formData.addressShipping}
+                    type="text"
+                    placeholder="Inserisci spedi"
+                />
             </Form.Group>
 
             <Row className="mb-3">
                 <Form.Group as={Col} >
                     <Form.Label>Città</Form.Label>
-                    <Form.Control />
+                    <Form.Control
+                        name="city"
+                        onChange={setFieldValue}
+                        value={formData.city}
+                        type="text"
+                        placeholder="Inserisci città"
+                    />
                 </Form.Group>
 
-                <Form.Group as={Col} >
+                {/* <Form.Group as={Col} >
                     <Form.Label>Provincia</Form.Label>
-                    <Form.Select defaultValue="Choose...">
+                    <Form.Select  defaultValue="Choose...">
                         <option>Scegli ...</option>
                         <option>NA</option>
                         <option>RM</option>
                         <option>BA</option>
                         <option>AN</option>
                     </Form.Select>
-                </Form.Group>
+                </Form.Group> */}
 
-                <Form.Group as={Col}>
-                    <Form.Label>CAP</Form.Label>
-                    <Form.Control />
-                </Form.Group>
+
             </Row>
 
             <Accordion flush>
@@ -97,10 +106,16 @@ export default function CheckoutForm() {
                     <Accordion.Body>
 
                         <Form.Group className="mb-3" controlId="formGridAddress1">
-                            <Form.Control placeholder="Via ..." />
+                            <Form.Control
+                                name="addressInvoice"
+                                onChange={setFieldValue}
+                                value={formData.addressInvoice}
+                                type="text"
+                                placeholder="addressInvoice"
+                            />
                         </Form.Group>
 
-                        <Row className="mb-3">
+                        {/* <Row className="mb-3">
                             <Form.Group as={Col} controlId="formGridCity">
                                 <Form.Label>Città</Form.Label>
                                 <Form.Control />
@@ -118,7 +133,7 @@ export default function CheckoutForm() {
                                 <Form.Label>CAP</Form.Label>
                                 <Form.Control />
                             </Form.Group>
-                        </Row>
+                        </Row> */}
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

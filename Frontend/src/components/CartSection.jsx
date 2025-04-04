@@ -1,47 +1,12 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Accordion from 'react-bootstrap/Accordion';
+import { useGlobalContext } from "../context/GlobalContext";
 
-export default function CartSection({ cart = [], setCart }) {
-    const [quantities, setQuantities] = useState(cart.map(() => 1)); // Stato per le quantità
-    const [total, setTotal] = useState(0); // Stato per il totale
-
-    // Sincronizza quantities con il carrello
-    useEffect(() => {
-        setQuantities((prevQuantities) => {
-            const newQuantities = [...prevQuantities];
-            while (newQuantities.length < cart.length) {
-                newQuantities.push(1);
-            }
-            return newQuantities;
-        });
-    }, [cart]);
-
-    // Funzione per aggiornare la quantità di un elemento
-    const handleQuantityChange = (index, value) => {
-        const updatedQuantities = [...quantities];
-        updatedQuantities[index] = parseInt(value);
-        setQuantities(updatedQuantities);
-    };
-
-    // Funzione per rimuovere un elemento dal carrello
-    const handleRemoveItem = (index) => {
-        const updatedCart = cart.filter((_, i) => i !== index); // Rimuove l'elemento con l'indice specificato
-        setCart(updatedCart); // Aggiorna lo stato del carrello
-    };
-
-    // Calcola il totale ogni volta che le quantità cambiano
-    useEffect(() => {
-        const newTotal = cart.reduce((acc, item, index) => {
-            return acc + item.price * quantities[index] || 1;
-        }, 0);
-        setTotal(newTotal);
-    }, [quantities, cart]);
-
+export default function CartSection() {
+    
+    const { cart, handleQuantityChange, handleRemoveItem, total } = useGlobalContext();
+    
     return (
         <>
             <div className="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
