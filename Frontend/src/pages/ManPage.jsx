@@ -27,9 +27,8 @@ export default function ManPage() {
         return manProducts
             .filter((manProduct) => manProduct.gender === "uomo") // Filtra per genere
             .map((manProduct) => (
-                <div className="col g-3 pb-3" key={manProduct.id}>
+                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={manProduct.id}>
                     <ProductCard product={manProduct} />
-                    
                 </div>
             ));
     };
@@ -49,10 +48,10 @@ export default function ManPage() {
                 <div className="row row-cols-lg-4 mb-5">
                     {renderManProducts()}
                 </div>
-                <CategorySection /> 
+                <CategorySection />
             </div>
-            
-            
+
+
         </>
     )
 }

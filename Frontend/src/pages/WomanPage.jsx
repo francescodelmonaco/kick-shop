@@ -27,7 +27,7 @@ export default function ManPage() {
         return womanProducts
             .filter((womanProduct) => womanProduct.gender === "donna") // Filtra per genere
             .map((womanProduct) => (
-                <div className="col g-3 pb-3" key={womanProduct.id}>
+                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={womanProduct.id}>
                     <ProductCard product={womanProduct} />
                 </div>
             ));

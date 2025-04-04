@@ -28,7 +28,7 @@ export default function WinterPage() {
         return winterProducts
             .filter((winterProduct) => winterProduct.season === "inverno" || winterProduct.season === "autunno") // Filtra per genere
             .map((winterProduct) => (
-                <div className="col g-3 pb-3" key={winterProduct.id}>
+                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={winterProduct.id}>
                     <ProductCard product={winterProduct} />
                 </div>
             ));
