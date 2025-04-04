@@ -70,8 +70,11 @@ const GlobalProvider = ({ children }) => {
     }, [cart]);
 
     useEffect(() => {
-        setQuantities(cart.map(() => 1));
+        setQuantities((prevQuantities) => {
+            return cart.map((_, index) => prevQuantities[index] || 1);
+        });
     }, [cart]);
+    
 
     useEffect(() => {
         const newTotal = cart.reduce((acc, item, index) => {
