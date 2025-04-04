@@ -10,7 +10,7 @@ export default function CategorySection() {
             <h2 className="text-center py-3">Categorie</h2>
             <div className="container-fluid">
                 <ul className="row">
-                    
+
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/man`}>
                             <figure className="categoryCard">
@@ -21,7 +21,7 @@ export default function CategorySection() {
                     </li>
 
 
-      
+
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/woman`}>
                             <figure className="categoryCard">
@@ -30,13 +30,13 @@ export default function CategorySection() {
                             <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Collezione Donna</button>
                         </Link>
                     </li>
-                   
+
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                         <Link className="w-100 position-relative" to={`/summer`}>
                             <figure className="categoryCard">
                                 <img src={summerCategory} alt="summer category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Summer</button>
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Collezione Estate</button>
                         </Link>
                     </li>
 
@@ -45,12 +45,12 @@ export default function CategorySection() {
                             <figure className="categoryCard">
                                 <img src={winterCategory} alt="winter category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Winter</button>
+                            <button className="btn btn-outline-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Collezione Inverno</button>
                         </Link>
                     </li>
 
-    </ul>
-</div>
+                </ul>
+            </div>
 
         </>
     )

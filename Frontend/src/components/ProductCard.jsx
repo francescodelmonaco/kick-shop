@@ -80,9 +80,9 @@ export default function ProductCard({ product, addToCart }) {
                 </div>
 
                 {/* Dettagli del prodotto */}
-                <h5 className="card-title"><strong>{name}</strong></h5>
-                <p className="fonts"><strong>a partire da :</strong> <button className="btn btn-outline-success"><strong>{price} €</strong></button></p>
-                <p className="fonts">Genere: {gender}</p>
+                <p className="fonts"> <h5 className="card-title"><strong>{name}</strong></h5>{gender}</p>
+                <p className="fonts"><strong>a partire da:</strong> <button className="btn btn-outline-success"><strong>€{price}</strong></button></p>
+
             </Link>
         </div>
     );

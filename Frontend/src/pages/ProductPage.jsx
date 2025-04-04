@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import logoproduct from "../assets/img//category/logoProduct.png";
+import CategorySection from "../components/CategorySection";
+//                                     to={`/accessories`}  
 
 export default function ProductPage({ addToCart }) {
     // CHIAMATA SINGOLO PRODOTTO
@@ -86,8 +89,11 @@ export default function ProductPage({ addToCart }) {
                         </button>
                     </div>
 
-
                     <aside className="w-50 d-flex flex-column justify-content-center align-items-start">
+                    <figure className="boxlogoImgProduct">
+                        <img src={logoproduct} alt="Logo Product Page" className="img-fluid" />
+                    </figure>
+
                         <hr className="w-100" />
                         {/* <h1>Dettaglio Prodotto</h1> */}
                         <h2>{name}</h2>
@@ -121,6 +127,7 @@ export default function ProductPage({ addToCart }) {
                     <div className="row row-cols-lg-4 mb-5">
                         {renderRelatedProducts()}
                     </div>
+                    <CategorySection />    
                 </div>
 
             </>

@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
+import CategorySection from '../components/CategorySection';
 
 export default function WinterPage() {
 
@@ -48,6 +49,7 @@ export default function WinterPage() {
                 <div className="row row-cols-lg-4 mb-5">
                     {renderWinterProducts()}
                 </div>
+                <CategorySection />
             </div>
         </>
     )

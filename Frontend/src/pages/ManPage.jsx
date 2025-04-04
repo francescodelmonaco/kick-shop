@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
+import CategorySection from '../components/CategorySection';
 
 export default function ManPage() {
 
@@ -48,6 +49,7 @@ export default function ManPage() {
                 <div className="row row-cols-lg-4 mb-5">
                     {renderManProducts()}
                 </div>
+                <CategorySection /> 
             </div>
             
             

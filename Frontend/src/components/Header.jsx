@@ -77,7 +77,7 @@ export default function Header() {
                         </ul>
                         {/* carrello */}
                         <button
-                            className="btn btn-outline-light me-2"
+                            className="btn btn-outline-light me-2 mb-2"
                             type="button"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"
@@ -88,7 +88,7 @@ export default function Header() {
 
                         {/* whishlist */}
                         <button
-                            className="btn btn-outline-light me-2"
+                            className="btn btn-outline-light me-2 mb-2"
                             type="button"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"
