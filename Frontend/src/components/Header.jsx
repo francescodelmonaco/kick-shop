@@ -7,7 +7,7 @@ export default function Header() {
     return (
 
         <header>
-            <nav className="navbar navbar-expand-lg bg-body-">
+            <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to={`/`}>
                         <img className="img-fluid rounded" width="60px" src="/src/assets/img/1743723519052.jpg" alt="Logo Kick Shop" />
@@ -22,7 +22,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/`}
@@ -33,7 +33,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/man`}
@@ -44,7 +44,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/woman`}
@@ -55,7 +55,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/summer`}
@@ -66,7 +66,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/winter`}
@@ -75,26 +75,16 @@ export default function Header() {
                                 </NavLink>
                             </li>
                         </ul>
-                        {/* carrello */}
-                        <button
-                            className="btn btn-outline-light me-2 mb-2"
-                            type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"
-                        >
-                            <i className="fa-solid fa-cart-shopping"></i>
-                        </button>
 
                         {/* whishlist */}
                         <button
-                            className="btn btn-outline-light me-2 mb-2"
+                            className="btn btn-outline-light me-2"
                             type="button"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"
                             style={{
-                                transition: "background-color 0.3s, color 0.3s", 
+                                transition: "background-color 0.3s, color 0.3s",
                             }}
                         >
                             <i
@@ -110,6 +100,18 @@ export default function Header() {
                                 }}
                             ></i>
                         </button>
+
+                        {/* carrello */}
+                        <button
+                            className="btn btn-outline-light me-2"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight"
+                            aria-controls="offcanvasRight"
+                        >
+                            <i className="fa-solid fa-cart-shopping"></i>
+                        </button>
+
                         <Search />
                     </div>
                 </div>

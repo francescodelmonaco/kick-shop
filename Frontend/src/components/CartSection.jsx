@@ -19,7 +19,7 @@ export default function CartSection() {
 
                 <OrderRecap />
 
-                <Link className="btn btn-success mx-3 my-3" to={"/checkout"}>Checkout</Link>
+                <Link className="btn btn-success mx-3 my-3" to={"/checkout"}>Procedi al prossimo step</Link>
             </div>
         </>
     );

@@ -17,8 +17,8 @@ export default function ProductCard({ product }) {
                         <i
                             className="fa-solid fa-heart  heart-icon"
                             style={{
-                                top: "10px",
-                                right: "10px",
+                                top: "1rem",
+                                left: "1rem",
                                 color: "gray",
                                 fontSize: "1.5rem",
                                 cursor: "pointer",
@@ -35,6 +35,21 @@ export default function ProductCard({ product }) {
 
                         {/* Icona del carrello */}
                         <i className="fa-solid fa-cart-shopping cart-icon"
+                            style={{
+                                top: "1rem",
+                                right: "1rem",
+                                color: "gray",
+                                fontSize: "1.5rem",
+                                cursor: "pointer",
+                                zIndex: 10,
+                                transition: "color 0.3s",
+                            }}
+                            onMouseEnter={(e) => {
+                                e.target.style.color = "green";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.target.style.color = "gray";
+                            }}
                             type="button"
                             onClick={() => addToCart(product)}
                             data-bs-toggle="offcanvas"
@@ -55,7 +70,9 @@ export default function ProductCard({ product }) {
 
                                 return (
                                     <div key={id} className={className}>
-                                        <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" />
+                                        <figure className="imgBox-dimension">
+                                            <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" />
+                                        </figure>
                                     </div>
                                 );
                             })}
@@ -83,7 +100,7 @@ export default function ProductCard({ product }) {
                 </div>
 
                 {/* Dettagli del prodotto */}
-                <p className="fonts"> <h5 className="card-title"><strong>{name}</strong></h5>{gender}</p>
+                <h5 className="card-title"><strong>{name}</strong></h5>{gender}
                 <p className="fonts"><strong>a partire da:</strong> <button className="btn btn-outline-success"><strong>€{price}</strong></button></p>
 
             </Link>

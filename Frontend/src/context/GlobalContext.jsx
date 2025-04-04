@@ -20,7 +20,7 @@ const GlobalProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
 
-    
+
     const [formData, setFormData] = useState(initialData);
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("cart");
@@ -29,7 +29,7 @@ const GlobalProvider = ({ children }) => {
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
 
-   
+
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Evita il refresh della pagina
@@ -63,6 +63,10 @@ const GlobalProvider = ({ children }) => {
 
     const filteredItems = filters(); // Ottieni i prodotti filtrati
 
+
+
+
+
     // Valori condivisi nel contesto globale
     // Cart related effects and functions
     useEffect(() => {
@@ -74,7 +78,7 @@ const GlobalProvider = ({ children }) => {
             return cart.map((_, index) => prevQuantities[index] || 1);
         });
     }, [cart]);
-    
+
 
     useEffect(() => {
         const newTotal = cart.reduce((acc, item, index) => {
@@ -86,7 +90,7 @@ const GlobalProvider = ({ children }) => {
     const addToCart = (product) => {
         setCart((prevCart) => [...prevCart, product]);
     };
-    
+
 
     const handleQuantityChange = (index, value) => {
         const updatedQuantities = [...quantities];
@@ -114,9 +118,9 @@ const GlobalProvider = ({ children }) => {
         const cartWithQuantities = cart.map((item, index) => ({
             id_product: item.id,  // recuperato dal carrello
             quantity: quantities[index] || 1  // scelto dall'utente nel carrello
-          }));
-          
-       
+        }));
+
+
 
         const dataToSend = {
             ...formData,
