@@ -94,7 +94,7 @@ export default function Header() {
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"
                             style={{
-                                transition: "background-color 0.3s, color 0.3s", // Per un effetto più fluido
+                                transition: "background-color 0.3s, color 0.3s", 
                             }}
                         >
                             <i
