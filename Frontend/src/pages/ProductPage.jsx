@@ -2,11 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
+import { useGlobalContext } from "../context/GlobalContext";
 import logoproduct from "../assets/img//category/logoProduct.png";
 import CategorySection from "../components/CategorySection";
 //                                     to={`/accessories`}  
 
-export default function ProductPage({ addToCart }) {
+export default function ProductPage() {
+    const { addToCart } = useGlobalContext();
     // CHIAMATA SINGOLO PRODOTTO
     const { slug } = useParams();
     const [product, setProduct] = useState([]);

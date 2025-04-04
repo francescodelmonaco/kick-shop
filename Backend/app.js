@@ -22,7 +22,9 @@ app.use(imagePathMiddleware); // Middleware per la gestione degli URL delle imma
 
 // Definizione delle rotte
 app.use('/products', productRouter); // Rotta per la gestione dei prodotti
+
 app.use('/checkout', orderRouter); // Rotta per la gestione degli ordini
+
 app.use('/search', searchRouter); //
 
 // Avvio del server

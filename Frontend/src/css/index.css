@@ -69,6 +69,7 @@ a {
     transition: all 0.5s ease;
     transform: zoom(1.4);
 
+
     z-index: 1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -80,6 +81,10 @@ a {
     border-radius: 10px;
 }
 
+.categoryCard {
+    width: 95%;
+
+}
 .categoryCard {
     width: 95%;
 
