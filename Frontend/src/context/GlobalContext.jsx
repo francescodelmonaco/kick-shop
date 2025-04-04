@@ -84,8 +84,7 @@ const GlobalProvider = ({ children }) => {
         searchProducts,
         submitCheckout,
         formData,
-        setFieldValue
-        searchProducts,
+        setFieldValue,
         setFilterItems,
         filteredItems
     };
