@@ -70,8 +70,11 @@ const GlobalProvider = ({ children }) => {
     }, [cart]);
 
     useEffect(() => {
-        setQuantities(cart.map(() => 1));
+        setQuantities((prevQuantities) => {
+            return cart.map((_, index) => prevQuantities[index] || 1);
+        });
     }, [cart]);
+    
 
     useEffect(() => {
         const newTotal = cart.reduce((acc, item, index) => {
@@ -109,10 +112,10 @@ const GlobalProvider = ({ children }) => {
         }
 
         const cartWithQuantities = cart.map((item, index) => ({
-            ...item,
-            quantity: quantities[index] || 1
-
-        }));
+            id_product: item.id,  // recuperato dal carrello
+            quantity: quantities[index] || 1  // scelto dall'utente nel carrello
+          }));
+          
        
 
         const dataToSend = {
