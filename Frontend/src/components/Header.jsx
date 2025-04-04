@@ -22,7 +22,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/`}
@@ -33,7 +33,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/man`}
@@ -44,7 +44,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/woman`}
@@ -55,7 +55,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/summer`}
@@ -66,7 +66,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-dark" : "text-light"}`
+                                        `nav-link ${isActive ? "border-bottom" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/winter`}
