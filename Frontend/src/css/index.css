@@ -143,6 +143,29 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
 
+.footer-button {
+    font-family: "Black Ops One", system-ui;
+    font-size: 3rem;
+    color: var(--red); /* Colore del testo bianco */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: 2px solid var(--white); /* Bordo bianco */
+    background: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+    background: var(--white); /* Sfondo bianco al passaggio del mouse */
+    color: var(--red); /* Testo rosso al passaggio del mouse */
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
 /*FINE BOTTONI*/
 
