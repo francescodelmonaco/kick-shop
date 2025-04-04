@@ -13,6 +13,27 @@ const GlobalProvider = ({ children }) => {
         addressInvoice: '',
         telephone: '',
         city: '',
+        province: '',
+    }
+
+    const [formData, setFormData] = useState(initialData)
+
+    const setFieldValue = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const submitCheckout = (e) => {
+        e.preventDefault()
+        axios.post('http://localhost:3000/checkout', formData, {
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then((res) => console.log("Dati inviati con successo:", res))
+            .catch((err) => console.log("Errore nell'invio dei dati:", formData));
+    }
+
+
+    //Chiamate api per ricerca 
         carts: [],
     };
 
@@ -43,6 +64,29 @@ const GlobalProvider = ({ children }) => {
 
     }
 
+
+
+    // FILTRO
+    const [filterItems, setFilterItems] = useState("");
+
+    // Funzione filtri
+    const filters = () => {
+        if (filterItems === "name-asc") {
+            searchProducts.sort((a, b) => a.name.localeCompare(b.name)); // Ordina per nome A-Z
+        } else if (filterItems === "name-desc") {
+            searchProducts.sort((a, b) => b.name.localeCompare(a.name)); // Ordina per nome Z-A
+        } else if (filterItems === "price-asc") {
+            searchProducts.sort((a, b) => a.price - b.price); // Ordina per prezzo crescente
+        } else if (filterItems === "price-desc") {
+            searchProducts.sort((a, b) => b.price - a.price); // Ordina per prezzo decrescente
+        }
+
+        return searchProducts;
+    };
+
+    const filteredItems = filters(); // Ottieni i prodotti filtrati
+
+    // Valori condivisi nel contesto globale
     // Cart related effects and functions
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -120,6 +164,8 @@ const GlobalProvider = ({ children }) => {
         submitCheckout,
         formData,
         setFieldValue,
+        setFilterItems,
+        filteredItems,
         cart,
         setCart,
         addToCart,
