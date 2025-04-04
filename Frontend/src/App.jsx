@@ -14,6 +14,7 @@ import SummerPage from "./pages/SummerPage";
 import WinterPage from "./pages/WinterPage";
 import Checkout from "./pages/CheckoutPage";
 import SearchPage from "./pages/SearchPage";
+import NotFound from "./pages/NotFound";
 
 // components
 import CartSection from "./components/CartSection";
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
                     </Route>
+                        <Route path="*" Component={NotFound} />
                 </Routes>
             </BrowserRouter>
         </GlobalProvider>
