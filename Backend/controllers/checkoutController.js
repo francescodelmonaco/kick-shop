@@ -98,20 +98,27 @@ function storeOrder(req, res) {
         const orderId = results.insertId;
 
         // Crea l'elenco dei prodotti da inserire nella tabella "order_product"
-        const orderProducts = priceResults.map((product, index) => ([ 
+        const orderProductsDb = priceResults.map((product, index) => ([
           orderId,
           product.id,
           product.name,
           productQuantities[index],
           product.price
         ]));
-        console.log(orderProducts); // Log per debug
+
+        const orderProductsForEmail = priceResults.map((product, index) => ({
+          name: product.name,
+          quantity: productQuantities[index],
+          price: product.price
+        }));
+
+
 
         // Query SQL per inserire i dettagli dell'ordine nella tabella "order_product"
         const insertOrderProductSql = `INSERT INTO order_product (order_id, product_id, name_product, quantity, unit_price) VALUES ?`;
 
         // Esegui l'inserimento dei dettagli dell'ordine
-        connection.query(insertOrderProductSql, [orderProducts], (err) => {
+        connection.query(insertOrderProductSql, [orderProductsDb], (err) => {
           if (err) {
             return res.status(500).json({
               error: "Errore nell'inserimento dei dettagli dell'ordine",
@@ -136,7 +143,7 @@ function storeOrder(req, res) {
             }
 
             // Invia l'email di conferma
-            sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName);
+            sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName, userSurname, city, province, telephone, addressShipping, orderProductsForEmail );
 
             // Risposta finale: ordine inserito con successo e disponibilità aggiornata
             res.status(201).json({
