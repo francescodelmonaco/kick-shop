@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export default function ProductCard({ product }) {
-    const { id, name, price, season, gender, brand, slug, images } = product;
+    const { id, name, price, season, gender, brand, slug, images, availability } = product;
 
     const { addToCart } = useGlobalContext();
 

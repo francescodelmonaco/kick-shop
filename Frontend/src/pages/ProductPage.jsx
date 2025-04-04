@@ -60,7 +60,7 @@ export default function ProductPage() {
 
     // rendering prodotti in html
     const renderProducts = () => {
-        const { id, name, description, price, gender, season, brand, sizes, images } = product;
+        const { id, name, description, price, gender, season, brand, sizes, images, availability } = product;
         return (
             <>
                 <div key={id} className="container-fluid d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column flex-column gap-5 py-3">
@@ -92,9 +92,9 @@ export default function ProductPage() {
                     </div>
 
                     <aside className="w-50 d-flex flex-column justify-content-center align-items-start">
-                    <figure className="boxlogoImgProduct">
-                        <img src={logoproduct} alt="Logo Product Page" className="img-fluid" />
-                    </figure>
+                        <figure className="boxlogoImgProduct">
+                            <img src={logoproduct} alt="Logo Product Page" className="img-fluid" />
+                        </figure>
 
                         <hr className="w-100" />
                         {/* <h1>Dettaglio Prodotto</h1> */}
@@ -105,7 +105,7 @@ export default function ProductPage() {
                         {/* <p>Taglie: {sizes}</p> */}
                         <p> <strong>Stagione: </strong>{season}</p>
                         <p> <strong>Descrizione: </strong>{description}</p>
-
+                        <p> <strong>Quantità: </strong>{availability}</p>
                         {/* bottone per aggiunta del prodotto al carrello */}
                         <button
                             className="btn btn-success"
@@ -129,7 +129,7 @@ export default function ProductPage() {
                     <div className="row row-cols-lg-4 mb-5">
                         {renderRelatedProducts()}
                     </div>
-                    <CategorySection />    
+                    <CategorySection />
                 </div>
 
             </>
