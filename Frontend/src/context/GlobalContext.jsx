@@ -16,27 +16,6 @@ const GlobalProvider = ({ children }) => {
         province: '',
     }
 
-    const [formData, setFormData] = useState(initialData)
-
-    const setFieldValue = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
-
-    const submitCheckout = (e) => {
-        e.preventDefault()
-        axios.post('http://localhost:3000/checkout', formData, {
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then((res) => console.log("Dati inviati con successo:", res))
-            .catch((err) => console.log("Errore nell'invio dei dati:", formData));
-    }
-
-
-    //Chiamate api per ricerca 
-        carts: [],
-    };
-
     // Memorizza dati
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
@@ -54,12 +33,10 @@ const GlobalProvider = ({ children }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Evita il refresh della pagina
-
         // http://localhost:3000/search/
         axios.get(`http://localhost:3000/search/${query}`)
             .then(((res) => setSearchProducts(res.data)))
             .catch((error) => console.log("Errore nella ricerca:", error));
-
         setQuery(""); // svuota search bar
 
     }
