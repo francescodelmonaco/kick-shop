@@ -136,7 +136,7 @@ function storeOrder(req, res) {
             }
 
             // Invia l'email di conferma
-            sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName);
+            sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName, city, province, telephone, addressShipping );
 
             // Risposta finale: ordine inserito con successo e disponibilità aggiornata
             res.status(201).json({
