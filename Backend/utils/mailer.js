@@ -14,9 +14,18 @@ const transporter = nodemailer.createTransport({
 });
 
 // Funzione per inviare l'email di conferma
-export function sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName, city, province, telephone, addressShipping ) {
+export function sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName, userSurname, city, province, telephone, addressShipping, orderProducts) {
 
-const emailVenditore = "pepe2117k@gmail.com"
+  const emailVenditore = "pepe2117k@gmail.com"
+
+  const tabRowsDynamic = orderProducts.map(product => `
+  <tr>
+    <td style="padding: 8px;">${product.name}</td>
+    <td style="text-align: center; padding: 8px;">${product.quantity}</td>
+    <td style="text-align: right; padding: 8px;">€${(product.price * product.quantity).toFixed(2)}</td>
+  </tr>
+`).join('');
+
   // Definisci le opzioni per l'email
   const userMailOptions = {
     from: '115e86fd529a3e@smtp.mailtrap.io',  // Modifica con un'email reale
@@ -47,22 +56,13 @@ const emailVenditore = "pepe2117k@gmail.com"
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td style="padding: 8px;">T-shirt Verde</td>
-        <td style="text-align: center; padding: 8px;">2</td>
-        <td style="text-align: right; padding: 8px;">€20.00</td>
-      </tr>
-      <tr>
-        <td style="padding: 8px;">Cappellino Blu</td>
-        <td style="text-align: center; padding: 8px;">1</td>
-        <td style="text-align: right; padding: 8px;">€15.00</td>
-      </tr>
+    ${tabRowsDynamic}
     </tbody>
   </table>
 
   <!-- TOTALE -->
   <p style="text-align: right; margin-top: 10px; font-size: 18px; color: #333;">
-    <strong>Totale: €${totalPrice}</strong>
+    <strong>Totale dell'ordine: €${totalPrice}</strong>
   </p>
 
   <!-- INDIRIZZO -->
@@ -89,11 +89,52 @@ const emailVenditore = "pepe2117k@gmail.com"
     from: '115e86fd529a3e@smtp.mailtrap.io',  // Modifica con un'email reale
     to: emailVenditore, // Email del destinatario, tra apici
     subject: `Conferma del tuo ordine #${orderId}`,
-    text: `L' ordine #${orderId}, appartenente a: ${userName} è stato inviato con successo. L'importo totale è di €${totalPrice}.`
+    html: `
+      <!DOCTYPE html>
+  <html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nuovo Ordine Ricevuto</title>
+  </head>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; color: #333;">
+    <h2>📦 Hai ricevuto un nuovo ordine!</h2>
+
+    <h3>👤 Dati Cliente:</h3>
+    <p>
+      <strong>Nome:</strong> ${userName} ${userSurname}<br>
+      <strong>Email:</strong> ${userEmail}<br>
+      <strong>Telefono:</strong> ${telephone}<br>
+      <strong>Indirizzo di spedizione:</strong> ${addressShipping}<br>
+      <strong>Città:</strong> ${city} (${province})
+    </p>
+
+    <h3>🛒 Dettagli ordine:</h3>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <thead>
+        <tr style="background-color: #f0f0f0;">
+          <th style="border: 1px solid #ccc; padding: 8px;">Prodotto</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Quantità</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${tabRowsDynamic} 
+      </tbody>
+    </table>
+
+    <h3 style="text-align: right; margin-top: 20px;">Totale Ordine: € ${totalPrice.toFixed(2)}</h3>
+
+    <p style="margin-top: 30px;">Controlla il gestionale per processare l’ordine oppure contatta il cliente se necessario.</p>
+
+    <p style="font-size: 12px; color: #888;">Email generata automaticamente.</p>
+  </body>
+  </html>
+    
+    `
   };
 
-  
-  
+
+
 
   // Invia l'email
   transporter.sendMail(userMailOptions, (error, info) => {
@@ -113,5 +154,5 @@ const emailVenditore = "pepe2117k@gmail.com"
   });
 }
 
- 
+
 
