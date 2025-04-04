@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createContext, useContext, useState, useEffect } from 'react';
-
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
@@ -108,7 +107,9 @@ const GlobalProvider = ({ children }) => {
         setFormData({ ...formData, [name]: value });
     };
 
-    const submitCheckout = (e) => {
+    //in submitCheckout implemento il navigate affinche una volta inviato il form si possa navigare alla thankyou page
+
+    const submitCheckout = (e, navigate) => {
         e.preventDefault();
         if (!formData.userEmail || !formData.userName) {
             alert("Compila tutti i campi obbligatori!");
@@ -134,6 +135,7 @@ const GlobalProvider = ({ children }) => {
                 alert("Ordine completato con successo!");
                 setCart([]);
                 setFormData(initialData);
+                navigate("/thankyou")
             })
             .catch((err) => {
                 alert(err.response?.data?.error || "Errore durante l'invio dell'ordine");

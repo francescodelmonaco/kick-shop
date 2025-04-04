@@ -4,13 +4,24 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 import { useGlobalContext } from '../context/GlobalContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutForm() {
     const { submitCheckout, formData, setFieldValue } = useGlobalContext()
+    const navigate = useNavigate();
+
+
+// Chiamata alla funzione submitCheckout passando l'evento e navigate
+    const handleSubmit = (e) => {
+        submitCheckout(e, navigate);
+    };
+
+
     return (
         <Form
             className='py-3 w-50'
-            onSubmit={submitCheckout}>
+            //passo anche il navigate, in modo da poter navigare alla thankyou page una volta compilato il form correttamente.
+            onSubmit={handleSubmit}>
             <h1 className='text-center py-3'>Checkout</h1>
 
             <Row className="mb-3">
