@@ -12,7 +12,7 @@ export default function ProductCard({ product, addToCart }) {
                     <div className="carousel-inner cardBox position-relative">
                         {/* Icona del cuore */}
                         <i
-                            className="fa-solid fa-heart position-absolute heart-icon"
+                            className="fa-solid fa-heart  heart-icon"
                             style={{
                                 top: "10px",
                                 right: "10px",
@@ -31,16 +31,16 @@ export default function ProductCard({ product, addToCart }) {
                         ></i>
 
                         {/* Icona del carrello */}
-                        <button
-                            className="btn cart-icon position-absolute"
+                        <i className="fa-solid fa-cart-shopping cart-icon"
                             type="button"
                             onClick={() => addToCart(product)}
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"// Chiama la funzione addToCart con il prodotto
                         >
-                            <i className="fa-solid fa-cart-shopping"></i>
-                        </button>
+
+                        </i>
+
 
                         {/* Carousel delle immagini */}
                         {images &&

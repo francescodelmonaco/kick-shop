@@ -47,8 +47,10 @@ nav a img:hover {
 
 }
 
-.nav-link:hover {
-    color: black !important; /* Cambia solo il colore del testo */
+.nav-link:hover,
+.nav-link:active {
+  color: green !important; /* Cambia il colore del testo al passaggio del mouse */
+    text-decoration: underline; /* Aggiunge una riga sottolineata */
     transition: color 0.3s ease; /* Aggiunge una transizione fluida */
 }
 
@@ -80,23 +82,30 @@ a {
 
 /* Posizionamento dell'icona del cuore */
 .heart-icon {
-    top: 10px;
-    right: 10px;
+    position: absolute;
+    top: 2%; 
+    left: 2%; 
+    font-size: 2vw; 
+    color: gray;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s;
 }
 
 /* Posizionamento dell'icona del carrello */
 .cart-icon {
-    position: absolute; 
-    top: 10px;
-    left: 10px; /* Posiziona il carrello sul lato opposto */
+    position: absolute;
+    top: 2%; 
+    right: 2%;
+    font-size: 2vw;
     color: gray;
-    font-size: 1.5rem;
     cursor: pointer;
     z-index: 10;
     transition: color 0.3s;
 }
 
 /* Cambia colore al passaggio del mouse */
-.cart-icon:hover {
+.cart-icon:hover,
+.heart-icon:hover {
     color: green;
 }
