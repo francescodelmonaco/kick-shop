@@ -80,7 +80,7 @@ header {
     }
 }/*FINE TITOLO*/
 
-/*INIZIO CATEGORIE*/
+/*INIZIO CATEGORIE H2*/
 .category-title {
     font-family: "Black Ops One", system-ui;
     font-size: 2.5rem;
@@ -102,7 +102,21 @@ header {
     margin: 10px auto 0;
     border-radius: 2px;
 }
-/*FINE CATEGORIE*/
+/*FINE CATEGORIE H2*/
+
+/*INIZIO H3*/
+.category-subtitle {
+    font-family: "Black Ops One", system-ui;
+    font-size: 2rem;
+    color: var(--dark-blue);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    position: relative;
+}
+/*FINE H3*/
 
 /* INIZIO BOTTONI*/
 .category-button {
@@ -128,6 +142,8 @@ header {
     transform: scale(1.1); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
 }
+
+
 /*FINE BOTTONI*/
 
 /* btn navbar */
