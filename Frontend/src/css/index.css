@@ -80,6 +80,30 @@ header {
     }
 }/*FINE TITOLO*/
 
+/*INIZIO CATEGORIE*/
+.category-title {
+    font-family: "Black Ops One", system-ui;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--blue);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.category-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--blue);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+/*FINE CATEGORIE*/
+
 /* INIZIO BOTTONI*/
 .category-button {
     background: none; /* Rimuove lo sfondo */
