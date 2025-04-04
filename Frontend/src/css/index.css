@@ -2,6 +2,11 @@
     --blue: #3452A3;
     --white: #fff;
     --light-blue: #8f9fc9;
+    --dark-blue: #2c3e50;
+    --dark-gray: #2c3e50;
+    --light-gray: #ecf0f1;
+    --gray: #CDCDCD;
+    --red: #963554;
 }
 
 /* main {
@@ -10,11 +15,11 @@
 
 /* header */
 header {
-    background-color: var(--blue);
+    background-color: var(--red);
 }
 
 #root {
-    background-color: var(--light-blue);
+    background-color: var(--dark-gray);
 
 }
 
@@ -49,9 +54,9 @@ nav a img:hover {
 
 .nav-link:hover,
 .nav-link:active {
-  color: green !important; /* Cambia il colore del testo al passaggio del mouse */
-    text-decoration: underline; /* Aggiunge una riga sottolineata */
-    transition: color 0.3s ease; /* Aggiunge una transizione fluida */
+    color: grey !important;
+    text-decoration: underline;
+    transition: color 0.3s ease;
 }
 
 /* card */
@@ -63,7 +68,7 @@ a {
     transform: scale(1.1);
     transition: all 0.5s ease;
     transform: zoom(1.4);
-   
+
     z-index: 1;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -75,17 +80,17 @@ a {
     border-radius: 10px;
 }
 
-    .categoryCard {
-        width: 95%;
-         
-    }
+.categoryCard {
+    width: 95%;
+
+}
 
 /* Posizionamento dell'icona del cuore */
 .heart-icon {
     position: absolute;
-    top: 2%; 
-    left: 2%; 
-    font-size: 2vw; 
+    top: 2%;
+    left: 2%;
+    font-size: 2vw;
     color: gray;
     cursor: pointer;
     z-index: 10;
@@ -95,7 +100,7 @@ a {
 /* Posizionamento dell'icona del carrello */
 .cart-icon {
     position: absolute;
-    top: 2%; 
+    top: 2%;
     right: 2%;
     font-size: 2vw;
     color: gray;

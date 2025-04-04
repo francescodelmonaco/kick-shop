@@ -1,5 +1,7 @@
+import CategorySection from "../components/CategorySection";
 import ResultSearch from "../components/ResultSearch";
 import { useGlobalContext } from "../context/GlobalContext";
+
 
 export default function SearchPage() {
 
@@ -19,7 +21,11 @@ export default function SearchPage() {
                     )
                 }
 
+                <CategorySection />
             </div>
+
+
+            
         </>
     )
 };

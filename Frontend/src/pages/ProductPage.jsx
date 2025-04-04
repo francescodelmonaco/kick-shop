@@ -100,7 +100,7 @@ export default function ProductPage({ addToCart }) {
 
                         {/* bottone per aggiunta del prodotto al carrello */}
                         <button
-                            className="btn btn-primary"
+                            className="btn btn-success"
                             onClick={() => addToCart(product)}
                             type="button"
                             data-bs-toggle="offcanvas"
@@ -122,6 +122,7 @@ export default function ProductPage({ addToCart }) {
                         {renderRelatedProducts()}
                     </div>
                 </div>
+
             </>
 
         )
@@ -135,6 +136,7 @@ export default function ProductPage({ addToCart }) {
             <div>
                 {renderProducts()}
             </div>
+
         </>
     )
 };

@@ -28,6 +28,7 @@ export default function ManPage() {
             .map((manProduct) => (
                 <div className="col g-3 pb-3" key={manProduct.id}>
                     <ProductCard product={manProduct} />
+                    
                 </div>
             ));
     };
@@ -48,6 +49,8 @@ export default function ManPage() {
                     {renderManProducts()}
                 </div>
             </div>
+            
+            
         </>
     )
 }
