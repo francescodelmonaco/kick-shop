@@ -12,7 +12,7 @@ export default function HomePage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Kick Shop</h1>
+            <h1 className="text-center py-3 font">Kick Shop</h1>
 
             <HeroSection />
             <CategorySection />

@@ -7,7 +7,7 @@ import winterCategory from "../assets/img/category/winterCategory.jpg";
 export default function CategorySection() {
     return (
         <>
-            <h2 className="text-center py-3">Categorie</h2>
+            <h2 className="text-center py-3 category-title">Categorie</h2>
             <div className="container-fluid">
                 <ul className="row">
 
@@ -16,7 +16,7 @@ export default function CategorySection() {
                             <figure className="categoryCard">
                                 <img src={manCategory} alt="Man category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
+                            <button className="category-button position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Uomo</button>
                         </Link>
                     </li>
 
@@ -27,7 +27,7 @@ export default function CategorySection() {
                             <figure className="categoryCard">
                                 <img src={womanCategory} alt="woman category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
+                            <button className="category-button position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Donna</button>
                         </Link>
                     </li>
 
@@ -36,7 +36,7 @@ export default function CategorySection() {
                             <figure className="categoryCard">
                                 <img src={summerCategory} alt="summer category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
+                            <button className="category-button position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Estate</button>
                         </Link>
                     </li>
 
@@ -45,7 +45,7 @@ export default function CategorySection() {
                             <figure className="categoryCard">
                                 <img src={winterCategory} alt="winter category" className="w-100 imgBox" />
                             </figure>
-                            <button className="btn btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
+                            <button className="category-button position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
                         </Link>
                     </li>
 

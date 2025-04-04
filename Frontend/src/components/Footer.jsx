@@ -9,7 +9,7 @@ export default function Footer() {
                     <img src={bunnerballs} alt="Ball category" className="w-100 imgBox" />
                 </figure>
                 <button
-                    className="btn btn-light position-absolute start-50 translate-middle-x bottom-0 mb-4 fs-4"
+                    className="btn footer-button btn-light position-absolute start-50 translate-middle-x bottom-0 ms-3 mb-3 fs-4"
                     style={{ zIndex: 10 }}
                 >
                     Palloni da Collezione
