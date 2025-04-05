@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
 
 export default function HorizontalProductCard({ product }) {
-    const { addToCart } = useGlobalContext();
+    const { addToCart, addToWish } = useGlobalContext();
 
     const { id, name, description, price, gender, season, brand, sizes, images, availability } = product;
 
@@ -58,15 +58,14 @@ export default function HorizontalProductCard({ product }) {
                                 {/* bottone per aggiunta del prodotto alla whishlist */}
                                 <button
                                     className="btn btn-primary w-100"
-                                    onClick={() => addToCart(product)} // sistema logica per wishlist
+                                    onClick={() => addToWish(product)} // Aggiunge il prodotto alla wishlist
                                     type="button"
                                     data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRight"
-                                    aria-controls="offcanvasRight"
+                                    data-bs-target="#offcanvasLeft" // ID della canvas
+                                    aria-controls="offcanvasLeft"
                                 >
                                     <i className="fa-solid fa-heart"></i>
                                 </button>
-
                                 {/* bottone per aggiunta del prodotto al carrello */}
                                 <button
                                     className="btn btn-success w-100"

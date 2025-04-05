@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 export default function ProductCard({ product }) {
     const { id, name, price, season, gender, brand, slug, images, availability } = product;
 
-    const { addToCart } = useGlobalContext();
+    const { addToCart, addToWish } = useGlobalContext();
 
     return (
         <div className="card h-100" key={id}>
@@ -29,7 +29,12 @@ export default function ProductCard({ product }) {
                             onMouseLeave={(e) => {
                                 e.target.style.color = "gray";
                             }}
-                        ></i>
+                            type="button"
+                            onClick={() => addToWish(product)}
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasLeft"
+                            aria-controls="offcanvasLeft"
+                        />
 
                         {/* Icona del carrello */}
                         <i className="fa-solid fa-cart-shopping cart-icon"
@@ -53,9 +58,9 @@ export default function ProductCard({ product }) {
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"
                             aria-controls="offcanvasRight"// Chiama la funzione addToCart con il prodotto
-                        >
+                        />
 
-                        </i>
+                      
 
 
                         {/* Carousel delle immagini */}

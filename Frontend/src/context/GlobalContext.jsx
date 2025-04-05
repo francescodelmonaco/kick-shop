@@ -26,6 +26,8 @@ const GlobalProvider = ({ children }) => {
         const savedCart = localStorage.getItem("cart");
         return savedCart ? JSON.parse(savedCart) : [];
     });
+    const [wish, setWish] = useState([]) 
+
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
 
@@ -91,6 +93,12 @@ const GlobalProvider = ({ children }) => {
         setCart((prevCart) => [...prevCart, product]);
     };
 
+    const addToWish = (product) => {
+        console.log("Aggiunto alla wishlist:", product);
+        setWish((prevWish) => [...prevWish, product]);
+    };
+    
+   
 
     const handleQuantityChange = (index, value) => {
         const updatedQuantities = [...quantities];
@@ -153,10 +161,13 @@ const GlobalProvider = ({ children }) => {
         cart,
         setCart,
         addToCart,
+        addToWish,
         quantities,
         handleQuantityChange,
         handleRemoveItem,
-        total
+        total,
+        setTotal,
+        wish
     };
 
     return (

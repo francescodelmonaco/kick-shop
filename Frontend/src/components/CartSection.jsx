@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
 import OrderRecap from "./OrderRecap";
+import { useLocation } from "react-router-dom"; 
 
 export default function CartSection() {
+    const location = useLocation();
+
+    // Nascondi la canvas nella pagina di checkout
+    if (location.pathname === "/checkout") return null;
+
     return (
         <>
             <div className="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">

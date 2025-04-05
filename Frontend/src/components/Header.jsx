@@ -81,8 +81,8 @@ export default function Header() {
                             className="btn btn-outline-light me-2"
                             type="button"
                             data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"
+                            data-bs-target="#offcanvasLeft"
+                            aria-controls="offcanvasLeft"
                             style={{
                                 transition: "background-color 0.3s, color 0.3s",
                             }}

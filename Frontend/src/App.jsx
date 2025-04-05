@@ -17,12 +17,14 @@ import SearchPage from "./pages/SearchPage";
 
 // components
 import CartSection from "./components/CartSection";
+import WishSection from "./components/WishSection";
 
 function App() {
     return (
         <GlobalProvider>
             <BrowserRouter>
                 <CartSection />
+                <WishSection />
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
