@@ -110,6 +110,12 @@ const GlobalProvider = ({ children }) => {
         const updatedCart = cart.filter((_, i) => i !== index);
         setCart(updatedCart);
     };
+    const handleRemoveItemWish = (id) => {
+        const itemToRemove = wish.find((item) => item.id === id); // Trova l'elemento da rimuovere
+        if (itemToRemove) { 
+        setWish((prevWish) => prevWish.filter((item) => item.id !== id)); // Rimuove solo il prodotto con l'ID corrispondente
+    };
+    };
 
     const setFieldValue = (e) => {
         const { name, value } = e.target;
@@ -165,6 +171,8 @@ const GlobalProvider = ({ children }) => {
         quantities,
         handleQuantityChange,
         handleRemoveItem,
+        handleRemoveItemWish,
+        setQuantities,
         total,
         setTotal,
         wish
