@@ -1,4 +1,5 @@
 import { useGlobalContext } from "../context/GlobalContext";
+import { Link } from "react-router-dom";
 
 export default function WishSection() {
     const { wish, addToCart, handleRemoveItemWish } = useGlobalContext();
@@ -25,16 +26,20 @@ export default function WishSection() {
                                 <button
                                     className="btn btn-success mt-2"
                                     onClick={() => {
-                                        addToCart(item);
-                                        handleRemoveItemWish(item.id); // Rimuove l'elemento dalla wishlist dopo averlo aggiunto al carrello
-                                        // handleRemoveItem(index); // Se vuoi rimuovere l'elemento dalla wishlist usando l'indice  
-                                    }} // Passa il prodotto corretto alla funzione
+                                        addToCart(item); // Aggiunge al carrello
+                                        handleRemoveItemWish(item.id); // Rimuove dalla wishlist
+                                    }}
                                 >
                                     Aggiungi al carrello
                                 </button>
+                                <Link to={`/products/${item.slug}`}>
+                                    <button className="btn btn-primary">
+                                        Dettagli
+                                    </button>
+                                </Link>
                                 <button
                                     className="btn btn-danger"
-                                    onClick={() => handleRemoveItemWish(item.id)} // Rimuove l'elemento
+                                    onClick={() => handleRemoveItemWish(item.id)} // Rimuove solo il prodotto selezionato
                                 >
                                     <i className="fa-solid fa-trash"></i>
                                 </button>
