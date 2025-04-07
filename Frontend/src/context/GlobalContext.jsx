@@ -18,58 +18,54 @@ const GlobalProvider = ({ children }) => {
     // Memorizza dati
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
-
-
     const [formData, setFormData] = useState(initialData);
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("cart");
         return savedCart ? JSON.parse(savedCart) : [];
     });
-    const [wish, setWish] = useState([])
-
+    const [wish, setWish] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
 
-
-
+    // Gestione ricerca
     const handleSubmit = (e) => {
-        e.preventDefault(); // Evita il refresh della pagina
-        // http://localhost:3000/search/
+        e.preventDefault();
         axios.get(`http://localhost:3000/search/${query}`)
-            .then(((res) => setSearchProducts(res.data)))
+            .then((res) => setSearchProducts(res.data))
             .catch((error) => console.log("Errore nella ricerca:", error));
-        setQuery(""); // svuota search bar
-
-    }
-
-
-
-    // FILTRO
-    const [filterItems, setFilterItems] = useState("");
-
-    // Funzione filtri
-    const filters = () => {
-        if (filterItems === "name-asc") {
-            searchProducts.sort((a, b) => a.name.localeCompare(b.name)); // Ordina per nome A-Z
-        } else if (filterItems === "name-desc") {
-            searchProducts.sort((a, b) => b.name.localeCompare(a.name)); // Ordina per nome Z-A
-        } else if (filterItems === "price-asc") {
-            searchProducts.sort((a, b) => a.price - b.price); // Ordina per prezzo crescente
-        } else if (filterItems === "price-desc") {
-            searchProducts.sort((a, b) => b.price - a.price); // Ordina per prezzo decrescente
-        }
-
-        return searchProducts;
     };
 
-    const filteredItems = filters(); // Ottieni i prodotti filtrati
+    // Gestione ordinamento
+    const [sortCriteria, setSortCriteria] = useState({ field: 'name', order: 'asc' });
 
+    const handleSort = (field, order) => {
+        setSortCriteria({ field, order });
+    };
+
+    // Funzione per ordinare i prodotti
+    const sortProducts = (products) => {
+        const { field, order } = sortCriteria;
+        return [...products].sort((a, b) => {
+            if (field === 'name') {
+                return order === 'asc' 
+                    ? a.name.localeCompare(b.name) 
+                    : b.name.localeCompare(a.name);
+            } else if (field === 'price') {
+                return order === 'asc' 
+                    ? a.price - b.price 
+                    : b.price - a.price;
+            }
+            return 0;
+        });
+    };
+
+    const sortedProducts = sortProducts(searchProducts);
 
     // VISUALIZZAZIONE GRIGLIA - LISTA
     const [viewMode, setViewMode] = useState("grid"); // "grid" o "list"
 
 
-    // Valori condivisi nel contesto globale
+    // Altri effetti e metodi (carrello, wish list, quantità, checkout) restano invariati
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
@@ -80,7 +76,6 @@ const GlobalProvider = ({ children }) => {
             return cart.map((_, index) => prevQuantities[index] || 1);
         });
     }, [cart]);
-
 
     useEffect(() => {
         const newTotal = cart.reduce((acc, item, index) => {
@@ -98,7 +93,6 @@ const GlobalProvider = ({ children }) => {
         });
     };
 
-
     const addToWish = (product) => {
         setWish((prevWish) => {
             if (prevWish.some((item) => item.id === product.id)) {
@@ -107,7 +101,6 @@ const GlobalProvider = ({ children }) => {
             return [...prevWish, product];
         });
     };
-
 
     const handleQuantityChange = (index, value) => {
         const updatedQuantities = [...quantities];
@@ -119,10 +112,11 @@ const GlobalProvider = ({ children }) => {
         const updatedCart = cart.filter((_, i) => i !== index);
         setCart(updatedCart);
     };
+
     const handleRemoveItemWish = (id) => {
-        const itemToRemove = wish.find((item) => item.id === id); // Trova l'elemento da rimuovere
+        const itemToRemove = wish.find((item) => item.id === id);
         if (itemToRemove) {
-            setWish((prevWish) => prevWish.filter((item) => item.id !== id)); // Rimuove solo il prodotto con l'ID corrispondente
+            setWish((prevWish) => prevWish.filter((item) => item.id !== id));
         };
     };
 
@@ -130,8 +124,6 @@ const GlobalProvider = ({ children }) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-
-    //in submitCheckout implemento il navigate affinche una volta inviato il form si possa navigare alla thankyou page
 
     const submitCheckout = (e, navigate) => {
         e.preventDefault();
@@ -141,17 +133,14 @@ const GlobalProvider = ({ children }) => {
         }
 
         const cartWithQuantities = cart.map((item, index) => ({
-            id_product: item.id,  // recuperato dal carrello
-            quantity: quantities[index] || 1  // scelto dall'utente nel carrello
+            id_product: item.id,
+            quantity: quantities[index] || 1
         }));
-
-
 
         const dataToSend = {
             ...formData,
             carts: cartWithQuantities
         };
-
 
         axios.post('http://localhost:3000/checkout', dataToSend, {
             headers: { 'Content-Type': 'application/json' },
@@ -160,7 +149,7 @@ const GlobalProvider = ({ children }) => {
                 alert("Ordine completato con successo!");
                 setCart([]);
                 setFormData(initialData);
-                navigate("/thankyou")
+                navigate("/thankyou");
             })
             .catch((err) => {
                 alert(err.response?.data?.error || "Errore durante l'invio dell'ordine");
@@ -171,12 +160,11 @@ const GlobalProvider = ({ children }) => {
         query,
         setQuery,
         handleSubmit,
-        searchProducts,
+        searchProducts: sortedProducts, // Cambiato per utilizzare i prodotti ordinati
+        handleSort,
         submitCheckout,
         formData,
         setFieldValue,
-        setFilterItems,
-        filteredItems,
         cart,
         setCart,
         addToCart,
