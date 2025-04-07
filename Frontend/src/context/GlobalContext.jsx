@@ -89,8 +89,14 @@ const GlobalProvider = ({ children }) => {
     }, [quantities, cart]);
 
     const addToCart = (product) => {
-        setCart((prevCart) => [...prevCart, product]);
+        setCart((prevCart) => {
+            if (prevCart.some((item) => item.id === product.id)) {
+                return prevCart; // Non aggiungere duplicati
+            }
+            return [...prevCart, product];
+        });
     };
+
 
     const addToWish = (product) => {
         setWish((prevWish) => {
