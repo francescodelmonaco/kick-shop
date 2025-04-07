@@ -4,7 +4,7 @@ import FilterButton from "./FilterButton";
 import FilterSection from "./FilterSection";
 
 export default function ResultSearch({ items }) {
-    const { setFilterItems, filteredItems, viewMode } = useGlobalContext();
+    const { searchProducts, viewMode } = useGlobalContext();
 
     return (
         <div className="px-5 pb-3">
@@ -14,16 +14,14 @@ export default function ResultSearch({ items }) {
                 </p>
 
                 <div className="d-flex align-items-center gap-2">
-                    <FilterButton filter={setFilterItems} />
-
+                    <FilterButton />
                     <FilterSection />
                 </div>
-
             </div>
 
             <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
-                {filteredItems && filteredItems.length > 0 ? (
-                    filteredItems.map((item) => (
+                {searchProducts && searchProducts.length > 0 ? (
+                    searchProducts.map((item) => (
                         <div
                             className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                             key={item.id}>
