@@ -9,7 +9,7 @@ export default function SearchPage() {
 
     return (
         <>
-            <h1 className='text-center py-3'>Risultati della ricerca</h1>
+            <h1 className='category-title py-3'>Risultati della ricerca</h1>
 
             <div className="container-fluid">
 

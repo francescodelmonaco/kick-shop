@@ -7,7 +7,7 @@ export default function WishListPage() {
 
     return (
         <>
-            <h1 className="wishlist-title">La tua wish list</h1>
+            <h1 className="category-title">La tua wish list</h1>
             {wish.length > 0 ? (
                 wish.map((product) => (
                     <HorizontalProductCard key={product.id} product={product} />

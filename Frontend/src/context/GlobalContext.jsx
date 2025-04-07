@@ -19,11 +19,26 @@ const GlobalProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
     const [formData, setFormData] = useState(initialData);
+
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : [];
+        try {
+            return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+            console.error("Errore nel parsing del carrello:", error);
+            return [];
+        }
     });
-    const [wish, setWish] = useState([]);
+    const [wish, setWish] = useState(() => {
+        const savedWish = localStorage.getItem("wish");
+        try {
+            return savedWish ? JSON.parse(savedWish) : [];
+        } catch (error) {
+            console.error("Errore nel parsing della wishlist:", error);
+            return [];
+        }
+    });
+
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
 
@@ -70,6 +85,11 @@ const GlobalProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
+
+    useEffect(() => {
+        localStorage.setItem("wish", JSON.stringify(wish));
+    }, [wish])
+    ;
 
     useEffect(() => {
         setQuantities((prevQuantities) => {
