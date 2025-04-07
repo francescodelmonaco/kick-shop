@@ -39,7 +39,7 @@ export default function WinterPage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Collezione Inverno</h1>
+            <h1 className="text-center category-title py-3">Collezione Inverno</h1>
 
             <figure>
                 <img src="/src/assets/img/hero-winter.webp" alt="Hero image 3" className="w-100 hero-border" />
