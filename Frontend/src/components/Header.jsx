@@ -1,9 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
+import { useGlobalContext } from "../context/GlobalContext";
 
 import Search from "./Search";
 
 export default function Header() {
-
+    const { wish, cart } = useGlobalContext();
     return (
 
         <header className="fixed-top">
@@ -122,7 +123,7 @@ export default function Header() {
                             >
 
                             </i>
-
+                            <span className="ms-0 badge badge-outline fs-6 wish-badget">{wish.length}</span>
                         </NavLink>
 
                         {/* carrello */}
@@ -134,6 +135,8 @@ export default function Header() {
                             aria-controls="offcanvasRight"
                         >
                             <i className="fa-solid fa-cart-shopping"></i>
+                            <span className="ms-0 badge badge-outline fs-6 cart-badget">{cart.length}</span>
+
                         </button>
 
                         <Search />
