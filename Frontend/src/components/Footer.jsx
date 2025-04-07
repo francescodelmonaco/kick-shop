@@ -9,11 +9,48 @@ export default function Footer1() {
                     <div className="col-md-4 mb-3">
                         <h5 className="footer-title">Navigazione</h5>
                         <ul className="list-unstyled">
-                            <li><Link to="/" className="footer-link">Home</Link></li>
-                            <li><Link to="/man" className="footer-link">Uomo</Link></li>
-                            <li><Link to="/woman" className="footer-link">Donna</Link></li>
-                            <li><Link to="/summer" className="footer-link">Estate</Link></li>
-                            <li><Link to="/winter" className="footer-link">Inverno</Link></li>
+                            <li>
+                                <Link onClick={() => window.scrollTo(0, 0)}
+                                    to="/"
+                                    className="footer-link">
+                                    Home
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    onClick={() => window.scrollTo(0, 0)}
+                                    to="/woman"
+                                    className="footer-link">
+                                    Donna
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    onClick={() => window.scrollTo(0, 0)} to="/summer"
+                                    className="footer-link">
+                                    Estate
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    onClick={() => window.scrollTo(0, 0)}
+                                    to="/winter"
+                                    className="footer-link">
+
+                                </Link>
+                            </li>
+
+                            <li>
+                                <Link
+                                    onClick={() => window.scrollTo(0, 0)}
+                                    to="/man"
+                                    className="footer-link">
+                                    Uomo
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
