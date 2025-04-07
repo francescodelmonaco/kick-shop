@@ -1,7 +1,6 @@
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import { useGlobalContext } from "../context/GlobalContext";
 import Badge from "react-bootstrap/Badge"
+import QuantityCounter from './ QuantityCounter';
 export default function OrderRecap() {
 
     const { cart, handleQuantityChange, handleRemoveItem, quantities, total } = useGlobalContext();
@@ -17,19 +16,12 @@ export default function OrderRecap() {
                             <p><strong>{item.name}</strong> - {item.price} €</p>
 
                             <div className='d-flex gap-2'>
-                                <Form.Group as={Col} controlId="formGridState">
-                                    <Form.Select
-                                        value={quantities[index] || 1}
-                                        className="form-select-sm"
-                                        style={{ width: '60px' }}
-                                        onChange={(e) => handleQuantityChange(index, e.target.value)}>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </Form.Select>
-                                </Form.Group>
+                                <QuantityCounter
+                                 index={index}
+                                 quantity={quantities[index] || 1}
+                                 onQuantityChange={handleQuantityChange}
+                                 maxQuantity={item.availability} // ← questo è il limite massimo
+                                />
 
                                 <button
                                     className="btn btn-danger"

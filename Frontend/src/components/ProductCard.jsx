@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
+import QuantityCounter from "./ QuantityCounter";
 
 export default function ProductCard({ product, viewMode }) {
     const { id, name, price, season, gender, brand, slug, images, availability } = product;
@@ -60,8 +61,7 @@ export default function ProductCard({ product, viewMode }) {
                             aria-controls="offcanvasRight"// Chiama la funzione addToCart con il prodotto
                         />
 
-
-
+                        
 
                         {/* Carousel delle immagini */}
                         {images &&
