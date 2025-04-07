@@ -2,38 +2,42 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import CategorySection from '../components/CategorySection';
+import FilterSection from '../components/FilterSection';
+import { useGlobalContext } from '../context/GlobalContext';
 
 export default function ManPage() {
-
-    // CHIAMATA PRODOTTI UOMO
+    // Stato per i prodotti
     const [manProducts, setManProducts] = useState([]);
 
-    // fetch per prodotti
-    const fetchProducts = () => {
-        // console.log('Fetching products...')
+    const { viewMode } = useGlobalContext();
 
+    // Fetch per i prodotti
+    const fetchProducts = () => {
         axios
             .get('http://localhost:3000/products')
             .then((res) => {
-                setManProducts(res.data)
+                setManProducts(res.data);
             })
             .catch((error) => {
-                console.log(error)
-            })
-    }
+                console.log(error);
+            });
+    };
 
-    // rendering prodotti in html
+    // Rendering dei prodotti
     const renderManProducts = () => {
         return manProducts
             .filter((manProduct) => manProduct.gender === "uomo") // Filtra per genere
             .map((manProduct) => (
-                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={manProduct.id}>
-                    <ProductCard product={manProduct} />
+                <div
+                    className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
+                    key={manProduct.id}
+                >
+                    <ProductCard product={manProduct} viewMode={viewMode} />
                 </div>
             ));
     };
 
-    // invocazione chiamata al caricamento del componente in pagina
+    // Invocazione fetch al caricamento del componente
     useEffect(fetchProducts, []);
 
     return (
@@ -45,13 +49,14 @@ export default function ManPage() {
             </figure>
 
             <div className="px-5">
-                <div className="row row-cols-lg-4 mb-5">
+                <FilterSection />
+
+                <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
                     {renderManProducts()}
                 </div>
+
                 <CategorySection />
             </div>
-
-
         </>
-    )
+    );
 }
