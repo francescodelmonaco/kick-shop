@@ -7,7 +7,7 @@ export default function CheckoutPage() {
             <CheckoutForm />
             <div className='py-3 w-50'>
                 <div>
-                    <h1 className='text-center py-3'>Riepilogo ordine</h1>
+                    <h1 className='category-title py-3'>Riepilogo ordine</h1>
 
                     <OrderRecap />
                 </div>

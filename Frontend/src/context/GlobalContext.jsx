@@ -19,18 +19,32 @@ const GlobalProvider = ({ children }) => {
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
     const [formData, setFormData] = useState(initialData);
+
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : [];
+        try {
+            return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+            console.error("Errore nel parsing del carrello:", error);
+            return [];
+        }
     });
-    const [wish, setWish] = useState([]);
+    const [wish, setWish] = useState(() => {
+        const savedWish = localStorage.getItem("wish");
+        try {
+            return savedWish ? JSON.parse(savedWish) : [];
+        } catch (error) {
+            console.error("Errore nel parsing della wishlist:", error);
+            return [];
+        }
+    });
+
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
 
     // Gestione ricerca
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.get(`http://localhost:3000/search/${query}`)
+    const handleSubmit = (searchTerm) => {
+        axios.get(`http://localhost:3000/search/${searchTerm}`)
             .then((res) => setSearchProducts(res.data))
             .catch((error) => console.log("Errore nella ricerca:", error));
     };
@@ -64,12 +78,15 @@ const GlobalProvider = ({ children }) => {
     // VISUALIZZAZIONE GRIGLIA - LISTA
     const [viewMode, setViewMode] = useState("grid"); // "grid" o "list"
 
-
     // Altri effetti e metodi (carrello, wish list, quantità, checkout) restano invariati
-
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
+
+    useEffect(() => {
+        localStorage.setItem("wish", JSON.stringify(wish));
+    }, [wish])
+    ;
 
     useEffect(() => {
         setQuantities((prevQuantities) => {
