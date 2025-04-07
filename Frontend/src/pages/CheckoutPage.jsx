@@ -1,23 +1,30 @@
 import CheckoutForm from "../components/CheckoutForm";
 import OrderRecap from "../components/OrderRecap";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function CheckoutPage() {
     return (
-        <div className='d-flex justify-content-between gap-3 px-3'>
-            <CheckoutForm />
-            <div className='py-3 w-50'>
-                <div>
-                    <h1 className='category-title py-3'>Riepilogo ordine</h1>
+        <Container fluid="md" className="py-4">
+            <Row className="g-4">
+                {/* Colonna Form */}
+                <Col xs={12} lg={7}>
+                    <CheckoutForm />
+                </Col>
 
-                    <OrderRecap />
-                </div>
+                {/* Colonna Riepilogo + Metodi di pagamento */}
+                <Col xs={12} lg={5}>
+                    <div className="py-3">
+                        <h1 className="category-title py-3">Riepilogo ordine</h1>
 
-                <hr />
+                        <OrderRecap />
 
-                <div>
-                    <h1 className='text-center py-3'>Metodi di pagamento</h1>
-                </div>
-            </div>
-        </div>
+                        <hr />
+
+                        <h1 className="text-center py-3">Metodi di pagamento</h1>
+                        {/* Qui puoi aggiungere il selettore di pagamento se previsto */}
+                    </div>
+                </Col>
+            </Row>
+        </Container>
     );
 }

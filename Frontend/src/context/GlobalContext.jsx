@@ -177,13 +177,13 @@ const GlobalProvider = ({ children }) => {
             headers: { 'Content-Type': 'application/json' },
         })
             .then((res) => {
-                alert("Ordine completato con successo!");
+                // console.lo("Ordine completato con successo!");
                 setCart([]);
                 setFormData(initialData);
                 navigate("/thankyou");
             })
             .catch((err) => {
-                alert(err.response?.data?.error || "Errore durante l'invio dell'ordine");
+                console.log(err.response?.data?.error || "Errore durante l'invio dell'ordine");
             });
     };
 
