@@ -1,7 +1,7 @@
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import { useGlobalContext } from "../context/GlobalContext";
-
+import Badge from "react-bootstrap/Badge"
 export default function OrderRecap() {
 
     const { cart, handleQuantityChange, handleRemoveItem, quantities, total } = useGlobalContext();
@@ -30,22 +30,7 @@ export default function OrderRecap() {
                                         <option value="5">5</option>
                                     </Form.Select>
                                 </Form.Group>
-                                <div className="container mt-5 row d-flex">
-                                    <div className="row d-flex">
-                                        <div className="col-sm-4 col-sm-offset-4">
-                                            <div className="input-group mb-3">
-                                                <div className="input-group-prepend">
-                                                    <button className="btn btn-dark btn-sm" id="minus-btn"><i className="fa fa-minus"></i></button>
-                                                </div>
-                                                <input type="number" id="qty_input" className="form-control form-control-sm text-align-center" value="1" min="1" />
-                                                <div className="input-group-prepend">
-                                                    <button className="btn btn-dark btn-sm" id="plus-btn"><i className="fa fa-plus"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4"></div>
-                                    </div>
-                                </div>
+                              
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => handleRemoveItem(index)} // Rimuove l'elemento
@@ -61,7 +46,16 @@ export default function OrderRecap() {
 
             <div className="input-group pt-3 d-flex justify-content-end">
                 <span className="input-group-text"><strong>TOTALE : </strong></span>
-                <span className="input-group-text btn btn-outline-success"><strong>{total.toFixed(2)} €</strong></span>
+                <span>
+
+                    <Badge className='bg-success'>
+                        <h5>
+                            <strong>
+                                {total.toFixed(2)} €
+                            </strong>
+                        </h5>
+                    </Badge>
+                </span>
             </div>
         </div>
     )
