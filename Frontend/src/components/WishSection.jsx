@@ -38,6 +38,10 @@ export default function WishSection() {
                     ></button>
                 </div>
                 <div className="offcanvas-body">
+
+                    <button className="btn btn-primary" >Vai alla tua Wish List</button>
+
+
                     {wish.length > 0 ? (
                         <ul>
                             {wish.map((item) => (
@@ -64,7 +68,7 @@ export default function WishSection() {
                                         data-bs-dismiss="offcanvas"
                                         aria-label="Close"
                                     >
-                                     <i class="fa-solid fa-eye"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     </button>
 
                                     <button
