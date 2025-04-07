@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <>
             <Link className="w-100 position-relative d-block" to={`/man`}>
-                <figure className="categoryCard mx-auto mb-1">
+                <figure className="categoryCard mx-auto mb-4">
                     <img src={bunnerballs} alt="Ball category" className="w-100 imgBox" />
                 </figure>
                 <button
