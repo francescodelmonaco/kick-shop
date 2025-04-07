@@ -33,11 +33,13 @@ export default function WishSection() {
                                 >
                                     Aggiungi al carrello
                                 </button>
+                                
+                                {/* dettagli wish list */}
                                 <button
                                     className="btn btn-primary"
                                     onClick={() => {
                                         window.scrollTo(0, 0); // ScrollBarr
-                                        navigate(`/products/${item.slug}`); 
+                                        navigate("/wish/"); 
                                         
                                     }}
                                     data-bs-dismiss="offcanvas"

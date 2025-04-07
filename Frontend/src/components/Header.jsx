@@ -77,16 +77,20 @@ export default function Header() {
                         </ul>
 
                         {/* whishlist */}
-                        <button
+                        <NavLink
+
+
+
                             className="btn btn-outline-light me-2"
                             type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasLeft"
-                            aria-controls="offcanvasLeft"
+                            to ={`/wish`}
+                            // data-bs-toggle="offcanvas"
+                            // data-bs-target="#offcanvasLeft"
+                            // aria-controls="offcanvasLeft"
                             style={{
                                 transition: "background-color 0.3s, color 0.3s",
                             }}
-                        >
+>
                             <i
                                 className="fa-solid fa-heart"
                                 style={{
@@ -98,8 +102,11 @@ export default function Header() {
                                 onMouseLeave={(e) => {
                                     e.target.style.color = ""; // Ripristina il colore originale
                                 }}
-                            ></i>
-                        </button>
+                            >
+
+                            </i>
+
+                        </NavLink>
 
                         {/* carrello */}
                         <button
