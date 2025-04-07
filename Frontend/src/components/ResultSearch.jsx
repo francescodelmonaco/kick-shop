@@ -6,6 +6,8 @@ import FilterSection from "./FilterSection";
 export default function ResultSearch({ items }) {
     const { searchProducts, viewMode } = useGlobalContext();
 
+    console.log("searchProducts", searchProducts);
+
     return (
         <div className="px-5 pb-3">
             <div className="d-flex justify-content-between align-items-center py-2">
@@ -19,19 +21,21 @@ export default function ResultSearch({ items }) {
                 </div>
             </div>
 
-            <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
-                {searchProducts && searchProducts.length > 0 ? (
-                    searchProducts.map((item) => (
+            {/* Aggiunto il controllo per mostrare "Nessun risultato" quando non ci sono prodotti */}
+            {searchProducts && searchProducts.length === 0 ? (
+                <p className="text-gray-400">Nessun risultato</p>
+            ) : (
+                <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
+                    {searchProducts && searchProducts.length > 0 && searchProducts.map((item) => (
                         <div
                             className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
-                            key={item.id}>
+                            key={item.id}
+                        >
                             <ProductCard product={item} />
                         </div>
-                    ))
-                ) : (
-                    <p className="text-gray-400">Nessun risultato</p>
-                )}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
