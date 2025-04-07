@@ -3,8 +3,15 @@ import Badge from "react-bootstrap/Badge";
 import QuantityCounter from './ QuantityCounter';
 
 export default function OrderRecap() {
+    const { cart, handleQuantityChange, handleRemoveItem, quantities } = useGlobalContext();
 
-    const { cart, handleQuantityChange, handleRemoveItem, quantities, total } = useGlobalContext();
+    // Calcolare il totale escludendo i prodotti non disponibili
+    const total = cart.reduce((acc, item, index) => {
+        if (item.availability > 0) {
+            acc += item.price * (quantities[index] || 1);
+        }
+        return acc;
+    }, 0);
 
     return (
         <div className="offcanvas-body">
@@ -29,7 +36,6 @@ export default function OrderRecap() {
                                 </p>
 
                                 {item.availability === 0 && (
-                                    
                                     <Badge bg="warning" text="dark">Non disponibile</Badge>
                                 )}
                             </div>
@@ -37,7 +43,6 @@ export default function OrderRecap() {
                             {/* Counter + trash */}
                             <div className='d-flex gap-2 align-items-center'>
                                 {item.availability > 0 ? (
-                                    console.log(item),
                                     <QuantityCounter
                                         index={index}
                                         quantity={quantities[index] || 1}
