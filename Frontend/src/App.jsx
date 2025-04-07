@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalProvider } from "./context/GlobalContext";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // layout
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -14,6 +15,8 @@ import SummerPage from "./pages/SummerPage";
 import WinterPage from "./pages/WinterPage";
 import Checkout from "./pages/CheckoutPage";
 import SearchPage from "./pages/SearchPage";
+import NotFound from "./pages/NotFound";
+import ThankYou from "./pages/ThankYou"
 
 // components
 import CartSection from "./components/CartSection";
@@ -36,6 +39,8 @@ function App() {
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
                     </Route>
+                        <Route path="*" Component={NotFound} />
+                        <Route path="/thankyou" Component={ThankYou} />
                 </Routes>
             </BrowserRouter>
         </GlobalProvider>

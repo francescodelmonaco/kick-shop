@@ -141,7 +141,7 @@ function storeOrder(req, res) {
                 details: err.message
               });
             }
-
+             
             // Invia l'email di conferma
             sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userName, userSurname, city, province, telephone, addressShipping, orderProductsForEmail );
 
