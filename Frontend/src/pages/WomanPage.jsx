@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import CategorySection from '../components/CategorySection';
 
-export default function ManPage() {
+export default function WomanPage() {
 
-    // CHIAMATA PRODOTTI UOMO
+    // CHIAMATA PRODOTTI donna
     const [womanProducts, setWomanProducts] = useState([]);
 
     // fetch per prodotti

@@ -30,12 +30,30 @@ export default function OrderRecap() {
                                         <option value="5">5</option>
                                     </Form.Select>
                                 </Form.Group>
+                                <div className="container mt-5 row d-flex">
+                                    <div className="row d-flex">
+                                        <div className="col-sm-4 col-sm-offset-4">
+                                            <div className="input-group mb-3">
+                                                <div className="input-group-prepend">
+                                                    <button className="btn btn-dark btn-sm" id="minus-btn"><i className="fa fa-minus"></i></button>
+                                                </div>
+                                                <input type="number" id="qty_input" className="form-control form-control-sm text-align-center"
+value="1" min="1" />
+                                                <div className="input-group-prepend">
+                                                    <button className="btn btn-dark btn-sm" id="plus-btn"><i className="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-4"></div>
+                                    </div>
+                                </div>
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => handleRemoveItem(index)} // Rimuove l'elemento
                                 >
                                     <i className="fa-solid fa-trash"></i>
                                 </button>
+
                             </div>
                         </li>
                     ))}

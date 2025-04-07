@@ -17,6 +17,7 @@ import Checkout from "./pages/CheckoutPage";
 import SearchPage from "./pages/SearchPage";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou"
+import WishListPage from "./pages/WishListPage";
 
 // components
 import CartSection from "./components/CartSection";
@@ -31,6 +32,7 @@ function App() {
                 <Routes>
                     <Route Component={DefaultLayout}>
                         <Route path="/" Component={HomePage} />
+                        <Route path="/wish" Component={WishListPage} />
                         <Route path="/products/:slug" Component={ProductPage} />
                         <Route path="/man" Component={ManPage} />
                         <Route path="/woman" Component={WomanPage} />
@@ -39,8 +41,8 @@ function App() {
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
                     </Route>
-                        <Route path="*" Component={NotFound} />
-                        <Route path="/thankyou" Component={ThankYou} />
+                    <Route path="*" Component={NotFound} />
+                    <Route path="/thankyou" Component={ThankYou} />
                 </Routes>
             </BrowserRouter>
         </GlobalProvider>

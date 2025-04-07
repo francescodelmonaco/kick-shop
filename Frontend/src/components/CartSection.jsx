@@ -23,19 +23,21 @@ export default function CartSection() {
                         aria-label="Close"
                     >
                     </button>
+
+                    
                 </div>
 
                 <OrderRecap />
 
                 <Link
-                        type="button"
-                        onClick={ ()=> navigate ("/checkout")}
-                        className="btn btn-success mx-3 my-3"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                        >
-                            Procedi al prossimo step
-                    
+                    type="button"
+                    onClick={() => navigate("/checkout")}
+                    className="btn btn-success mx-3 my-3"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                >
+                    Procedi al prossimo step
+
                 </Link>
 
             </div>
