@@ -23,14 +23,16 @@ export default function Header() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            <li className="nav-item" >
                                 <NavLink
                                     className={({ isActive }) =>
                                         `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
                                     }
-                                    aria-current="page"
                                     to={`/`}
+                                    aria-current="page"
                                     onClick={() => window.scrollTo(0, 0)}
+                                    data-bs-toggle="collapse"
+                                    data-bs-target=".navbar-collapse.show"
                                 >
                                     Home
                                 </NavLink>
@@ -87,7 +89,7 @@ export default function Header() {
 
                         {/* whishlist */}
                         <NavLink
-                            className="btn btn-outline-light me-2"
+                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
                             type="button"
                             to={`/wish`}
                             style={{
@@ -113,7 +115,7 @@ export default function Header() {
 
                         {/* carrello */}
                         <button
-                            className="btn btn-outline-light me-2"
+                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
                             type="button"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasRight"

@@ -24,7 +24,7 @@ export default function CartSection() {
                     >
                     </button>
 
-                    
+
                 </div>
 
                 <OrderRecap />
