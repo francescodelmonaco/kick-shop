@@ -17,7 +17,7 @@ export default function OrderRecap() {
                             <p><strong>{item.name}</strong> - {item.price} €</p>
 
                             <div className='d-flex gap-2'>
-                                <Form.Group as={Col} controlId="formGridState">
+                                {/* <Form.Group as={Col} controlId="formGridState">
                                     <Form.Select
                                         value={quantities[index] || 1}
                                         className="form-select-sm"
@@ -29,7 +29,7 @@ export default function OrderRecap() {
                                         <option value="4">4</option>
                                         <option value="5">5</option>
                                     </Form.Select>
-                                </Form.Group>
+                                </Form.Group> */}
                                 <div className="container mt-5 row d-flex">
                                     <div className="row d-flex">
                                         <div className="col-sm-4 col-sm-offset-4">
