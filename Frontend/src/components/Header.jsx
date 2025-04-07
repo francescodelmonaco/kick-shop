@@ -89,11 +89,11 @@ export default function Header() {
                         <NavLink
                             className="btn btn-outline-light me-2"
                             type="button"
-                            to ={`/wish`}
+                            to={`/wish`}
                             style={{
                                 transition: "background-color 0.3s, color 0.3s",
                             }}
->
+                        >
                             <i
                                 className="fa-solid fa-heart"
                                 style={{

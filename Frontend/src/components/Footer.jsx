@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Footer1() {
+export default function Footer() {
     return (
         <footer className="footer-container bg-dark text-light py-4">
             <div className="container">

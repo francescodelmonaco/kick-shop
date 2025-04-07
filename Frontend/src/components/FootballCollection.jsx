@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import bunnerballs from "../assets/img/bunner-balls.webp";
 
-export default function Footer() {
+export default function FootballCollection() {
     return (
         <>
             <Link className="w-100 position-relative d-block" to={`/man`}>
-                <figure className="categoryCard mx-auto mb-4">
-                    <img src={bunnerballs} alt="Ball category" className="w-100 imgBox" />
+                <figure className="categoryCard w-100 mb-4">
+                    <img src={bunnerballs} alt="Ball category" className="w-100" />
                 </figure>
                 <button
-                    className="btn footer-button btn-light position-absolute start-50 translate-middle-x bottom-0 ms-3 mb-3 fs-4"
+                    className="btn footer-button category-button position-absolute start-50 bottom-0 ms-3 mb-3 fs-4 d-none d-lg-block"
                     style={{ zIndex: 10 }}
                 >
                     Palloni da Collezione
