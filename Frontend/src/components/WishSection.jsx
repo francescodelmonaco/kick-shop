@@ -53,7 +53,7 @@ export default function WishSection() {
                                             handleRemoveItemWish(item.id);
                                         }}
                                     >
-                                        Aggiungi al carrello
+                                        <i class="fa-solid fa-cart-shopping"></i>
                                     </button>
 
                                     <button
@@ -65,7 +65,7 @@ export default function WishSection() {
                                         data-bs-dismiss="offcanvas"
                                         aria-label="Close"
                                     >
-                                        Dettagli
+                                     <i class="fa-solid fa-eye"></i>
                                     </button>
 
                                     <button
