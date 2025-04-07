@@ -3,14 +3,14 @@ import bunnerballs from "../assets/img/bunner-balls.webp";
 
 export default function FootballCollection() {
     // Nascondi la canvas nella pagina di checkout
-    if (location.pathname === "/ballon") return null;
+    // if (location.pathname === "/ballon") return null;
 
     return (
         <>
             <Link
                 className="w-100 position-relative d-block"
-                onClick={() => window.scrollTo(0, 0)}
                 to={`/ballon`}
+                onClick={() => window.scrollTo(0, 0)}
             >
                 <figure className="categoryCard w-100 mb-4">
                     <img src={bunnerballs} alt="Ball category" className="w-100" />
