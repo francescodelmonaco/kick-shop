@@ -78,15 +78,9 @@ export default function Header() {
 
                         {/* whishlist */}
                         <NavLink
-
-
-
                             className="btn btn-outline-light me-2"
                             type="button"
                             to ={`/wish`}
-                            // data-bs-toggle="offcanvas"
-                            // data-bs-target="#offcanvasLeft"
-                            // aria-controls="offcanvasLeft"
                             style={{
                                 transition: "background-color 0.3s, color 0.3s",
                             }}
