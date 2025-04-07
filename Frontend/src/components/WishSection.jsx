@@ -1,8 +1,9 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function WishSection() {
-    const { wish, addToCart, handleRemoveItemWish } = useGlobalContext();
+    const { wish, addToCart, handleRemoveItemWish, } = useGlobalContext();
+    const navigate = useNavigate();
 
     return (
         <div className="offcanvas offcanvas-start" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
@@ -18,8 +19,8 @@ export default function WishSection() {
             <div className="offcanvas-body">
                 {wish.length > 0 ? (
                     <ul>
-                        {wish.map((item) => (
-                            <li key={item.id}>
+                        {wish.map((item, index) => (
+                            <li key={`${item.id}-${index}`}>
                                 <h5>
                                     <strong>{item.name} - € {item.price}</strong>
                                 </h5>
@@ -32,11 +33,18 @@ export default function WishSection() {
                                 >
                                     Aggiungi al carrello
                                 </button>
-                                <Link to={`/products/${item.slug}`}>
-                                    <button className="btn btn-primary">
-                                        Dettagli
-                                    </button>
-                                </Link>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() => {
+                                        window.scrollTo(0, 0); // ScrollBarr
+                                        navigate(`/products/${item.slug}`); 
+                                        
+                                    }}
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                                >
+                                    Dettagli
+                                </button>
                                 <button
                                     className="btn btn-danger"
                                     onClick={() => handleRemoveItemWish(item.id)} // Rimuove solo il prodotto selezionato

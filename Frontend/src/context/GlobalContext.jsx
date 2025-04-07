@@ -26,7 +26,7 @@ const GlobalProvider = ({ children }) => {
         const savedCart = localStorage.getItem("cart");
         return savedCart ? JSON.parse(savedCart) : [];
     });
-    const [wish, setWish] = useState([]) 
+    const [wish, setWish] = useState([])
 
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
@@ -70,7 +70,7 @@ const GlobalProvider = ({ children }) => {
 
 
     // Valori condivisi nel contesto globale
-    // Cart related effects and functions
+
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
@@ -94,11 +94,14 @@ const GlobalProvider = ({ children }) => {
     };
 
     const addToWish = (product) => {
-        console.log("Aggiunto alla wishlist:", product);
-        setWish((prevWish) => [...prevWish, product]);
+        setWish((prevWish) => {
+            if (prevWish.some((item) => item.id === product.id)) {
+                return prevWish; // Non aggiungere duplicati
+            }
+            return [...prevWish, product];
+        });
     };
-    
-   
+
 
     const handleQuantityChange = (index, value) => {
         const updatedQuantities = [...quantities];
@@ -112,9 +115,9 @@ const GlobalProvider = ({ children }) => {
     };
     const handleRemoveItemWish = (id) => {
         const itemToRemove = wish.find((item) => item.id === id); // Trova l'elemento da rimuovere
-        if (itemToRemove) { 
-        setWish((prevWish) => prevWish.filter((item) => item.id !== id)); // Rimuove solo il prodotto con l'ID corrispondente
-    };
+        if (itemToRemove) {
+            setWish((prevWish) => prevWish.filter((item) => item.id !== id)); // Rimuove solo il prodotto con l'ID corrispondente
+        };
     };
 
     const setFieldValue = (e) => {
@@ -140,6 +143,7 @@ const GlobalProvider = ({ children }) => {
             ...formData,
             carts: cartWithQuantities
         };
+
 
         axios.post('http://localhost:3000/checkout', dataToSend, {
             headers: { 'Content-Type': 'application/json' },
@@ -175,7 +179,8 @@ const GlobalProvider = ({ children }) => {
         setQuantities,
         total,
         setTotal,
-        wish
+        wish,
+
     };
 
     return (
