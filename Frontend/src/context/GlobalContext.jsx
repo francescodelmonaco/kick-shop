@@ -134,8 +134,13 @@ const GlobalProvider = ({ children }) => {
     };
 
     const handleQuantityChange = (index, value) => {
+        const product = cart[index];
+        const maxStock = product.availability;
+    
+        const newQuantity = Math.min(parseInt(value), maxStock);
+    
         const updatedQuantities = [...quantities];
-        updatedQuantities[index] = parseInt(value);
+        updatedQuantities[index] = newQuantity;
         setQuantities(updatedQuantities);
     };
 
