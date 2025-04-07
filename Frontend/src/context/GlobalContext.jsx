@@ -30,9 +30,23 @@ const GlobalProvider = ({ children }) => {
     // Gestione ricerca
     const handleSubmit = (searchTerm) => {
         axios.get(`http://localhost:3000/search/${searchTerm}`)
-            .then((res) => setSearchProducts(res.data))
-            .catch((error) => console.log("Errore nella ricerca:", error));
+            .then((res) => {
+                if (res.data && Array.isArray(res.data)) {
+                    setSearchProducts(res.data); // Imposta i prodotti trovati
+                } else {
+                    setSearchProducts([]); // Se non è un array, metti un array vuoto
+                }
+            })
+            .catch((error) => {
+                if (error.response && error.response.status === 404) {
+                    setSearchProducts([]); // Gestisci errore 404 e mostra array vuoto
+                    console.log("Nessun prodotto trovato per questa ricerca.");
+                } else {
+                    console.log("Errore durante la ricerca:", error);
+                }
+            });
     };
+    
 
     // Gestione ordinamento
     const [sortCriteria, setSortCriteria] = useState({ field: 'name', order: 'asc' });

@@ -17,7 +17,10 @@ export default function SearchPage() {
                     searchProducts.length > 0 ? (
                         <ResultSearch items={searchProducts} />
                     ) : (
-                        <p>Nessun prodotto trovato.</p>
+                        <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
+                            <p className="text-muted">Nessun prodotto trovato.</p>
+                        </div>
+
                     )
                 }
 
@@ -25,7 +28,7 @@ export default function SearchPage() {
             </div>
 
 
-            
+
         </>
     )
 };
