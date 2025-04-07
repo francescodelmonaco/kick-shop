@@ -65,7 +65,8 @@ const GlobalProvider = ({ children }) => {
     const filteredItems = filters(); // Ottieni i prodotti filtrati
 
 
-
+    // VISUALIZZAZIONE GRIGLIA - LISTA
+    const [viewMode, setViewMode] = useState("grid"); // "grid" o "list"
 
 
     // Valori condivisi nel contesto globale
@@ -182,7 +183,8 @@ const GlobalProvider = ({ children }) => {
         total,
         setTotal,
         wish,
-
+        viewMode,
+        setViewMode
     };
 
     return (

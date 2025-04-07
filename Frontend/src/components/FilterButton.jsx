@@ -9,7 +9,7 @@ export default function FilterButton({ filter }) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                 >
-                    Filtra per
+                    Ordina per
                 </button>
                 <ul className="dropdown-menu">
                     <li>
