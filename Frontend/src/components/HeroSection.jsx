@@ -9,7 +9,9 @@ export default function HeroSection() {
 
             <h3 className="category-subtitle text-light position-absolute end-0 bottom-0 me-3 mb-3 d-none d-md-block">Adidas Predator</h3>
 
-            <Link to={`products/adidas-predator`}>
+            <Link
+                onClick={() => window.scrollTo(0, 0)}
+                to={`products/adidas-predator`}>
                 <button className="btn category-button btn-light position-absolute start-0 bottom-0 ms-3 mb-3 fs-4" type="submit">Acquista ora</button>
             </Link>
         </div>
