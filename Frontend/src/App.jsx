@@ -18,6 +18,7 @@ import SearchPage from "./pages/SearchPage";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou"
 import WishListPage from "./pages/WishListPage";
+import BallonPage from "./pages/BallonPage";
 
 // components
 import CartSection from "./components/CartSection";
@@ -40,6 +41,8 @@ function App() {
                         <Route path="/winter" Component={WinterPage} />
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
+                        <Route path="/ballon" Component={BallonPage} />
+
                     </Route>
                     <Route path="*" Component={NotFound} />
                     <Route path="/thankyou" Component={ThankYou} />

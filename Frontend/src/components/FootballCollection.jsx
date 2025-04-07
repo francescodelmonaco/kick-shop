@@ -4,7 +4,7 @@ import bunnerballs from "../assets/img/bunner-balls.webp";
 export default function FootballCollection() {
     return (
         <>
-            <Link className="w-100 position-relative d-block" to={`/man`}>
+            <Link className="w-100 position-relative d-block" to={`/ballon`}>
                 <figure className="categoryCard w-100 mb-4">
                     <img src={bunnerballs} alt="Ball category" className="w-100" />
                 </figure>
