@@ -28,9 +28,8 @@ const GlobalProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
 
     // Gestione ricerca
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        axios.get(`http://localhost:3000/search/${query}`)
+    const handleSubmit = (searchTerm) => {
+        axios.get(`http://localhost:3000/search/${searchTerm}`)
             .then((res) => setSearchProducts(res.data))
             .catch((error) => console.log("Errore nella ricerca:", error));
     };
@@ -64,9 +63,7 @@ const GlobalProvider = ({ children }) => {
     // VISUALIZZAZIONE GRIGLIA - LISTA
     const [viewMode, setViewMode] = useState("grid"); // "grid" o "list"
 
-
     // Altri effetti e metodi (carrello, wish list, quantità, checkout) restano invariati
-
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
