@@ -39,7 +39,7 @@ export default function SummerPage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Collezione Estate</h1>
+            <h1 className="text-center category-title py-3">Collezione Estate</h1>
 
             <figure>
                 <img src="/src/assets/img/hero-summer.webp" alt="Hero image 3" className="w-100 hero-border" />
