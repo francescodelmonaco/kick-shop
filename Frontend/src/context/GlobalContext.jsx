@@ -178,7 +178,8 @@ const GlobalProvider = ({ children }) => {
         setTotal,
         wish,
         viewMode,
-        setViewMode
+        setViewMode,
+       
     };
 
     return (
