@@ -3,10 +3,14 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import CategorySection from '../components/CategorySection';
+import FilterSection from '../components/FilterSection';
+import { useGlobalContext } from '../context/GlobalContext';
 
 export default function SummerPage() {
 
-    // CHIAMATA PRODOTTI UOMO
+    const { viewMode } = useGlobalContext();
+
+    // CHIAMATA PRODOTTI
     const [summerProducts, setSummerProducts] = useState([]);
 
     // fetch per prodotti
@@ -28,8 +32,11 @@ export default function SummerPage() {
         return summerProducts
             .filter((summerProduct) => summerProduct.season === "estate" || summerProduct.season === "primavera") // Filtra per genere
             .map((summerProduct) => (
-                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={summerProduct.id}>
-                    <ProductCard product={summerProduct} />
+                <div
+                    className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
+                    key={summerProduct.id}
+                >
+                    <ProductCard product={summerProduct} viewMode={viewMode} />
                 </div>
             ));
     };
@@ -46,9 +53,12 @@ export default function SummerPage() {
             </figure>
 
             <div className="px-5">
-                <div className="row row-cols-lg-4 mb-5">
+                <FilterSection />
+
+                <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
                     {renderSummerProducts()}
                 </div>
+
                 <CategorySection />
             </div>
         </>

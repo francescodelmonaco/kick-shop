@@ -2,10 +2,14 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import CategorySection from '../components/CategorySection';
+import FilterSection from '../components/FilterSection';
+import { useGlobalContext } from '../context/GlobalContext';
 
 export default function WomanPage() {
 
-    // CHIAMATA PRODOTTI donna
+    const { viewMode } = useGlobalContext();
+
+    // CHIAMATA PRODOTTI
     const [womanProducts, setWomanProducts] = useState([]);
 
     // fetch per prodotti
@@ -27,8 +31,11 @@ export default function WomanPage() {
         return womanProducts
             .filter((womanProduct) => womanProduct.gender === "donna") // Filtra per genere
             .map((womanProduct) => (
-                <div className="col-lg-3 col-md-4 col-sm-6 g-3 pb-3" key={womanProduct.id}>
-                    <ProductCard product={womanProduct} />
+                <div
+                    className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
+                    key={womanProduct.id}
+                >
+                    <ProductCard product={womanProduct} viewMode={viewMode} />
                 </div>
             ));
     };
@@ -38,17 +45,20 @@ export default function WomanPage() {
 
     return (
         <>
-            <h1 className="text-center category-title py-3">Woman Collection</h1>
-            
+            <h1 className="text-center py-3">Woman Collection</h1>
+
 
             <figure>
                 <img src="/src/assets/img/hero-woman.webp" alt="Hero image 3" className="w-100 hero-border" />
             </figure>
 
             <div className="px-5">
-                <div className="row row-cols-lg-4 mb-5">
+                <FilterSection />
+
+                <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
                     {renderWomanProducts()}
                 </div>
+
                 <CategorySection />
             </div>
         </>

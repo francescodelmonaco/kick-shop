@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, viewMode }) {
     const { id, name, price, season, gender, brand, slug, images, availability } = product;
 
     const { addToCart, addToWish } = useGlobalContext();
 
     return (
-        <div className="card h-100" key={id}>
+        <div className={`card h-100 ${viewMode === "list" ? "flex-row" : ""}`} key={id}>
             <Link className="card-body" to={`/products/${slug}`} >
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
                     <div className="carousel-inner cardBox position-relative">
@@ -60,7 +60,7 @@ export default function ProductCard({ product }) {
                             aria-controls="offcanvasRight"// Chiama la funzione addToCart con il prodotto
                         />
 
-                      
+
 
 
                         {/* Carousel delle immagini */}
@@ -103,7 +103,7 @@ export default function ProductCard({ product }) {
                 </div>
 
                 {/* Dettagli del prodotto */}
-                <div className="d-flex justify-content-between" onClick={() => window.scrollTo(0, 0)}>
+                <div className={`d-flex ${viewMode === "list" ? "flex-column" : "justify-content-between"}`}>
                     <h5 className="card-title"><strong>{name}</strong></h5>
                     <h5 className="fonts"><strong>€ {price}</strong></h5>
                 </div>

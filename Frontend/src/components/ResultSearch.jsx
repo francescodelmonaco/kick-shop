@@ -1,9 +1,10 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import ProductCard from "./ProductCard";
 import FilterButton from "./FilterButton";
+import FilterSection from "./FilterSection";
 
 export default function ResultSearch({ items }) {
-    const { setFilterItems, filteredItems } = useGlobalContext();
+    const { setFilterItems, filteredItems, viewMode } = useGlobalContext();
 
     return (
         <div className="px-5 pb-3">
@@ -12,13 +13,20 @@ export default function ResultSearch({ items }) {
                     Prodotti trovati: {items.length}
                 </p>
 
-                <FilterButton filter={setFilterItems} />
+                <div className="d-flex align-items-center gap-2">
+                    <FilterButton filter={setFilterItems} />
+
+                    <FilterSection />
+                </div>
+
             </div>
 
-            <div className="row row-cols-lg-4 mb-5">
+            <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
                 {filteredItems && filteredItems.length > 0 ? (
                     filteredItems.map((item) => (
-                        <div className="col g-3 pb-3" key={item.id}>
+                        <div
+                            className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
+                            key={item.id}>
                             <ProductCard product={item} />
                         </div>
                     ))
