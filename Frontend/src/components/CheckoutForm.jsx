@@ -5,23 +5,39 @@ import Row from 'react-bootstrap/Row';
 import { useGlobalContext } from '../context/GlobalContext';
 import { useNavigate } from 'react-router-dom';
 
+import { useState } from 'react';
+
 export default function CheckoutForm() {
-    const { submitCheckout, formData, setFieldValue } = useGlobalContext()
+    const { submitCheckout, formData, setFieldValue } = useGlobalContext();
     const navigate = useNavigate();
+
+    // Stato di validazione per i campi
+    const [validated, setValidated] = useState(false);
 
     // Chiamata alla funzione submitCheckout passando l'evento e navigate
     const handleSubmit = (e) => {
+        const form = e.currentTarget;
+
+        // Verifica la validità dei campi prima di inviare
+        if (form.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        setValidated(true);
         submitCheckout(e, navigate);
     };
 
     return (
         <Form
-            className='py-3 w-50'
-            onSubmit={handleSubmit}>
-            <h1 className='text-center py-3'>Checkout</h1>
-
+            className='py-3 w-100 px-3 px-md-5'
+            onSubmit={handleSubmit}
+            noValidate
+            validated={validated}
+        >
+            <h5>Inserisci i dati necessari per procederere con l'ordine</h5>
             <Row className="mb-3">
-                <Form.Group as={Col} >
+                <Form.Group as={Col} controlId="userName">
                     <Form.Label>Nome</Form.Label>
                     <Form.Control
                         name='userName'
@@ -30,13 +46,14 @@ export default function CheckoutForm() {
                         type="text"
                         placeholder="Inserisci nome"
                         required
+                        isInvalid={validated && !formData.userName}
                     />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="invalid-feedback">
                         Questo campo è obbligatorio.
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group as={Col} >
+                <Form.Group as={Col} controlId="userSurname">
                     <Form.Label>Cognome</Form.Label>
                     <Form.Control
                         name="userSurname"
@@ -45,15 +62,16 @@ export default function CheckoutForm() {
                         type="text"
                         placeholder="Inserisci cognome"
                         required
+                        isInvalid={validated && !formData.userSurname}
                     />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="invalid-feedback">
                         Questo campo è obbligatorio.
                     </Form.Text>
                 </Form.Group>
             </Row>
 
             <Row className="mb-3">
-                <Form.Group as={Col} >
+                <Form.Group as={Col} controlId="userEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                         name="userEmail"
@@ -62,13 +80,14 @@ export default function CheckoutForm() {
                         type="email"
                         placeholder="Inserisci email"
                         required
+                        isInvalid={validated && !formData.userEmail}
                     />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="invalid-feedback">
                         Questo campo è obbligatorio.
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group as={Col} >
+                <Form.Group as={Col} controlId="telephone">
                     <Form.Label>Cellulare</Form.Label>
                     <Form.Control
                         name="telephone"
@@ -77,8 +96,9 @@ export default function CheckoutForm() {
                         type="phone"
                         placeholder="Inserisci il numero di cellulare"
                         required
+                        isInvalid={validated && !formData.telephone}
                     />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="invalid-feedback">
                         Questo campo è obbligatorio.
                     </Form.Text>
                 </Form.Group>
@@ -86,7 +106,7 @@ export default function CheckoutForm() {
 
             <hr />
 
-            <Form.Group className="mb-3" >
+            <Form.Group className="mb-3" controlId="addressShipping">
                 <Form.Label>Indirizzo di spedizione</Form.Label>
                 <Form.Control
                     name="addressShipping"
@@ -95,13 +115,14 @@ export default function CheckoutForm() {
                     type="text"
                     placeholder="Inserisci l'indirizzo di spedizione"
                     required
+                    isInvalid={validated && !formData.addressShipping}
                 />
-                <Form.Text className="text-muted">
+                <Form.Text className="invalid-feedback">
                     Questo campo è obbligatorio.
                 </Form.Text>
             </Form.Group>
 
-            <Form.Group as={Col} className="mb-3">
+            <Form.Group as={Col} className="mb-3" controlId="addressInvoice">
                 <Form.Label>Indirizzo di Fatturazione</Form.Label>
                 <Form.Control
                     name="addressInvoice"
@@ -112,7 +133,7 @@ export default function CheckoutForm() {
                 />
             </Form.Group>
 
-            <Form.Group as={Col} className="mb-3" >
+            <Form.Group as={Col} className="mb-3" controlId="city">
                 <Form.Label>Città</Form.Label>
                 <Form.Control
                     name="city"
@@ -121,21 +142,23 @@ export default function CheckoutForm() {
                     type="text"
                     placeholder="Inserisci città"
                     required
+                    isInvalid={validated && !formData.city}
                 />
-                <Form.Text className="text-muted">
+                <Form.Text className="invalid-feedback">
                     Questo campo è obbligatorio.
                 </Form.Text>
             </Form.Group>
 
-            <Form.Group as={Col} >
+            <Form.Group as={Col} controlId="province">
                 <Form.Label>Provincia</Form.Label>
                 <Form.Select
                     name="province"
                     onChange={setFieldValue}
                     value={formData.province}
                     required
+                    isInvalid={validated && (!formData.province || formData.province === "")}
                 >
-                    <option>Seleziona...</option>
+                    <option value="">Seleziona...</option>
                     <option>Agrigento</option>
                     <option>Alessandria</option>
                     <option>Ancona</option>
@@ -221,7 +244,11 @@ export default function CheckoutForm() {
                     <option>Vicenza</option>
                     <option>Viterbo</option>
                 </Form.Select>
+                <Form.Text className="invalid-feedback">
+                    Seleziona una provincia valida.
+                </Form.Text>
             </Form.Group>
+
 
             <hr />
 
