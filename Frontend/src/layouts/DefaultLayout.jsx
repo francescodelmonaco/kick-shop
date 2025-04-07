@@ -1,7 +1,7 @@
-import Footer from "../components/Footer";
+import FootballCollection from "../components/FootballCollection";
 import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
-
+import Footer from "../components/Footer";
 // import BannerScroll from "../components/BannerScroll";
 
 export default function DefaultLayout() {
@@ -15,6 +15,7 @@ export default function DefaultLayout() {
             <main className="container-fluid">
                 {/* Questo è il contenuto dinamico delle rotte */}
                 <Outlet />
+                <FootballCollection />
             </main>
 
             <footer>
