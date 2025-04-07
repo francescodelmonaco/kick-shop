@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import ProductCard from "./ProductCard";
 import FilterButton from "./FilterButton";
 import FilterSection from "./FilterSection";
+import VerticalProductCard from "./VerticalProductCard";
 
 export default function ResultSearch({ items }) {
     const { searchProducts, viewMode } = useGlobalContext();
@@ -31,7 +31,7 @@ export default function ResultSearch({ items }) {
                             className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                             key={item.id}
                         >
-                            <ProductCard product={item} />
+                            <VerticalProductCard product={item} />
                         </div>
                     ))}
                 </div>

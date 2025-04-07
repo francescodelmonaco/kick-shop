@@ -249,6 +249,11 @@ nav a img:hover {
     transition: color 0.3s ease;
 }
 
+.underline {
+    border-bottom: 4px solid var(--white);
+    width: 100%;
+}
+
 /* card */
 a {
     text-decoration: none;
@@ -294,6 +299,11 @@ a {
 .categoryCard {
     width: 95%;
 
+}
+
+/* list card */
+.listImg {
+    height: 50%;
 }
 
 /* Posizionamento dell'icona del cuore */

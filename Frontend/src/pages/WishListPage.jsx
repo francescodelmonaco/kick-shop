@@ -3,7 +3,7 @@ import CategorySection from "../components/CategorySection";
 import HorizontalProductCard from "../components/HorizontalProductCard";
 
 export default function WishListPage() {
-    const { wish, product} = useGlobalContext(); // Accedi alla wishlist dal contesto
+    const { wish, product } = useGlobalContext(); // Accedi alla wishlist dal contesto
 
     return (
         <>

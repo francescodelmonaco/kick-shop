@@ -1,15 +1,19 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
-import CategorySection from '../components/CategorySection';
-import FilterSection from '../components/FilterSection';
 import { useGlobalContext } from '../context/GlobalContext';
 
+// components
+import CategorySection from '../components/CategorySection';
+import FilterSection from '../components/FilterSection';
+import VerticalProductCard from '../components/VerticalProductCard';
+import ListProductCard from '../components/ListProductCard';
+
 export default function ManPage() {
-    // Stato per i prodotti
-    const [manProducts, setManProducts] = useState([]);
 
     const { viewMode } = useGlobalContext();
+
+    // CHIAMATA PRODOTTI
+    const [manProducts, setManProducts] = useState([]);
 
     // Fetch per i prodotti
     const fetchProducts = () => {
@@ -32,7 +36,11 @@ export default function ManPage() {
                     className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                     key={manProduct.id}
                 >
-                    <ProductCard product={manProduct} viewMode={viewMode} />
+                    {viewMode === "grid" ? (
+                        <VerticalProductCard product={manProduct} viewMode={viewMode} />
+                    ) : (
+                        <ListProductCard product={manProduct} />
+                    )}
                 </div>
             ));
     };

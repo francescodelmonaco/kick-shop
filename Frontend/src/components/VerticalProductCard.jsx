@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
-export default function ProductCard({ product, viewMode }) {
-    const { id, name, price, season, gender, brand, slug, images, availability } = product;
+export default function VerticalProductCard({ product, viewMode }) {
+    const { id, name, price, slug, images } = product;
 
     const { addToCart, addToWish } = useGlobalContext();
 

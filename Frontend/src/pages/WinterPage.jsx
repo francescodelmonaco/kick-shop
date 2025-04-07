@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
-import CategorySection from '../components/CategorySection';
-import FilterSection from '../components/FilterSection';
 import { useGlobalContext } from '../context/GlobalContext';
+
+// components
+import VerticalProductCard from '../components/VerticalProductCard';
+import CategorySection from '../components/CategorySection';
+import ListProductCard from '../components/ListProductCard';
+import FilterSection from '../components/FilterSection';
 
 export default function WinterPage() {
 
@@ -35,7 +38,11 @@ export default function WinterPage() {
                     className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                     key={winterProduct.id}
                 >
-                    <ProductCard product={winterProduct} viewMode={viewMode} />
+                    {viewMode === "grid" ? (
+                        <VerticalProductCard product={winterProduct} viewMode={viewMode} />
+                    ) : (
+                        <ListProductCard product={winterProduct} />
+                    )}
                 </div>
             ));
     };

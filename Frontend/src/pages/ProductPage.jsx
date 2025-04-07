@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useParams } from 'react-router-dom';
-import ProductCard from "../components/ProductCard";
+import VerticalProductCard from "../components/VerticalProductCard";
 import CategorySection from "../components/CategorySection";
 import HorizontalProductCard from "../components/HorizontalProductCard";
 
@@ -57,7 +57,7 @@ export default function ProductPage() {
             .filter((relatedProduct) => relatedProduct.brand === product.brand && relatedProduct.id !== product.id) // Filtra per brand e rimuove il prodotto principale
             .map((relatedProduct) => (
                 <div className="col g-3" key={relatedProduct.id}>
-                    <ProductCard product={relatedProduct} addToCart={addToCart} />
+                    <VerticalProductCard product={relatedProduct} addToCart={addToCart} />
                 </div>
             ));
     };

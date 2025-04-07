@@ -23,16 +23,14 @@ export default function Header() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item" >
+                            <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
-                                    to={`/`}
                                     aria-current="page"
+                                    to={`/`}
                                     onClick={() => window.scrollTo(0, 0)}
-                                    data-bs-toggle="collapse"
-                                    data-bs-target=".navbar-collapse.show"
                                 >
                                     Home
                                 </NavLink>
@@ -40,7 +38,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/man`}
@@ -52,7 +50,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/woman`}
@@ -64,7 +62,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/summer`}
@@ -76,7 +74,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/winter`}

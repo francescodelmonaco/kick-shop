@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
+import { useGlobalContext } from '../context/GlobalContext';
+
+// components
+import VerticalProductCard from '../components/VerticalProductCard';
 import CategorySection from '../components/CategorySection';
 import FilterSection from '../components/FilterSection';
-import { useGlobalContext } from '../context/GlobalContext';
+import ListProductCard from '../components/ListProductCard';
 
 export default function WomanPage() {
 
@@ -35,7 +38,11 @@ export default function WomanPage() {
                     className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                     key={womanProduct.id}
                 >
-                    <ProductCard product={womanProduct} viewMode={viewMode} />
+                    {viewMode === "grid" ? (
+                        <VerticalProductCard product={womanProduct} viewMode={viewMode} />
+                    ) : (
+                        <ListProductCard product={womanProduct} />
+                    )}
                 </div>
             ));
     };
