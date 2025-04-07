@@ -37,8 +37,7 @@ export default function OrderRecap() {
                                                 <div className="input-group-prepend">
                                                     <button className="btn btn-dark btn-sm" id="minus-btn"><i className="fa fa-minus"></i></button>
                                                 </div>
-                                                <input type="number" id="qty_input" className="form-control form-control-sm text-align-center"
-value="1" min="1" />
+                                                <input type="number" id="qty_input" className="form-control form-control-sm text-align-center" value="1" min="1" />
                                                 <div className="input-group-prepend">
                                                     <button className="btn btn-dark btn-sm" id="plus-btn"><i className="fa fa-plus"></i></button>
                                                 </div>

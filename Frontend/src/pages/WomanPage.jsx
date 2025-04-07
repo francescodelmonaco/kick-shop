@@ -45,7 +45,7 @@ export default function WomanPage() {
 
     return (
         <>
-            <h1 className="text-center py-3">Woman Collection</h1>
+            <h1 className="text-center category-title py-3">Collezione Donna</h1>
 
 
             <figure>

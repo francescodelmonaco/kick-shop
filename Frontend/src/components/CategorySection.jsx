@@ -12,7 +12,11 @@ export default function CategorySection() {
                 <ul className="row">
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <Link className="w-100 position-relative" to={`/man`}>
+                        <Link
+                            className="w-100 position-relative"
+                            to={`/man`}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
                             <figure className="categoryCard">
                                 <img src={manCategory} alt="Man category" className="w-100 imgBox" />
                             </figure>
@@ -23,7 +27,11 @@ export default function CategorySection() {
 
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <Link className="w-100 position-relative" to={`/woman`}>
+                        <Link
+                            className="w-100 position-relative"
+                            to={`/woman`}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
                             <figure className="categoryCard">
                                 <img src={womanCategory} alt="woman category" className="w-100 imgBox" />
                             </figure>
@@ -32,7 +40,11 @@ export default function CategorySection() {
                     </li>
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <Link className="w-100 position-relative" to={`/summer`}>
+                        <Link
+                            className="w-100 position-relative"
+                            to={`/summer`}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
                             <figure className="categoryCard">
                                 <img src={summerCategory} alt="summer category" className="w-100 imgBox" />
                             </figure>
@@ -41,7 +53,11 @@ export default function CategorySection() {
                     </li>
 
                     <li className="col-xl-3 col-lg-3 col-md-6 col-sm-6">
-                        <Link className="w-100 position-relative" to={`/winter`}>
+                        <Link
+                            className="w-100 position-relative"
+                            to={`/winter`}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
                             <figure className="categoryCard">
                                 <img src={winterCategory} alt="winter category" className="w-100 imgBox" />
                             </figure>

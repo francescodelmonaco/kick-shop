@@ -42,7 +42,7 @@ export default function ManPage() {
 
     return (
         <>
-            <h1 className="text-center category-title py-3">Man Collection</h1>
+            <h1 className="text-center category-title py-3">Collezione Uomo</h1>
 
             <figure>
                 <img src="/src/assets/img/hero-man.webp" alt="Hero image 2" className="w-100 hero-border" />

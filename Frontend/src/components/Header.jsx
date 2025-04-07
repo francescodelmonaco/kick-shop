@@ -6,11 +6,15 @@ export default function Header() {
 
     return (
 
-        <header>
+        <header className="fixed-top">
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to={`/`}>
-                        <img className="img-fluid rounded" width="60px" src="/src/assets/img/1743723519052.jpg" alt="Logo Kick Shop" />
+                    <Link
+                        className="navbar-brand"
+                        to={`/`}
+                        onClick={() => window.scrollTo(0, 0)}
+                    >
+                        <img className="img-fluid rounded" width="60px" src="/src/assets/img/logo-kick-shop.png" alt="Logo Kick Shop" />
                     </Link>
 
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +30,7 @@ export default function Header() {
                                     }
                                     aria-current="page"
                                     to={`/`}
+                                    onClick={() => window.scrollTo(0, 0)}
                                 >
                                     Home
                                 </NavLink>
@@ -37,6 +42,7 @@ export default function Header() {
                                     }
                                     aria-current="page"
                                     to={`/man`}
+                                    onClick={() => window.scrollTo(0, 0)}
                                 >
                                     Uomo
                                 </NavLink>
@@ -48,6 +54,7 @@ export default function Header() {
                                     }
                                     aria-current="page"
                                     to={`/woman`}
+                                    onClick={() => window.scrollTo(0, 0)}
                                 >
                                     Donna
                                 </NavLink>
@@ -59,6 +66,7 @@ export default function Header() {
                                     }
                                     aria-current="page"
                                     to={`/summer`}
+                                    onClick={() => window.scrollTo(0, 0)}
                                 >
                                     Estate
                                 </NavLink>
@@ -70,6 +78,7 @@ export default function Header() {
                                     }
                                     aria-current="page"
                                     to={`/winter`}
+                                    onClick={() => window.scrollTo(0, 0)}
                                 >
                                     Inverno
                                 </NavLink>

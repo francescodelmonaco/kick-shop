@@ -9,10 +9,6 @@
     --red: #963554;
 }
 
-/* main {
-    background-color: var(--light-blue);
-} */
-
 /* header */
 header {
     background-color: var(--red);
@@ -21,6 +17,10 @@ header {
 #root {
     background-color: var(--gray);
 
+}
+
+main {
+    padding-top: 100px;
 }
 
 /*INIZIO TITOLO*/
@@ -214,6 +214,7 @@ header {
 .footer-social-link:hover {
     color: var(--blue);
 }
+
 /*FINE FOOTER*/
 
 /* btn navbar */
