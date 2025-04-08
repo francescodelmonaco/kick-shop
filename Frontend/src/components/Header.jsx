@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
+import { useGlobalContext } from "../context/GlobalContext";
 
 import Search from "./Search";
 
 export default function Header() {
+    const { wish, cart } = useGlobalContext();
 
     return (
-
         <header className="fixed-top">
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
@@ -95,51 +96,69 @@ export default function Header() {
                                     Palloni
                                 </NavLink>
                             </li>
-
-
                         </ul>
 
-                        {/* whishlist */}
-                        <NavLink
-                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
-                            type="button"
-                            to={`/wish`}
-                            style={{
-                                transition: "background-color 0.3s, color 0.3s",
-                            }}
-                        >
-                            <i
-                                className="fa-solid fa-heart"
+
+                        {/* Wishlist */}
+                        <div className="icon-wishlist-container">
+                            <NavLink
+                                className=" me-2 mb-3 mb-lg-0"
+                                to={`/wish`}
                                 style={{
-                                    transition: "color 0.3s", // Transizione fluida per il colore
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.target.style.color = "red"; // Cambia il colore del cuoricino
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.target.style.color = ""; // Ripristina il colore originale
+                                    transition: "background-color 0.3s, color 0.3s",
                                 }}
                             >
+                                <i
+                                    className="fa-solid fa-heart custom-heart"
+                                    style={{
+                                        transition: "color 0.3s",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.color = "red"; // Cambia il colore del cuoricino
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.color = ""; // Ripristina il colore originale
+                                    }}
+                                ></i>
+                            </NavLink>
+                            {wish.length > 0 && (
+                                <span className="notification-badge"><strong>{wish.length}</strong></span>
+                            )}
+                        </div>
 
-                            </i>
+                        {/* Carrello */}
+                        <div className="icon-cart-container">
+                            <NavLink
+                                className=" me-2 mb-3 mb-lg-0"
+                                to={`/checkout`}
+                                style={{
+                                    transition: "background-color 0.3s, color 0.3s",
+                                }}
+                            >
+                                <i
+                                    className="fa-solid fa-cart-shopping custom-cart"
+                                    style={{
+                                        transition: "color 0.3s",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.color = "green"; // Cambia il colore del cuoricino
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.color = ""; // Ripristina il colore originale
+                                    }}
+                                ></i>
+                            </NavLink>
+                            {cart.length > 0 && (
+                                <span className="notification-badge"><strong>{cart.length}</strong></span>
+                            )}
+                        </div>
 
-                        </NavLink>
-
-                        {/* carrello */}
-                        <button
-                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
-                            type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"
-                        >
-                            <i className="fa-solid fa-cart-shopping"></i>
-                        </button>
 
                         <Search />
+
                     </div>
                 </div>
-            </nav>
-        </header>
-    )
+            </nav >
+        </header >
+    );
 }

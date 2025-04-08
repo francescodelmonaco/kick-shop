@@ -6,7 +6,6 @@ export default function WishSection() {
     const { wish, addToCart, handleRemoveItemWish } = useGlobalContext();
     const navigate = useNavigate();
 
-    // Stato per la modale di conferma
     const [showModal, setShowModal] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -39,10 +38,14 @@ export default function WishSection() {
                     ></button>
                 </div>
                 <div className="offcanvas-body">
+
+                    <button className="btn btn-primary" >Vai alla tua Wish List</button>
+
+
                     {wish.length > 0 ? (
                         <ul>
-                            {wish.map((item, index) => (
-                                <li key={`${item.id}-${index}`} className="mb-4">
+                            {wish.map((item) => (
+                                <li key={item.id} className="mb-4">
                                     <h5>
                                         <strong>{item.name} - € {item.price}</strong>
                                     </h5>
@@ -60,12 +63,12 @@ export default function WishSection() {
                                         className="btn btn-primary"
                                         onClick={() => {
                                             window.scrollTo(0, 0);
-                                            navigate("/wish/");
+                                            navigate("/wish");
                                         }}
                                         data-bs-dismiss="offcanvas"
                                         aria-label="Close"
                                     >
-                                     <i class="fa-solid fa-eye"></i>
+                                        <i class="fa-solid fa-eye"></i>
                                     </button>
 
                                     <button
@@ -78,13 +81,14 @@ export default function WishSection() {
                             ))}
                         </ul>
                     ) : (
-                        <p>La tua wishlist è vuota.</p>
+                        <p className="text-center text-muted">
+                            <i className="fa-solid fa-heart-broken"></i> La tua wishlist è vuota.
+                        </p>
                     )}
                 </div>
             </div>
 
-            {/* Modale di conferma */}
-            {showModal && (
+            {showModal && selectedProductId && (
                 <div className="modal show fade d-block" tabIndex="-1">
                     <div className="modal-dialog">
                         <div className="modal-content">
