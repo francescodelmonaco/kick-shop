@@ -2,14 +2,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 import { useParams } from 'react-router-dom';
+
+// components
 import VerticalProductCard from "../components/VerticalProductCard";
 import CategorySection from "../components/CategorySection";
 import HorizontalProductCard from "../components/HorizontalProductCard";
+import FilterSection from "../components/FilterSection";
+import ListProductCard from "../components/ListProductCard";
 
 export default function ProductPage() {
-    const { addToCart } = useGlobalContext();
-
-
+    const { addToCart, viewMode } = useGlobalContext();
 
     // CHIAMATA SINGOLO PRODOTTO
     const { slug } = useParams();
@@ -56,8 +58,15 @@ export default function ProductPage() {
         return relatedProducts
             .filter((relatedProduct) => relatedProduct.brand === product.brand && relatedProduct.id !== product.id) // Filtra per brand e rimuove il prodotto principale
             .map((relatedProduct) => (
-                <div className="col g-3" key={relatedProduct.id}>
-                    <VerticalProductCard product={relatedProduct} addToCart={addToCart} />
+                <div
+                    className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
+                    key={relatedProduct.id}
+                >
+                    {viewMode === "grid" ? (
+                        <VerticalProductCard product={relatedProduct} viewMode={viewMode} />
+                    ) : (
+                        <ListProductCard product={relatedProduct} />
+                    )}
                 </div>
             ));
     };
@@ -74,8 +83,10 @@ export default function ProductPage() {
                 {/* prodotti correlati */}
                 < h2 className="text-center my-3" > Prodotti correlati</h2 >
 
-                <div className="mx-5">
-                    <div className="row row-cols-lg-4 mb-5">
+                <div className="px-5">
+                    <FilterSection />
+
+                    <div className={viewMode === "grid" ? "row row-cols-lg-4" : "row"}>
                         {renderRelatedProducts()}
                     </div>
 

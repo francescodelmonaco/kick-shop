@@ -6,7 +6,7 @@ export default function HorizontalProductCard({ product }) {
     const { id, name, description, price, gender, season, brand, sizes, images, availability } = product;
 
     return (
-        <div key={id} className="container-fluid py-3">
+        <div key={id} className="container-fluid py-3 px-5">
             <div className="card">
                 <div className="row p-3">
                     <div id={`carousel-${id}`} className="carousel slide col-md-3" data-bs-theme="dark">
