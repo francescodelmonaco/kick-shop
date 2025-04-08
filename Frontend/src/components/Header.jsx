@@ -100,13 +100,14 @@ export default function Header() {
 
 
                         {/* Wishlist */}
-                        <div className="icon-wishlist-container">
+                        <div className="icon-wishlist-container" style={{ width: '40px', height: '40px' }}>
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/wish`}
                                 style={{
                                     transition: "background-color 0.3s, color 0.3s",
                                 }}
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 <i
                                     className="fa-solid fa-heart custom-heart"
@@ -127,13 +128,14 @@ export default function Header() {
                         </div>
 
                         {/* Carrello */}
-                        <div className="icon-cart-container">
+                        <div className="icon-cart-container" style={{ width: '40px', height: '40px' }}>
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/checkout`}
                                 style={{
                                     transition: "background-color 0.3s, color 0.3s",
                                 }}
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 <i
                                     className="fa-solid fa-cart-shopping custom-cart"

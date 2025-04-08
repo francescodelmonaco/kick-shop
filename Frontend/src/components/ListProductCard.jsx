@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export default function ListProductCard({ product }) {
     const { addToCart, addToWish } = useGlobalContext();
 
-    const { id, name, price, images } = product;
+    const { id, name, price, images, slug } = product;
 
     return (
         <div key={id}>
@@ -14,9 +15,19 @@ export default function ListProductCard({ product }) {
                             const { id: imageId, image_url } = image;
 
                             return (
-                                <figure className="imgBox-dimension" key={imageId}>
-                                    <img src={image_url} alt={name} className="w-100 effectCard imgBox" />
-                                </figure>
+                                <Link
+                                    className="imgBox-dimension"
+                                    key={imageId}
+                                    to={`/products/${slug}`}
+
+                                >
+                                    <img
+                                        src={image_url}
+                                        alt={name}
+                                        className="w-100 effectCard imgBox"
+                                        onClick={() => window.scrollTo(0, 0)}
+                                    />
+                                </Link>
                             );
                         })}
                     </div>
@@ -24,12 +35,16 @@ export default function ListProductCard({ product }) {
                     {/* info prodotto */}
                     <div className="col-md-7 d-flex align-items-center">
                         <div className="card-body">
-                            <div className="d-flex justify-content-between pb-5">
+                            <Link
+                                className="d-flex justify-content-between pb-5"
+                                to={`/products/${slug}`}
+                                onClick={() => window.scrollTo(0, 0)}
+                            >
                                 <h5 className="card-title fs-2">{name}</h5>
                                 <h5 className="card-text price fs-2"><strong>€ {price}</strong></h5>
-                            </div>
+                            </Link>
 
-                            <div className="d-flex justify-content-between gap-5">
+                            <div className="d-flex justify-content-between gap-3">
                                 {/* bottone per aggiunta del prodotto alla whishlist */}
                                 <button
                                     className="btn btn-primary w-100"

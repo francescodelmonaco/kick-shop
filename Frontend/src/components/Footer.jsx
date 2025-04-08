@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
-        <footer className="footer-container bg-dark text-light py-4">
+        <footer className="footer-container bg-dark text-light py-4 px-4">
             <div className="container">
                 <div className="row">
                     {/* Sezione Navigazione */}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function WishSection() {
     const { wish, addToCart, handleRemoveItemWish } = useGlobalContext();
@@ -25,11 +25,16 @@ export default function WishSection() {
         setSelectedProductId(null);
     };
 
+    const handleWishlistNavigation = () => {
+        navigate("/wish"); // Naviga alla pagina di wishlist
+        window.scrollTo(0, 0); // Scrolla verso l'alto
+    };
+
     return (
         <>
             <div className="offcanvas offcanvas-start" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
                 <div className="offcanvas-header">
-                    <h5 className="offcanvas-title" id="offcanvasLeftLabel">Wishlist</h5>
+                    <h5 className="offcanvas-title" id="offcanvasLeftLabel">Prodotti nella Wishlist</h5>
                     <button
                         type="button"
                         className="btn-close btn-outline-danger"
@@ -37,46 +42,56 @@ export default function WishSection() {
                         aria-label="Close"
                     ></button>
                 </div>
+
                 <div className="offcanvas-body">
 
-                    <button className="btn btn-primary" >Vai alla tua Wish List</button>
-
-
                     {wish.length > 0 ? (
-                        <ul>
+                        <ul className="list-group">
                             {wish.map((item) => (
-                                <li key={item.id} className="mb-4">
-                                    <h5>
-                                        <strong>{item.name} - € {item.price}</strong>
-                                    </h5>
-                                    <button
-                                        className="btn btn-success"
-                                        onClick={() => {
-                                            addToCart(item);
-                                            handleRemoveItemWish(item.id);
-                                        }}
-                                    >
-                                        <i className="fa-solid fa-cart-shopping"></i>
-                                    </button>
+                                <li key={item.id} className="list-group-item list-group-item-dark d-flex gap-3 align-items-center" aria-current="true">
+                                    {/* Immagine prodotto */}
+                                    <img
+                                        src={item.images?.[0]?.image_url}
+                                        alt={item.name}
+                                        style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px' }}
+                                    />
 
-                                    <button
-                                        className="btn btn-primary"
-                                        onClick={() => {
-                                            window.scrollTo(0, 0);
-                                            navigate("/wish");
-                                        }}
-                                        data-bs-dismiss="offcanvas"
-                                        aria-label="Close"
-                                    >
-                                        <i className="fa-solid fa-eye"></i>
-                                    </button>
+                                    <div className="d-flex flex-column w-100">
+                                        <p>
+                                            <strong>{item.name} - € {item.price}</strong>
+                                        </p>
 
-                                    <button
-                                        className="btn btn-danger"
-                                        onClick={() => confirmRemove(item.id)}
-                                    >
-                                        <i className="fa-solid fa-trash"></i>
-                                    </button>
+                                        <div className="d-flex justify-content-between gap-2">
+                                            <button
+                                                className="btn btn-success w-100"
+                                                onClick={() => {
+                                                    addToCart(item);
+                                                    handleRemoveItemWish(item.id);
+                                                }}
+                                            >
+                                                <i className="fa-solid fa-cart-shopping"></i>
+                                            </button>
+
+                                            <button
+                                                className="btn btn-primary w-100"
+                                                onClick={() => {
+                                                    window.scrollTo(0, 0);
+                                                    navigate("/wish");
+                                                }}
+                                                data-bs-dismiss="offcanvas"
+                                                aria-label="Close"
+                                            >
+                                                <i className="fa-solid fa-eye"></i>
+                                            </button>
+
+                                            <button
+                                                className="btn btn-danger w-100"
+                                                onClick={() => confirmRemove(item.id)}
+                                            >
+                                                <i className="fa-solid fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
@@ -86,7 +101,20 @@ export default function WishSection() {
                         </p>
                     )}
                 </div>
+
+                <Link
+                    type="button"
+                    className="btn btn-primary mx-3 my-3"
+                    onClick={() => {
+                        handleWishlistNavigation()
+                    }}
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                >
+                    Vai alla tua Wish List
+                </Link>
             </div>
+
 
             {showModal && selectedProductId && (
                 <div className="modal show fade d-block" tabIndex="-1">

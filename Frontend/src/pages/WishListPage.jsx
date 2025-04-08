@@ -7,13 +7,15 @@ export default function WishListPage() {
 
     return (
         <>
-            <h1 className="category-title">La tua wish list</h1>
+            <h1 className="category-title py-3">La tua wish list</h1>
             {wish.length > 0 ? (
                 wish.map((product) => (
                     <HorizontalProductCard key={product.id} product={product} />
                 ))
             ) : (
-                <p className="wishlist-empty">La tua wishlist è vuota.</p>
+                <p className="text-center text-muted">
+                    <i className="fa-solid fa-heart-broken"></i> La tua wishlist è vuota.
+                </p>
             )}
             <CategorySection />
         </>

@@ -64,7 +64,6 @@ export default function CategorySection() {
                         <button className="category-button position-absolute start-0 bottom-0 ms-3 mb-3 fs-4">Inverno</button>
                     </Link>
                 </li>
-
             </ul>
         </>
     )

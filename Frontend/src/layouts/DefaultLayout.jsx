@@ -12,7 +12,7 @@ export default function DefaultLayout() {
             {/* Header principale sotto la barra di scorrimento */}
             <Header />
 
-            <main className="container-fluid">
+            <main>
                 {/* Questo è il contenuto dinamico delle rotte */}
                 <Outlet />
                 <FootballCollection />
