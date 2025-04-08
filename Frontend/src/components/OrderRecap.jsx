@@ -4,6 +4,7 @@ import QuantityCounter from './ QuantityCounter';
 import { useState, useEffect } from 'react';
 import ConfirmationModal from "./ConfirmationModal";
 import { NavLink } from "react-router-dom";
+import Search from "./Search"; // Importa il componente Search
 
 export default function OrderRecap() {
     const { cart = [], handleQuantityChange, handleRemoveItem, quantities = [] } = useGlobalContext();
@@ -65,31 +66,29 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
-                    Mancano
-                    <strong> {amountLeft}€ </strong>
-                    per ottenere la spedizione gratuita. Potrebbero interessarti: i  nostri
-                    <NavLink
-                        aria-current="page"
-                        to={`/ballon`}
-                        onClick={() => window.scrollTo(0, 0)}
-                    >
-                        <button
-                            type="button"
-                            className="btn btn-outline-dark mx-2"
-                            data-bs-dismiss="offcanvas"
-                            aria-label="Close"
+                    <span>Mancano
+                        <strong> {amountLeft}€ </strong>
+                        per ottenere la spedizione gratuita. Potrebbero interessarti: i  nostri
+                        <NavLink
+                            aria-current="page"
+                            to={`/ballon`}
+                            onClick={() => window.scrollTo(0, 0)}
                         >
-                            Palloni
-                        </button>
-                    </NavLink>
-                    <NavLink
-                        aria-current="page"
-                        to={`/search?q=scarpe`}
-                        onClick={() => window.scrollTo(0, 0)}>
-                        Scarpe</NavLink>
-
-                    da collezione.
+                            <button
+                                type="button"
+                                className="btn btn-primary mx-2 mb-2 mt-1"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"
+                            >
+                                Palloni
+                            </button>
+                            da collezione.
+                            <br /> Oppure ricerca il tuo stile
+                        </NavLink>
+                    </span>
+                    <Search />
                 </div>
+
             );
         }
     };
@@ -103,6 +102,10 @@ export default function OrderRecap() {
                         <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!
                     </p>
                 </div>
+            </div>
+
+            {/* Barra di ricerca */}
+            <div className="search-bar-container my-3">
             </div>
 
             {cart.length === 0 ? (
@@ -174,7 +177,8 @@ export default function OrderRecap() {
 
             {/* Totale */}
             <div className="input-group pt-3 d-flex justify-content-start">
-                <span className="input-group-text"><strong>TOTALE PARZIALE : </strong></span>
+                <span className="input-group-text">
+                    <strong>TOTALE PARZIALE : </strong></span>
                 <div
                     className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
                 >
@@ -194,6 +198,7 @@ export default function OrderRecap() {
                         <strong>{ShippingCost.toFixed(2)} €</strong>
                     </h5>
                 </div>
+
             </div>
 
             {/* Messaggio di spedizione gratuita */}
@@ -201,7 +206,9 @@ export default function OrderRecap() {
 
             {/* Nuovo totale */}
             <div className="input-group pt-3 d-flex justify-content-start">
-                <span className="input-group-text"><h4><strong>PREZZO FINALE: </strong></h4></span>
+                <span className="input-group-text">
+                    <h4><strong>PREZZO FINALE: </strong></h4>
+                </span>
                 <Badge className='bg-success'>
                     <h4>
                         <strong>{newTotal.toFixed(2)} €</strong>
