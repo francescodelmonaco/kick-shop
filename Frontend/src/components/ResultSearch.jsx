@@ -4,11 +4,11 @@ import FilterSection from "./FilterSection";
 import ListProductCard from "./ListProductCard";
 import VerticalProductCard from "./VerticalProductCard";
 
+
 export default function ResultSearch({ items }) {
-    const { searchProducts, viewMode } = useGlobalContext();
+    const { searchProducts, viewMode} = useGlobalContext();
 
-    console.log("searchProducts", searchProducts);
-
+ 
     return (
         <div className="px-5 pb-3">
             <div className="d-flex justify-content-between align-items-center py-2">

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { createContext, useContext, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
-    // Initial form data
+    // Inizializzazione dei dati del modulo
     const initialData = {
         userName: '',
         userSurname: '',
@@ -16,47 +17,35 @@ const GlobalProvider = ({ children }) => {
         province: '',
     };
 
-    // Memorizza dati
     const [query, setQuery] = useState('');
     const [searchProducts, setSearchProducts] = useState([]);
     const [formData, setFormData] = useState(initialData);
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem("cart");
-        try {
-            return savedCart ? JSON.parse(savedCart) : [];
-        } catch (error) {
-            console.error("Errore nel parsing del carrello:", error);
-            return [];
-        }
+        return savedCart ? JSON.parse(savedCart) : [];
     });
     const [wish, setWish] = useState(() => {
         const savedWish = localStorage.getItem("wish");
-        try {
-            return savedWish ? JSON.parse(savedWish) : [];
-        } catch (error) {
-            console.error("Errore nel parsing della wishlist:", error);
-            return [];
-        }
+        return savedWish ? JSON.parse(savedWish) : [];
     });
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
-
-    // Aggiungi lo stato per il costo di spedizione
-    const [shippingCost, setShippingCost] = useState(0); // Nuovo stato per il costo di spedizione
+    const [shippingCost, setShippingCost] = useState(0);
+    
 
     // Gestione ricerca
     const handleSubmit = (searchTerm) => {
         axios.get(`http://localhost:3000/search/${searchTerm}`)
             .then((res) => {
                 if (res.data && Array.isArray(res.data)) {
-                    setSearchProducts(res.data); // Imposta i prodotti trovati
+                    setSearchProducts(res.data); 
                 } else {
-                    setSearchProducts([]); // Se non è un array, metti un array vuoto
+                    setSearchProducts([]);
                 }
             })
             .catch((error) => {
                 if (error.response && error.response.status === 404) {
-                    setSearchProducts([]); // Gestisci errore 404 e mostra array vuoto
+                    setSearchProducts([]);
                     console.log("Nessun prodotto trovato per questa ricerca.");
                 } else {
                     console.log("Errore durante la ricerca:", error);
@@ -64,11 +53,18 @@ const GlobalProvider = ({ children }) => {
             });
     };
 
+    
+
     // Gestione ordinamento
     const [sortCriteria, setSortCriteria] = useState({ field: 'name', order: 'asc' });
 
     const handleSort = (field, order) => {
         setSortCriteria({ field, order });
+        setSearchParams(prevParams => {
+            prevParams.set('sortField', field);
+            prevParams.set('sortOrder', order);
+            return prevParams;
+        });
     };
 
     // Funzione per ordinare i prodotti
@@ -93,7 +89,21 @@ const GlobalProvider = ({ children }) => {
     // VISUALIZZAZIONE GRIGLIA - LISTA
     const [viewMode, setViewMode] = useState("grid"); // "grid" o "list"
 
-    // Altri effetti e metodi (carrello, wish list, quantità, checkout) restano invariati
+    // Aggiungere gestione dei parametri dell'URL
+    const [searchParams, setSearchParams] = useSearchParams();
+    
+    useEffect(() => {
+        const queryParam = searchParams.get('q') || '';
+
+        const sortField = searchParams.get('sortField') ;
+        const sortOrder = searchParams.get('sortOrder') ;
+
+        setQuery(queryParam);
+       
+       
+        handleSubmit(queryParam, sortField, sortOrder);
+    }, [searchParams]); // Attivato quando searchParams cambia
+
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
@@ -182,8 +192,7 @@ const GlobalProvider = ({ children }) => {
             headers: { 'Content-Type': 'application/json' },
         })
             .then((res) => {
-                // Imposta il nuovo shipping cost ricevuto dal backend
-                setShippingCost(res.data.shippingCost); // Aggiorna il costo di spedizione
+                setShippingCost(res.data.shippingCost); 
                 setCart([]);
                 setFormData(initialData);
                 navigate("/thankyou");
@@ -193,11 +202,13 @@ const GlobalProvider = ({ children }) => {
             });
     };
 
+
+
     const value = {
         query,
         setQuery,
         handleSubmit,
-        searchProducts: sortedProducts, // Cambiato per utilizzare i prodotti ordinati
+        searchProducts: sortedProducts,
         handleSort,
         submitCheckout,
         formData,
@@ -216,8 +227,10 @@ const GlobalProvider = ({ children }) => {
         wish,
         viewMode,
         setViewMode,
-        shippingCost, // Aggiungi shippingCost al contesto
-        setShippingCost, // Aggiungi il metodo per aggiornare shippingCost
+        shippingCost,
+        setShippingCost,
+
+
     };
 
     return (

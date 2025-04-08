@@ -15,7 +15,7 @@ import WinterPage from "./pages/WinterPage";
 import Checkout from "./pages/CheckoutPage";
 import SearchPage from "./pages/SearchPage";
 import NotFound from "./pages/NotFound";
-import ThankYou from "./pages/ThankYou"
+import ThankYou from "./pages/ThankYou";
 import WishListPage from "./pages/WishListPage";
 import BallonPage from "./pages/BallonPage";
 
@@ -25,8 +25,8 @@ import WishSection from "./components/WishSection";
 
 function App() {
     return (
-        <GlobalProvider>
-            <BrowserRouter>
+        <BrowserRouter>
+            <GlobalProvider>
                 <CartSection />
                 <WishSection />
                 <Routes>
@@ -41,13 +41,12 @@ function App() {
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
                         <Route path="/ballon" Component={BallonPage} />
-
                     </Route>
                     <Route path="*" Component={NotFound} />
                     <Route path="/thankyou" Component={ThankYou} />
                 </Routes>
-            </BrowserRouter>
-        </GlobalProvider>
+            </GlobalProvider>
+        </BrowserRouter>
     );
 }
 
