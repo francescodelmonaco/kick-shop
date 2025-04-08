@@ -1,6 +1,6 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 
 export default function Search() {
     const { query, setQuery, handleSubmit } = useGlobalContext();
