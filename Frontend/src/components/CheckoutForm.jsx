@@ -35,7 +35,7 @@ export default function CheckoutForm() {
             noValidate
             validated={validated}
         >
-            <h5>Inserisci i dati necessari per procederere con l'ordine</h5>
+            <h5 className='text-center pb-3'>Inserisci i dati necessari per procederere con l'ordine</h5>
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="userName">
                     <Form.Label>Nome</Form.Label>
