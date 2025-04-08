@@ -75,6 +75,9 @@ function storeOrder(req, res) {
         totalPrice += product.price * productQuantities[index];
       });
 
+      const shippingCost = totalPrice > 200 ? 0 : 25;
+      const grandTotal = totalPrice + shippingCost;
+
       // Query SQL per inserire l'ordine nel database
       const insertOrderSql = `
         INSERT INTO orders (
@@ -150,6 +153,8 @@ function storeOrder(req, res) {
               status: "success",
               message: "Ordine aggiunto con successo",
               total: totalPrice,
+              shippingCost: shippingCost,
+              grandTotal: grandTotal,
               differenza: subResults // Restituisce l'aggiornamento della disponibilità dei prodotti
             });
           });
