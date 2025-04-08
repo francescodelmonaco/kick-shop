@@ -63,7 +63,7 @@ export default function OrderRecap() {
                     >
                         <button
                             type="button"
-                            className="btn btn-outline-primary"
+                            className="btn btn-outline-dark mx-2"
                             data-bs-dismiss="offcanvas"
                             aria-label="Close"
                         >
@@ -127,21 +127,20 @@ export default function OrderRecap() {
                 </ul>
             )}
 
-            <div className="input-group pt-3 d-flex justify-content-end">
             {/* Costo di spedizione */}
-           
-            <div>
-                <h5>
-                    Costo di spedizione: 
+            <div className="input-group pt-3 d-flex justify-content-end">
+                <span className="input-group-text"><strong>Costo di spedizione : </strong></span>
                 <Badge
-                className="bg-secondary pt-3"
-                > 
-                    {ShippingCost}€
-                    </Badge>
+                    className={`bg-warning ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                >
+                    <h5>
+                        <strong>{ShippingCost.toFixed(2)} €</strong>
                     </h5>
-                    </div>
+                </Badge>
+            </div>
 
             {/* Totale */}
+            <div className="input-group pt-3 d-flex justify-content-end">
                 <span className="input-group-text"><strong>TOTALE : </strong></span>
                 <Badge
                     className={`bg-secondary ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
