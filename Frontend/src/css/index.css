@@ -13,6 +13,66 @@
 header {
     background-color: var(--red);
 }
+/* Badge per le notifiche */
+.notification-badge-heart,
+.notification-badge-cart{
+    position: absolute;
+    top: -5px; /* Posiziona il badge sopra l'icona */
+    right: -5px; /* Posiziona il badge a destra dell'icona */
+    background: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 6px;
+    border-radius: 50%;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    z-index: 10;
+}
+/* Posizionamento specifico per il cuore */
+.wishlist-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Posizionamento specifico per il carrello */
+.cart-container {
+    position: relative; /* Necessario per posizionare il badge rispetto al contenitore */
+    display: inline-block;
+}
+
+/* Ingrandire le icone del cuore e del carrello */
+.wishlist-container i.fa-heart,
+.cart-container i.fa-cart-shopping {
+    font-size: 1.5rem; /* Aumenta la dimensione dell'icona */
+    transition: transform 0.3s ease; /* Aggiunge una transizione fluida */
+}
+
+.wishlist-container i.fa-heart:hover,
+.cart-container i.fa-cart-shopping:hover {
+    transform: scale(1.2); /* Ingrandisce leggermente l'icona al passaggio del mouse */
+}
+
+.wishlist-container,
+.cart-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.custom-heart {
+    color: black;
+    border-radius: 50%;
+    padding: 5px;
+}
+
 
 #root {
     background-color: var(--gray);
