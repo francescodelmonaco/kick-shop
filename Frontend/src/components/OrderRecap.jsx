@@ -19,7 +19,7 @@ export default function OrderRecap() {
 
   // Calcola il costo di spedizione lato front-end:
   // Se il totale supera 200 €, la spedizione è gratuita, altrimenti costa 25 €
-  const computedShippingCost = total > 0 ? (total > 200 ? 0 : 25) : 0;
+  const computedShippingCost = total > 0 ? (total >= 200 ? 0 : 25) : 0;
   const grandTotal = total + computedShippingCost;
 
   useEffect(() => {
