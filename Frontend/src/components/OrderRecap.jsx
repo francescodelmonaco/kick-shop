@@ -65,7 +65,30 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
-                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita.
+                    Mancano
+                    <strong> {amountLeft}€ </strong>
+                    per ottenere la spedizione gratuita. Potrebbero interessarti: i  nostri
+                    <NavLink
+                        aria-current="page"
+                        to={`/ballon`}
+                        onClick={() => window.scrollTo(0, 0)}
+                    >
+                        <button
+                            type="button"
+                            className="btn btn-outline-dark mx-2"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
+                        >
+                            Palloni
+                        </button>
+                    </NavLink>
+                    <NavLink
+                        aria-current="page"
+                        to={`/search?q=scarpe`}
+                        onClick={() => window.scrollTo(0, 0)}>
+                        Scarpe</NavLink>
+
+                    da collezione.
                 </div>
             );
         }
@@ -76,15 +99,18 @@ export default function OrderRecap() {
             {/* Banner di spedizione */}
             <div className="banner-container">
                 <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
-                <p className="text"><strong className="text-warning">OFFERTA</strong> speciale Kick Shop!!! 🚚 Approfitta della  
-                    <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!</p>                </div>
+                    <p className="text"><strong className="text-warning">OFFERTA</strong> speciale Kick Shop!!! 🚚 Approfitta della
+                        <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!
+                    </p>
+                </div>
             </div>
 
             {cart.length === 0 ? (
                 <>
                     <p className="text-center text-muted">
-                        <i className="fa-solid fa-heart-broken"></i> IL tuo carrello è vuoto.
-                    </p>                    <NavLink
+                        <i className="fa-solid fa-heart-broken"></i> Il tuo carrello è vuoto.
+                    </p>
+                    <NavLink
                         aria-current="page"
                         to={`/`}
                         onClick={() => window.scrollTo(0, 0)}
