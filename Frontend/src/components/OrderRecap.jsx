@@ -38,10 +38,10 @@ export default function OrderRecap() {
     }, 0);
 
     // Calcolare il totale con il costo di spedizione
-    const total = cart.length === 0 ? 0 : subtotal + ShippingCost;
+    const total = cart.length === 0 ? 0 : subtotal;
 
     // Calcolare il nuovo totale (senza costo di spedizione se supera 200€)
-    const newTotal = cart.length === 0 ? 0 : (subtotal >= 200 ? subtotal : total);
+    const newTotal = cart.length === 0 ? 0 : (subtotal >= 200 ? subtotal : total + ShippingCost);
 
     // Funzione per mostrare il messaggio di spedizione gratuita
     const freeShipping = () => {
@@ -127,26 +127,26 @@ export default function OrderRecap() {
                 </ul>
             )}
 
-            {/* Costo di spedizione */}
-            <div className="input-group pt-3 d-flex justify-content-end">
-                <span className="input-group-text"><strong>Costo di spedizione : </strong></span>
-                <Badge
-                    className={`bg-warning ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
-                >
-                    <h5>
-                        <strong>{ShippingCost.toFixed(2)} €</strong>
-                    </h5>
-                </Badge>
-            </div>
-
             {/* Totale */}
             <div className="input-group pt-3 d-flex justify-content-end">
-                <span className="input-group-text"><strong>TOTALE : </strong></span>
+                <span className="input-group-text"><strong>TOTALE PARZIALE : </strong></span>
                 <Badge
                     className={`bg-secondary ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
                 >
                     <h5>
                         <strong>{total.toFixed(2)} €</strong>
+                    </h5>
+                </Badge>
+            </div>
+
+            {/* Costo di spedizione */}
+            <div className="input-group pt-3 d-flex justify-content-end">
+                <span className="input-group-text"><strong>+ Costo di spedizione : </strong></span>
+                <Badge
+                    className={`bg-warning ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                >
+                    <h5>
+                        <strong>{ShippingCost.toFixed(2)} €</strong>
                     </h5>
                 </Badge>
             </div>
