@@ -100,7 +100,7 @@ export default function Header() {
 
 
                         {/* Wishlist */}
-                        <div className="icon-wishlist-container">
+                        <div className="icon-wishlist-container" style={{ width: '40px', height: '40px' }}>
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/wish`}
@@ -128,7 +128,7 @@ export default function Header() {
                         </div>
 
                         {/* Carrello */}
-                        <div className="icon-cart-container">
+                        <div className="icon-cart-container" style={{ width: '40px', height: '40px' }}>
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/checkout`}

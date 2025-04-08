@@ -7,7 +7,10 @@ export default function HomePage() {
             <h1 className="text-center py-3 font">Kick Shop</h1>
 
             <HeroSection />
-            <CategorySection />
+
+            <div className="px-5">
+                <CategorySection />
+            </div>
 
             {/* <h2 className="text-center">Tutta la collezione</h2>
 

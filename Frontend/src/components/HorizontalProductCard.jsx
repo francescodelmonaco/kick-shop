@@ -54,7 +54,7 @@ export default function HorizontalProductCard({ product }) {
                             <p className="card-text"><strong>Descrizione del prodotto: </strong>{description}</p>
                             <p className="card-text"><small className="text-body-secondary">La disponibilità in magazzino è di {availability} pezzi</small></p>
 
-                            <div className="d-flex justify-content-between gap-5">
+                            <div className="d-flex justify-content-between gap-3">
                                 {/* bottone per aggiunta del prodotto alla whishlist */}
                                 <button
                                     className="btn btn-primary w-100"

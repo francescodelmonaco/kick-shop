@@ -44,7 +44,7 @@ export default function ListProductCard({ product }) {
                                 <h5 className="card-text price fs-2"><strong>€ {price}</strong></h5>
                             </Link>
 
-                            <div className="d-flex justify-content-between gap-5">
+                            <div className="d-flex justify-content-between gap-3">
                                 {/* bottone per aggiunta del prodotto alla whishlist */}
                                 <button
                                     className="btn btn-primary w-100"
