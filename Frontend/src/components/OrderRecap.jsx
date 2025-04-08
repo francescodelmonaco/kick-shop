@@ -10,8 +10,7 @@ export default function OrderRecap() {
     const [showModal, setShowModal] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
 
-
-    const SHIPPING_COST = 25; // Costo fisso di spedizione
+    const ShippingCost = 25; // Costo fisso di spedizione
 
     const confirmRemove = (index) => {
         setSelectedIndex(index);
@@ -37,17 +36,22 @@ export default function OrderRecap() {
         return acc;
     }, 0);
 
-    const total = subtotal + SHIPPING_COST; // Totale con il costo di spedizione
+    // Calcolare il totale con il costo di spedizione
+    const total = subtotal + ShippingCost;
+
+    // Calcolare il nuovo totale se il totale supera i 200€
+    const newTotal = total >= 200 ? subtotal : total;
+
     // Funzione per mostrare il messaggio di spedizione gratuita
     const freeShipping = () => {
-        if (total >= 200.00) {
+        if (subtotal >= 200) {
             return (
                 <div className="alert alert-success mt-3">
                     🎉 Spedizione gratuita per ordini superiori a 200€!
                 </div>
             );
         } else {
-            const amountLeft = (200.00 - total).toFixed(2);
+            const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
                     Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita.
@@ -108,12 +112,12 @@ export default function OrderRecap() {
             )}
 
             {/* Costo di spedizione */}
-            <div><h5>Costo di spedizione: {SHIPPING_COST}€</h5></div>
+            <div><h5>Costo di spedizione: {ShippingCost}€</h5></div>
 
             {/* Totale */}
             <div className="input-group pt-3 d-flex justify-content-end">
                 <span className="input-group-text"><strong>TOTALE : </strong></span>
-                <Badge className='bg-success'>
+                <Badge className='bg-secondary'>
                     <h5>
                         <strong>{total.toFixed(2)} €</strong>
                     </h5>
@@ -122,6 +126,16 @@ export default function OrderRecap() {
 
             {/* Messaggio di spedizione gratuita */}
             {freeShipping()}
+
+            {/* Nuovo totale */}
+            <div className="input-group pt-3 d-flex justify-content-end">
+                <span className="input-group-text"><strong>NUOVO TOTALE : </strong></span>
+                <Badge className='bg-success'>
+                    <h5>
+                        <strong>{newTotal.toFixed(2)} €</strong>
+                    </h5>
+                </Badge>
+            </div>
 
             {/* Modal di conferma */}
             <ConfirmationModal
