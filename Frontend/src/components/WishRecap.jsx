@@ -44,6 +44,8 @@ export default function WishRecap() {
                                         src={item.images?.[0]?.image_url}
                                         alt={item.name}
                                         style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px' }}
+                                        data-bs-dismiss="offcanvas"
+                                        aria-label="Close"
                                     />
                                 </Link>
 
@@ -54,7 +56,7 @@ export default function WishRecap() {
 
                                     <div className="d-flex justify-content-between gap-3">
                                         <button
-                                            className="btn btn-success w-100"
+                                            className="btn btn-success w-50"
                                             onClick={() => {
                                                 addToCart(item);
                                                 handleRemoveItemWish(item.id);
@@ -64,18 +66,22 @@ export default function WishRecap() {
                                         </button>
 
                                         <Link
-                                            type="button"
-                                            className="btn btn-primary w-100"
                                             to={`/products/${item.slug}`}
                                             onClick={window.scrollTo(0, 0)}
-                                        // data-bs-dismiss="offcanvas"
-                                        // aria-label="Close"
+                                            className="w-50"
                                         >
-                                            <i className="fa-solid fa-eye"></i>
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary w-100"
+                                                data-bs-dismiss="offcanvas"
+                                                aria-label="Close"
+                                            >
+                                                <i className="fa-solid fa-eye"></i>
+                                            </button>
                                         </Link>
 
                                         <button
-                                            className="btn btn-danger w-100"
+                                            className="btn btn-danger w-50"
                                             onClick={() => confirmRemove(item.id)}
                                         >
                                             <i className="fa-solid fa-trash"></i>
