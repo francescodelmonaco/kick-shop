@@ -122,7 +122,7 @@ export default function Header() {
                                 ></i>
                             </NavLink>
                             {wish.length > 0 && (
-                                <span className="notification-badge">{wish.length}</span>
+                                <span className="notification-badge"><strong>{wish.length}</strong></span>
                             )}
                         </div>
 
@@ -149,7 +149,7 @@ export default function Header() {
                                 ></i>
                             </NavLink>
                             {cart.length > 0 && (
-                                <span className="notification-badge">{cart.length}</span>
+                                <span className="notification-badge"><strong>{cart.length}</strong></span>
                             )}
                         </div>
 
