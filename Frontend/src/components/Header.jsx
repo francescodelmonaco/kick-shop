@@ -5,8 +5,8 @@ import Search from "./Search";
 
 export default function Header() {
     const { wish, cart } = useGlobalContext();
-    return (
 
+    return (
         <header className="fixed-top">
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
@@ -24,7 +24,7 @@ export default function Header() {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item" >
+                            <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
                                         `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
@@ -96,53 +96,69 @@ export default function Header() {
                                     Palloni
                                 </NavLink>
                             </li>
-
-
                         </ul>
 
-                        {/* whishlist */}
-                        <NavLink
-                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
-                            type="button"
-                            to={`/wish`}
-                            style={{
-                                transition: "background-color 0.3s, color 0.3s",
-                            }}
-                        >
-                            <i
-                                className="fa-solid fa-heart"
+
+                        {/* Wishlist */}
+                        <div className="wishlist-container">
+                            <NavLink
+                                className=" me-2 mb-3 mb-lg-0"
+                                to={`/wish`}
                                 style={{
-                                    transition: "color 0.3s", // Transizione fluida per il colore
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.target.style.color = "red"; // Cambia il colore del cuoricino
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.target.style.color = ""; // Ripristina il colore originale
+                                    transition: "background-color 0.3s, color 0.3s",
                                 }}
                             >
+                                <i
+                                    className="fa-solid fa-heart custom-heart"
+                                    style={{
+                                        transition: "color 0.3s",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.color = "red"; // Cambia il colore del cuoricino
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.color = ""; // Ripristina il colore originale
+                                    }}
+                                ></i>
+                            </NavLink>
+                            {wish.length > 0 && (
+                                <span className="notification-badge-heart">{wish.length}</span>
+                            )}
+                        </div>
 
-                            </i>
-                            <span className="ms-0 badge badge-outline fs-6 wish-badget">{wish.length}</span>
-                        </NavLink>
+                        {/* Carrello */}
+                        <div className="cart-container">
+                            <NavLink
+                                className=" me-2 mb-3 mb-lg-0"
+                                to={`/checkout`}
+                                style={{
+                                    transition: "background-color 0.3s, color 0.3s",
+                                }}
+                            >
+                                <i
+                                    className="fa-solid fa-cart-shopping custom-cart"
+                                    style={{
+                                        transition: "color 0.3s",
+                                    }}
+                                    onMouseEnter={(e) => {
+                                        e.target.style.color = "green"; // Cambia il colore del cuoricino
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.target.style.color = ""; // Ripristina il colore originale
+                                    }}
+                                ></i>
+                            </NavLink>
+                            {cart.length > 0 && (
+                                <span className="notification-badge-cart">{cart.length}</span>
+                            )}
+                        </div>
 
-                        {/* carrello */}
-                        <button
-                            className="btn btn-outline-light me-2 mb-3 mb-lg-0"
-                            type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight"
-                            aria-controls="offcanvasRight"
-                        >
-                            <i className="fa-solid fa-cart-shopping"></i>
-                            <span className="ms-0 badge badge-outline fs-6 cart-badget">{cart.length}</span>
-
-                        </button>
 
                         <Search />
+
                     </div>
                 </div>
-            </nav>
-        </header>
-    )
+            </nav >
+        </header >
+    );
 }
