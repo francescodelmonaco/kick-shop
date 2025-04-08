@@ -1,9 +1,31 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import Badge from "react-bootstrap/Badge";
 import QuantityCounter from './ QuantityCounter';
+import {useState} from 'react';
+import ConfirmationModal from "./ConfirmationModal";
 
 export default function OrderRecap() {
     const { cart, handleQuantityChange, handleRemoveItem, quantities } = useGlobalContext();
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
+    const confirmRemove = (index) => {
+    setSelectedIndex(index);
+    setShowModal(true);
+    };
+
+    const handleConfirm = () => {
+    handleRemoveItem(selectedIndex);
+    setShowModal(false);
+    setSelectedIndex(null);
+   };
+
+    const handleCancel = () => {
+    setShowModal(false);
+    setSelectedIndex(null);
+    };
+
 
     // Calcolare il totale escludendo i prodotti non disponibili
     const total = cart.reduce((acc, item, index) => {
@@ -55,7 +77,7 @@ export default function OrderRecap() {
 
                                 <button
                                     className="btn btn-danger"
-                                    onClick={() => handleRemoveItem(index)}
+                                    onClick={() => confirmRemove(index)}
                                 >
                                     <i className="fa-solid fa-trash"></i>
                                 </button>
@@ -73,6 +95,21 @@ export default function OrderRecap() {
                     <strong>{total.toFixed(2)} €</strong>
                 </p>
             </div>
+
+                
+            {/* Modal di conferma */}
+             <ConfirmationModal
+                show={showModal}
+                onCancel={handleCancel}
+                onConfirm={handleConfirm}
+                message="Sei sicuro di voler rimuovere questo prodotto dal carrello?"
+            />
+
+
+
+
+
         </div>
+        
     );
 }
