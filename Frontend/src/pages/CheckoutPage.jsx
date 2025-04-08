@@ -20,8 +20,6 @@ export default function CheckoutPage() {
 
                         <hr />
 
-                        <h1 className="text-center py-3">Metodi di pagamento</h1>
-                        {/* Qui puoi aggiungere il selettore di pagamento se previsto */}
                     </div>
                 </Col>
             </Row>

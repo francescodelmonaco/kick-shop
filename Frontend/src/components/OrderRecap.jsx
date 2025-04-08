@@ -38,10 +38,10 @@ export default function OrderRecap() {
     }, 0);
 
     // Calcolare il totale con il costo di spedizione
-    const total = subtotal + ShippingCost;
+    const total = cart.length === 0 ? 0 : subtotal + ShippingCost;
 
-    // Calcolare il nuovo totale se il totale supera i 200€
-    const newTotal = total >= 200 ? subtotal : total;
+    // Calcolare il nuovo totale (senza costo di spedizione se supera 200€)
+    const newTotal = cart.length === 0 ? 0 : (subtotal >= 200 ? subtotal : total);
 
     // Funzione per mostrare il messaggio di spedizione gratuita
     const freeShipping = () => {
