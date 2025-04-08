@@ -1,22 +1,13 @@
-import { useGlobalContext } from "../context/GlobalContext";
 import CategorySection from "../components/CategorySection";
-import HorizontalProductCard from "../components/HorizontalProductCard";
+import WishRecap from "../components/WishRecap";
 
 export default function WishListPage() {
-    const { wish, product } = useGlobalContext(); // Accedi alla wishlist dal contesto
-
     return (
         <>
             <h1 className="category-title py-3">La tua wish list</h1>
-            {wish.length > 0 ? (
-                wish.map((product) => (
-                    <HorizontalProductCard key={product.id} product={product} />
-                ))
-            ) : (
-                <p className="text-center text-muted">
-                    <i className="fa-solid fa-heart-broken"></i> La tua wishlist è vuota.
-                </p>
-            )}
+            <div className="container">
+                <WishRecap />
+            </div>
             <CategorySection />
         </>
     );

@@ -85,25 +85,39 @@ export default function OrderRecap() {
                     {cart.map((item, index) => (
                         <li key={index} className="list-group-item list-group-item-dark d-flex justify-content-between align-items-center gap-3" aria-current="true">
                             {/* Immagine prodotto */}
-                            <img
-                                src={item.images?.[0]?.image_url}
-                                alt={item.name}
-                                style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}
-                            />
+                            <Link
+                                to={`/products/${item.slug}`}
+                                onClick={window.scrollTo(0, 0)}
+                            >
+                                <img
+                                    src={item.images?.[0]?.image_url}
+                                    alt={item.name}
+                                    style={{
+                                        width: "60px",
+                                        height: "60px",
+                                        objectFit: "cover",
+                                        borderRadius: "8px",
+                                    }}
+                                    data-bs-dismiss="offcanvas"
+                                    aria-label="Close"
+                                />
+                            </Link>
 
-                            {/* Info e badge */}
+
+                            {/* Informazioni e badge */}
                             <div className="d-flex flex-column flex-grow-1">
                                 <p className="mb-1">
                                     <strong>{item.name}</strong> - {item.price} €
                                 </p>
-
                                 {item.availability === 0 && (
-                                    <Badge bg="warning" text="dark">Non disponibile</Badge>
+                                    <Badge bg="warning" text="dark">
+                                        Non disponibile
+                                    </Badge>
                                 )}
                             </div>
 
                             {/* Counter + trash */}
-                            <div className='d-flex gap-2 align-items-center'>
+                            <div className="d-flex gap-2 align-items-center">
                                 {item.availability > 0 ? (
                                     <QuantityCounter
                                         index={index}
@@ -114,10 +128,9 @@ export default function OrderRecap() {
                                 ) : (
                                     <span className="text-muted">Prodotto esaurito</span>
                                 )}
-
                                 <button
                                     className="btn btn-danger"
-                                    onClick={() => confirmRemove(index)}
+                                    onClick={() => handleRemoveItem(index)}
                                 >
                                     <i className="fa-solid fa-trash"></i>
                                 </button>
@@ -164,4 +177,5 @@ export default function OrderRecap() {
             />
         </div>
     );
+
 }
