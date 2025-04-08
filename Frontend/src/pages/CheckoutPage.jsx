@@ -6,11 +6,6 @@ export default function CheckoutPage() {
     return (
         <Container fluid="md" className="py-4">
             <Row className="g-4">
-                {/* Colonna Form */}
-                <Col xs={12} lg={7}>
-                    <CheckoutForm />
-                </Col>
-
                 {/* Colonna Riepilogo + Metodi di pagamento */}
                 <Col xs={12} lg={5}>
                     <div className="py-3">
@@ -22,6 +17,11 @@ export default function CheckoutPage() {
 
                     </div>
                 </Col>
+                {/* Colonna Form */}
+                <Col xs={12} lg={7}>
+                    <CheckoutForm />
+                </Col>
+
             </Row>
         </Container>
     );

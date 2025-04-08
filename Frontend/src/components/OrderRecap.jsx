@@ -128,19 +128,19 @@ export default function OrderRecap() {
             )}
 
             {/* Totale */}
-            <div className="input-group pt-3 d-flex justify-content-end">
+            <div className="input-group pt-3 d-flex justify-content-start">
                 <span className="input-group-text"><strong>TOTALE PARZIALE : </strong></span>
                 <div
                     className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
                 >
-                    <h5>
+                    <h6>
                         <strong>{total.toFixed(2)} €</strong>
-                    </h5>
+                    </h6>
                 </div>
             </div>
 
             {/* Costo di spedizione */}
-            <div className="input-group pt-3 d-flex justify-content-end">
+            <div className="input-group pt-3 d-flex justify-content-start">
                 <span className="input-group-text"><strong>+ Costo di spedizione : </strong></span>
                 <div
                     className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
@@ -155,12 +155,12 @@ export default function OrderRecap() {
             {freeShipping()}
 
             {/* Nuovo totale */}
-            <div className="input-group pt-3 d-flex justify-content-end">
-                <span className="input-group-text"><strong>PREZZO FINALE: </strong></span>
+            <div className="input-group pt-3 d-flex justify-content-start">
+                <span className="input-group-text"><h4><strong>PREZZO FINALE: </strong></h4></span>
                 <Badge className='bg-success'>
-                    <h5>
+                    <h4>
                         <strong>{newTotal.toFixed(2)} €</strong>
-                    </h5>
+                    </h4>
                 </Badge>
             </div>
 
