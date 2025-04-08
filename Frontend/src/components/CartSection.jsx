@@ -9,6 +9,11 @@ export default function CartSection() {
     // Nascondi la canvas nella pagina di checkout
     if (location.pathname === "/checkout") return null;
 
+    const handleCheckoutNavigation = () => {
+        navigate("/checkout"); // Naviga alla pagina di checkout
+        window.scrollTo(0, 0); // Scrolla verso l'alto
+    };
+
     return (
         <>
             <div className="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -31,7 +36,9 @@ export default function CartSection() {
 
                 <Link
                     type="button"
-                    onClick={() => navigate("/checkout")}
+                    onClick={() => {
+                        handleCheckoutNavigation()
+                    }}
                     className="btn btn-success mx-3 my-3"
                     data-bs-dismiss="offcanvas"
                     aria-label="Close"

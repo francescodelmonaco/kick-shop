@@ -19,55 +19,76 @@ header {
 /* Badge per le notifiche (wishlist e carrello) */
 .notification-badge {
     position: absolute;
-    top: -5px; /* Posiziona il badge sopra l'icona */
-    right: -5px; /* Posiziona il badge a destra dell'icona */
-    background: red; /* Sfondo rosso */
-    color: white; /* Numeri in bianco */
-    font-size: 12px; /* Dimensione del testo */
-    font-weight: bold; /* Testo in grassetto */
-    padding: 4px 6px; /* Spaziatura interna */
-    border-radius: 50%; /* Forma circolare */
-    min-width: 20px; /* Larghezza minima */
-    height: 20px; /* Altezza */
-    display: flex; /* Centra il contenuto */
-    align-items: center; /* Centra verticalmente */
-    justify-content: center; /* Centra orizzontalmente */
-    line-height: 1; /* Altezza della linea */
-    z-index: 10; /* Porta il badge sopra le icone */
+    top: -5px;
+    /* Posiziona il badge sopra l'icona */
+    right: -5px;
+    /* Posiziona il badge a destra dell'icona */
+    background: red;
+    /* Sfondo rosso */
+    color: white;
+    /* Numeri in bianco */
+    font-size: 12px;
+    /* Dimensione del testo */
+    font-weight: bold;
+    /* Testo in grassetto */
+    padding: 4px 6px;
+    /* Spaziatura interna */
+    border-radius: 50%;
+    /* Forma circolare */
+    min-width: 20px;
+    /* Larghezza minima */
+    height: 20px;
+    /* Altezza */
+    display: flex;
+    /* Centra il contenuto */
+    align-items: center;
+    /* Centra verticalmente */
+    justify-content: center;
+    /* Centra orizzontalmente */
+    line-height: 1;
+    /* Altezza della linea */
+    z-index: 10;
+    /* Porta il badge sopra le icone */
 }
 
 /* Contenitori per wishlist e carrello */
 .icon-wishlist-container,
 .icon-cart-container {
-    position: relative; /* Necessario per posizionare il badge rispetto al contenitore */
+    position: relative;
+    /* Necessario per posizionare il badge rispetto al contenitore */
     display: inline-block;
     margin: 0 10px;
     padding: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 /* Stile per le icone (wishlist e carrello) */
 .icon-wishlist-container i.fa-heart,
 .icon-cart-container i.fa-cart-shopping {
-    font-size: 1.5rem; /* Dimensione uniforme per entrambe le icone */
-    transition: transform 0.3s ease, color 0.3s ease; /* Transizione fluida per trasformazioni e colore */
+    font-size: 1.5rem;
+    /* Dimensione uniforme per entrambe le icone */
+    transition: transform 0.3s ease, color 0.3s ease;
+    /* Transizione fluida per trasformazioni e colore */
 }
 
 /* Effetto hover per le icone */
 .icon-wishlist-container i.fa-heart:hover,
 .icon-cart-container i.fa-cart-shopping:hover {
-    transform: scale(1.2); /* Ingrandisce leggermente l'icona */
+    transform: scale(1.2);
+    /* Ingrandisce leggermente l'icona */
 }
 
 /* Colore hover specifico */
 .icon-wishlist-container i.fa-heart:hover {
-    color: red; /* Cambia il colore al passaggio del mouse */
+    color: red;
+    /* Cambia il colore al passaggio del mouse */
 }
 
 .icon-cart-container i.fa-cart-shopping:hover {
-    color: green; /* Cambia il colore al passaggio del mouse */
+    color: green;
+    /* Cambia il colore al passaggio del mouse */
 }
 
 .custom-heart {
@@ -85,6 +106,7 @@ header {
     font-weight: bold;
     color: var(--white);
 }
+
 #root {
     background-color: var(--gray);
 }

@@ -107,6 +107,7 @@ export default function Header() {
                                 style={{
                                     transition: "background-color 0.3s, color 0.3s",
                                 }}
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 <i
                                     className="fa-solid fa-heart custom-heart"
@@ -134,6 +135,7 @@ export default function Header() {
                                 style={{
                                     transition: "background-color 0.3s, color 0.3s",
                                 }}
+                                onClick={() => window.scrollTo(0, 0)}
                             >
                                 <i
                                     className="fa-solid fa-cart-shopping custom-cart"

@@ -66,13 +66,12 @@ export default function OrderRecap() {
             )}
 
             {/* Totale */}
-            <div className="input-group pt-3 d-flex justify-content-end">
-                <span className="input-group-text"><strong>TOTALE : </strong></span>
-                <Badge className='bg-success'>
-                    <h5>
-                        <strong>{total.toFixed(2)} €</strong>
-                    </h5>
-                </Badge>
+            <div className="input-group pt-3 d-flex justify-content-end text-center align-content-center">
+                <p className="input-group-text"><strong>TOTALE : </strong></p>
+
+                <p className="input-group-text bg-success text-light fs-5">
+                    <strong>{total.toFixed(2)} €</strong>
+                </p>
             </div>
         </div>
     );
