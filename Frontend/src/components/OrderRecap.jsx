@@ -62,6 +62,7 @@ export default function OrderRecap() {
                         onClick={() => window.scrollTo(0, 0)}
                     >
                         <button
+                            type="button"
                             className="btn btn-outline-primary"
                             data-bs-dismiss="offcanvas"
                             aria-label="Close"
