@@ -87,7 +87,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     aria-current="page"
                                     to={`/ballon`}
