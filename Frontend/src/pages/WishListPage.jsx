@@ -13,7 +13,9 @@ export default function WishListPage() {
                     <HorizontalProductCard key={product.id} product={product} />
                 ))
             ) : (
-                <p className="wishlist-empty">La tua wishlist è vuota.</p>
+                <p className="text-center text-muted">
+                    <i className="fa-solid fa-heart-broken"></i> La tua wishlist è vuota.
+                </p>
             )}
             <CategorySection />
         </>
