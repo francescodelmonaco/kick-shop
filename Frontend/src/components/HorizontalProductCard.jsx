@@ -10,7 +10,7 @@ export default function HorizontalProductCard({ product }) {
             <div className="card">
                 <div className="row p-3">
                     <div id={`carousel-${id}`} className="carousel slide col-md-3" data-bs-theme="dark">
-                        <div className="carousel-inner">
+                        <div className="carousel-inner cardBox">
                             {images && images.map((image, index) => {
                                 const { id: imageId, image_url } = image;
 
@@ -19,8 +19,8 @@ export default function HorizontalProductCard({ product }) {
 
                                 return (
                                     <div key={imageId} className={className}>
-                                        <figure className="boxImgProduct" >
-                                            <img src={image_url} alt={name} className="w-100 imgBox" />
+                                        <figure className="imgBox-dimension" >
+                                            <img src={image_url} alt={name} className="w-100 effectCard imgBox" />
                                         </figure>
                                     </div>
                                 );

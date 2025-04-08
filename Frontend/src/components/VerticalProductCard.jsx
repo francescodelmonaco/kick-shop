@@ -9,7 +9,7 @@ export default function VerticalProductCard({ product, viewMode }) {
 
     return (
         <div className={`card h-100 ${viewMode === "list" ? "flex-row" : ""}`} key={id}>
-            <Link className="card-body" to={`/products/${slug}`} >
+            <div className="card-body">
                 <div id={`carousel-${id}`} className="carousel slide" data-bs-theme="dark">
                     <div className="carousel-inner cardBox position-relative">
                         {/* Icona del cuore */}
@@ -61,7 +61,7 @@ export default function VerticalProductCard({ product, viewMode }) {
                             aria-controls="offcanvasRight"// Chiama la funzione addToCart con il prodotto
                         />
 
-                        
+
 
                         {/* Carousel delle immagini */}
                         {images &&
@@ -73,9 +73,17 @@ export default function VerticalProductCard({ product, viewMode }) {
 
                                 return (
                                     <div key={id} className={className}>
-                                        <figure className="imgBox-dimension" >
-                                            <img src={image_url} alt={name} className="w-100 mb-3 effectCard imgBox" onClick={() => window.scrollTo(0, 0)} />
-                                        </figure>
+                                        <Link
+                                            className="imgBox-dimension"
+                                            to={`/products/${slug}`}
+                                        >
+                                            <img
+                                                src={image_url}
+                                                alt={name}
+                                                className="w-100 mb-3 effectCard imgBox"
+                                                onClick={() => window.scrollTo(0, 0)}
+                                            />
+                                        </Link>
                                     </div>
                                 );
                             })}
@@ -103,12 +111,16 @@ export default function VerticalProductCard({ product, viewMode }) {
                 </div>
 
                 {/* Dettagli del prodotto */}
-                <div className={`d-flex ${viewMode === "list" ? "flex-column" : "justify-content-between"}`}>
+                <Link
+                    className={`d-flex ${viewMode === "list" ? "flex-column" : "justify-content-between"}`}
+                    to={`/products/${slug}`}
+                    onClick={() => window.scrollTo(0, 0)}
+                >
                     <h5 className="card-title"><strong>{name}</strong></h5>
                     <h5 className="fonts"><strong>€ {price}</strong></h5>
-                </div>
+                </Link>
 
-            </Link>
+            </div>
         </div >
     );
 }
