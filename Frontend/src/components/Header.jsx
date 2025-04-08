@@ -100,7 +100,7 @@ export default function Header() {
 
 
                         {/* Wishlist */}
-                        <div className="wishlist-container">
+                        <div className="icon-wishlist-container">
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/wish`}
@@ -122,12 +122,12 @@ export default function Header() {
                                 ></i>
                             </NavLink>
                             {wish.length > 0 && (
-                                <span className="notification-badge-heart">{wish.length}</span>
+                                <span className="notification-badge">{wish.length}</span>
                             )}
                         </div>
 
                         {/* Carrello */}
-                        <div className="cart-container">
+                        <div className="icon-cart-container">
                             <NavLink
                                 className=" me-2 mb-3 mb-lg-0"
                                 to={`/checkout`}
@@ -149,7 +149,7 @@ export default function Header() {
                                 ></i>
                             </NavLink>
                             {cart.length > 0 && (
-                                <span className="notification-badge-cart">{cart.length}</span>
+                                <span className="notification-badge">{cart.length}</span>
                             )}
                         </div>
 
