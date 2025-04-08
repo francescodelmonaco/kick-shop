@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import ProductCard from '../components/ProductCard';
+import { useGlobalContext } from '../context/GlobalContext';
+
+// components
+import VerticalProductCard from '../components/VerticalProductCard';
 import CategorySection from '../components/CategorySection';
 import FilterSection from '../components/FilterSection';
-import { useGlobalContext } from '../context/GlobalContext';
+import ListProductCard from '../components/ListProductCard';
 
 export default function BallonPage() {
     const [ballonProducts, setBallonProducts] = useState([]);
@@ -31,7 +34,11 @@ export default function BallonPage() {
                     className={viewMode === "grid" ? "col-lg-3 col-md-4 col-sm-6 g-3" : "col-12 py-3"}
                     key={ballonProduct.id}
                 >
-                    <ProductCard product={ballonProduct} viewMode={viewMode} />
+                    {viewMode === "grid" ? (
+                        <VerticalProductCard product={ballonProduct} viewMode={viewMode} />
+                    ) : (
+                        <ListProductCard product={ballonProduct} />
+                    )}
                 </div>
             ));
     };
