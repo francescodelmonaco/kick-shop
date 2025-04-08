@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import OrderRecap from "./OrderRecap";
-import { useLocation } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
 
 export default function CartSection() {
@@ -14,7 +14,7 @@ export default function CartSection() {
             <div className="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
                 <div className="offcanvas-header">
                     <h5 className="offcanvas-title" id="offcanvasRightLabel">
-                        Prodotti Carrello
+                        Prodotti nel Carrello
                     </h5>
                     <button
                         type="button"

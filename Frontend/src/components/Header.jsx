@@ -83,6 +83,20 @@ export default function Header() {
                                     Inverno
                                 </NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink
+                                    className={({ isActive }) =>
+                                        `nav-link ${isActive ? "text-light border-bottom" : "text-light"}`
+                                    }
+                                    aria-current="page"
+                                    to={`/ballon`}
+                                    onClick={() => window.scrollTo(0, 0)}
+                                >
+                                    Palloni
+                                </NavLink>
+                            </li>
+
+
                         </ul>
 
                         {/* whishlist */}
