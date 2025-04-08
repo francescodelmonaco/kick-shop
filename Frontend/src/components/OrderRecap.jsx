@@ -63,6 +63,8 @@ export default function OrderRecap() {
                     >
                         <button
                             className="btn btn-outline-primary"
+                            data-bs-dismiss="offcanvas"
+                            aria-label="Close"
                         >
                             Palloni
                         </button>
