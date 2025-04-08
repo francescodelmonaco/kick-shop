@@ -17,7 +17,7 @@ export default function BallonPage() {
         axios
             .get('http://localhost:3000/products')
             .then((res) => {
-                console.log("Prodotti ricevuti:", res.data);
+                // console.log("Prodotti ricevuti:", res.data);
                 setBallonProducts(res.data);
             })
             .catch((error) => {
@@ -48,7 +48,7 @@ export default function BallonPage() {
 
     return (
         <>
-            <h1 className="category-title">PALLONI DA COLLEZIONE</h1>
+            <h1 className="text-center category-title py-3">PALLONI DA COLLEZIONE</h1>
 
             <div className="px-5">
                 <FilterSection />
