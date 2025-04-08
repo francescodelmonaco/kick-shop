@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../context/GlobalContext";
 import Badge from "react-bootstrap/Badge";
 import QuantityCounter from './ QuantityCounter';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ConfirmationModal from "./ConfirmationModal";
 import { NavLink } from "react-router-dom";
 
@@ -10,8 +10,18 @@ export default function OrderRecap() {
 
     const [showModal, setShowModal] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
+    const [scroll, setScroll] = useState(0); // Stato per il banner di spedizione
 
     const ShippingCost = 25; // Costo fisso di spedizione
+
+    // Effetto per il banner di spedizione
+    useEffect(() => {
+        const scrollInterval = setInterval(() => {
+            setScroll((prevScroll) => prevScroll + 1);
+        }, 30); // Velocità dello scroll
+
+        return () => clearInterval(scrollInterval);
+    }, []);
 
     const confirmRemove = (index) => {
         setSelectedIndex(index);
@@ -55,10 +65,28 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
-                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita. Potrebbe interressarti:
-                    <NavLink
+                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita.
+                </div>
+            );
+        }
+    };
+
+    return (
+        <div className="offcanvas-body">
+            {/* Banner di spedizione */}
+            <div className="banner-container">
+                <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
+                <p className="text"><strong className="text-warning">OFFERTA</strong> speciale Kick Shop!!! 🚚 Approfitta della  
+                    <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!</p>                </div>
+            </div>
+
+            {cart.length === 0 ? (
+                <>
+                    <p className="text-center text-muted">
+                        <i className="fa-solid fa-heart-broken"></i> IL tuo carrello è vuoto.
+                    </p>                    <NavLink
                         aria-current="page"
-                        to={`/ballon`}
+                        to={`/`}
                         onClick={() => window.scrollTo(0, 0)}
                     >
                         <button
@@ -67,19 +95,10 @@ export default function OrderRecap() {
                             data-bs-dismiss="offcanvas"
                             aria-label="Close"
                         >
-                            Palloni
+                            Torna alla Home
                         </button>
                     </NavLink>
-                    da collezione.
-                </div>
-            );
-        }
-    };
-
-    return (
-        <div className="offcanvas-body">
-            {cart.length === 0 ? (
-                <p>Il carrello è vuoto.</p>
+                </>
             ) : (
                 <ul className="list-group">
                     {cart.map((item, index) => (

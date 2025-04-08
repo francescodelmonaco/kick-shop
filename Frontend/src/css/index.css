@@ -491,4 +491,34 @@ a {
   }
   
   
-  
+  .banner-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--blue);
+    color: var(--white);
+    padding: 10px 0;
+    position: relative;
+    text-align: center;
+}
+
+.banner-content {
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: scrollBanner 30s linear infinite;
+}
+
+.text {
+    display: inline-block;
+    padding: 0 2rem;
+}
+
+@keyframes scrollBanner {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
