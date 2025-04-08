@@ -3,6 +3,7 @@ import Badge from "react-bootstrap/Badge";
 import QuantityCounter from './ QuantityCounter';
 import { useState } from 'react';
 import ConfirmationModal from "./ConfirmationModal";
+import { NavLink } from "react-router-dom";
 
 export default function OrderRecap() {
     const { cart, handleQuantityChange, handleRemoveItem, quantities } = useGlobalContext();
@@ -54,7 +55,23 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
-                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita.
+                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita. Potrebbe interressarti: 
+                    <NavLink
+                        aria-current="page"
+                        to={`/ballon`}
+                        onClick={() => window.scrollTo(0, 0)}
+                    >
+                        <button
+                            className="btn btn-outline-primary"
+
+                        >
+                             Palloni 
+                        </button>
+
+                    </NavLink>
+
+                     da collezione.
+
                 </div>
             );
         }
