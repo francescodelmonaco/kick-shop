@@ -55,7 +55,7 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning mt-3">
-                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita. Potrebbe interressarti: 
+                    Mancano <strong>{amountLeft}€</strong> per ottenere la spedizione gratuita. Potrebbe interressarti:
                     <NavLink
                         aria-current="page"
                         to={`/ballon`}
@@ -63,15 +63,11 @@ export default function OrderRecap() {
                     >
                         <button
                             className="btn btn-outline-primary"
-
                         >
-                             Palloni 
+                            Palloni
                         </button>
-
                     </NavLink>
-
-                     da collezione.
-
+                    da collezione.
                 </div>
             );
         }
@@ -134,7 +130,9 @@ export default function OrderRecap() {
             {/* Totale */}
             <div className="input-group pt-3 d-flex justify-content-end">
                 <span className="input-group-text"><strong>TOTALE : </strong></span>
-                <Badge className='bg-secondary'>
+                <Badge
+                    className={`bg-secondary ${total >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                >
                     <h5>
                         <strong>{total.toFixed(2)} €</strong>
                     </h5>
@@ -146,7 +144,7 @@ export default function OrderRecap() {
 
             {/* Nuovo totale */}
             <div className="input-group pt-3 d-flex justify-content-end">
-                <span className="input-group-text"><strong>NUOVO TOTALE : </strong></span>
+                <span className="input-group-text"><strong>PREZZO FINALE: </strong></span>
                 <Badge className='bg-success'>
                     <h5>
                         <strong>{newTotal.toFixed(2)} €</strong>
