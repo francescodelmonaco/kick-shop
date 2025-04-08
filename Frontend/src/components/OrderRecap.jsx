@@ -6,7 +6,7 @@ import ConfirmationModal from "./ConfirmationModal";
 import { NavLink } from "react-router-dom";
 
 export default function OrderRecap() {
-    const { cart, handleQuantityChange, handleRemoveItem, quantities } = useGlobalContext();
+    const { cart = [], handleQuantityChange, handleRemoveItem, quantities = [] } = useGlobalContext();
 
     const [showModal, setShowModal] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(null);
@@ -31,7 +31,7 @@ export default function OrderRecap() {
 
     // Calcolare il totale escludendo i prodotti non disponibili
     const subtotal = cart.reduce((acc, item, index) => {
-        if (item.availability > 0) {
+        if (item && item.availability > 0) {
             acc += item.price * (quantities[index] || 1);
         }
         return acc;
@@ -85,39 +85,25 @@ export default function OrderRecap() {
                     {cart.map((item, index) => (
                         <li key={index} className="list-group-item list-group-item-dark d-flex justify-content-between align-items-center gap-3" aria-current="true">
                             {/* Immagine prodotto */}
-                            <Link
-                                to={`/products/${item.slug}`}
-                                onClick={window.scrollTo(0, 0)}
-                            >
-                                <img
-                                    src={item.images?.[0]?.image_url}
-                                    alt={item.name}
-                                    style={{
-                                        width: "60px",
-                                        height: "60px",
-                                        objectFit: "cover",
-                                        borderRadius: "8px",
-                                    }}
-                                    data-bs-dismiss="offcanvas"
-                                    aria-label="Close"
-                                />
-                            </Link>
+                            <img
+                                src={item.images?.[0]?.image_url}
+                                alt={item.name}
+                                style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '8px' }}
+                            />
 
-
-                            {/* Informazioni e badge */}
+                            {/* Info e badge */}
                             <div className="d-flex flex-column flex-grow-1">
                                 <p className="mb-1">
                                     <strong>{item.name}</strong> - {item.price} €
                                 </p>
+
                                 {item.availability === 0 && (
-                                    <Badge bg="warning" text="dark">
-                                        Non disponibile
-                                    </Badge>
+                                    <Badge bg="warning" text="dark">Non disponibile</Badge>
                                 )}
                             </div>
 
                             {/* Counter + trash */}
-                            <div className="d-flex gap-2 align-items-center">
+                            <div className='d-flex gap-2 align-items-center'>
                                 {item.availability > 0 ? (
                                     <QuantityCounter
                                         index={index}
@@ -128,9 +114,10 @@ export default function OrderRecap() {
                                 ) : (
                                     <span className="text-muted">Prodotto esaurito</span>
                                 )}
+
                                 <button
                                     className="btn btn-danger"
-                                    onClick={() => handleRemoveItem(index)}
+                                    onClick={() => confirmRemove(index)}
                                 >
                                     <i className="fa-solid fa-trash"></i>
                                 </button>
@@ -140,14 +127,24 @@ export default function OrderRecap() {
                 </ul>
             )}
 
+            <div className="input-group pt-3 d-flex justify-content-end">
             {/* Costo di spedizione */}
-            <div><h5>Costo di spedizione: {ShippingCost}€</h5></div>
+           
+            <div>
+                <h5>
+                    Costo di spedizione: 
+                <Badge
+                className="bg-secondary pt-3"
+                > 
+                    {ShippingCost}€
+                    </Badge>
+                    </h5>
+                    </div>
 
             {/* Totale */}
-            <div className="input-group pt-3 d-flex justify-content-end">
                 <span className="input-group-text"><strong>TOTALE : </strong></span>
                 <Badge
-                    className={`bg-secondary ${total >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                    className={`bg-secondary ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
                 >
                     <h5>
                         <strong>{total.toFixed(2)} €</strong>
@@ -177,5 +174,4 @@ export default function OrderRecap() {
             />
         </div>
     );
-
 }
