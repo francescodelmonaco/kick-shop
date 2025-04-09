@@ -22,7 +22,7 @@ export function sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userN
   <tr>
     <td style="padding: 8px;">${product.name}</td>
     <td style="text-align: center; padding: 8px;">${product.quantity}</td>
-    <td style="text-align: right; padding: 8px;">€${(product.price * product.quantity).toFixed(2)}</td>
+    <td style="text-align: right; padding: 8px;">${(product.price * product.quantity).toFixed(2)} €</td>
   </tr>
 `).join('');
 
@@ -62,7 +62,7 @@ export function sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userN
 
   <!-- TOTALE -->
   <p style="text-align: right; margin-top: 10px; font-size: 18px; color: #333;">
-    <strong>Totale dell'ordine: €${totalPrice}</strong>
+    <strong>Totale dell'ordine: ${totalPrice.toFixed(2)} €</strong>
   </p>
 
   <!-- INDIRIZZO -->
@@ -122,7 +122,7 @@ export function sendOrderConfirmationEmail(userEmail, orderId, totalPrice, userN
       </tbody>
     </table>
 
-    <h3 style="text-align: right; margin-top: 20px;">Totale Ordine: € ${totalPrice.toFixed(2)}</h3>
+    <h3 style="text-align: right; margin-top: 20px;">Totale Ordine: ${totalPrice.toFixed(2)} €</h3>
 
     <p style="margin-top: 30px;">Controlla il gestionale per processare l’ordine oppure contatta il cliente se necessario.</p>
 
