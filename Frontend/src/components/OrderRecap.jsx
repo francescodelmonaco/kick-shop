@@ -83,8 +83,8 @@ export default function OrderRecap() {
                                 Palloni
                             </button>
                         </NavLink>
-                        da collezione. Oppure le nostre
-                        <NavLink
+                        {/* da collezione. Oppure le nostre */}
+                         {/* <NavLink
                             aria-current="page"
                             to={`/search?q=scarpe&sortField=name&sortOrder=asc`}
                             onClick={() => window.scrollTo(0, 0)}
@@ -97,14 +97,14 @@ export default function OrderRecap() {
                             >
                                 Maglie
                             </button>
-                        </NavLink>
-                        <hr />
+                        </NavLink> */}
+                        {/* <hr /> */}
                     </p>
 
-                    <div>
+                    {/* <div>
                         <p>Oppure ricerca il tuo stile</p>
                         <Search />
-                    </div>
+                    </div> */}
                 </div>
 
 
@@ -115,13 +115,13 @@ export default function OrderRecap() {
     return (
         <div className="offcanvas-body">
             {/* Banner di spedizione */}
-            {/*  <div className="banner-container">
+             <div className="banner-container">
                  <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
                     <p className="text"><strong className="text-warning">OFFERTA</strong> speciale Kick Shop!!! 🚚 Approfitta della
                         <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!
                     </p>
                 </div>
-            </div> */}
+            </div>
 
             {cart.length === 0 ? (
                 <>
