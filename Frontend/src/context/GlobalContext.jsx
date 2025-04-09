@@ -192,11 +192,7 @@ const GlobalProvider = ({ children }) => {
 
     const submitCheckout = (e, navigate) => {
         e.preventDefault();
-        if (!formData.userEmail || !formData.userName) {
-            alert("Compila tutti i campi obbligatori!");
-            return;
-        }
-
+       
         const cartWithQuantities = cart.map((item, index) => ({
             id_product: item.id,
             quantity: quantities[index] || 1
