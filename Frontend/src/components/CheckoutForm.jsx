@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function CheckoutForm() {
     const { submitCheckout, formData, setFieldValue } = useGlobalContext();
     const navigate = useNavigate();
-    
+
     // Stato per il checkbox dei termini e condizioni
     const [acceptTerms, setAcceptTerms] = useState(false);
 
@@ -151,7 +151,7 @@ export default function CheckoutForm() {
                     type="text"
                     placeholder="Es: Via Aspromonte 12, Napoli, 80013"
                     required
-ù                />
+                />
                 <Form.Text className="invalid-feedback">
                     {formData.addressShipping.trim() === "" ? "Questo campo è obbligatorio." : ""}
                 </Form.Text>
@@ -171,11 +171,11 @@ export default function CheckoutForm() {
             <hr />
 
             <Form.Group className="mb-3" id="formGridCheckbox">
-                <Form.Check 
-                    type="checkbox" 
+                <Form.Check
+                    type="checkbox"
                     label="Accetta i termini e condizioni"
                     checked={acceptTerms}
-                    onChange={() => setAcceptTerms(!acceptTerms)} 
+                    onChange={() => setAcceptTerms(!acceptTerms)}
                     isInvalid={!acceptTerms}
                 />
                 <Form.Text className="invalid-feedback">

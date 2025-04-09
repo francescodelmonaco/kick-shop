@@ -17,7 +17,7 @@ export default function Footer({ className = "" }) {
                                 </Link>
                             </li>
 
-                            <li>
+                            <div>
                                 <li>
                                     <Link
                                         onClick={() => window.scrollTo(0, 0)}
@@ -32,7 +32,7 @@ export default function Footer({ className = "" }) {
                                     className="footer-link">
                                     Donna
                                 </Link>
-                            </li>
+                            </div>
 
                             <li>
                                 <Link
