@@ -15,8 +15,13 @@ header {
     background-color: var(--red);
 }
 
+.icon_bars {
+    color: white;
+    border-radius: 25%;
+    border-color: white;
+}
 
-/* Badge per le notifiche (wishlist e carrello) */
+/*Badge per le notifiche (wishlist e carrello) */
 .notification-badge {
     position: absolute;
     top: -5px;

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function Footer() {
+export default function Footer({ className = "" }) {
     return (
-        <footer className="footer-container bg-dark text-light py-4 px-4">
+        <footer className={`footer-container bg-dark text-light py-4 px-4 ${className}`}>
             <div className="container">
                 <div className="row">
                     {/* Sezione Navigazione */}
@@ -18,6 +18,14 @@ export default function Footer() {
                             </li>
 
                             <li>
+                                <li>
+                                    <Link
+                                        onClick={() => window.scrollTo(0, 0)}
+                                        to="/man"
+                                        className="footer-link">
+                                        Uomo
+                                    </Link>
+                                </li>
                                 <Link
                                     onClick={() => window.scrollTo(0, 0)}
                                     to="/woman"
@@ -39,16 +47,17 @@ export default function Footer() {
                                     onClick={() => window.scrollTo(0, 0)}
                                     to="/winter"
                                     className="footer-link">
-
+                                    Inverno
                                 </Link>
                             </li>
+
 
                             <li>
                                 <Link
                                     onClick={() => window.scrollTo(0, 0)}
-                                    to="/man"
+                                    to="/ballon"
                                     className="footer-link">
-                                    Uomo
+                                    Palloni
                                 </Link>
                             </li>
                         </ul>

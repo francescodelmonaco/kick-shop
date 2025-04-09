@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 import Search from "./Search";
 
+
 export default function Header() {
     const { wish, cart, navigate } = useGlobalContext();
 
@@ -34,17 +35,17 @@ export default function Header() {
                     </NavLink>
 
                     {/* Navbar toggler */}
-                    <button
-                        className="navbar-toggler"
-                        type="button"
+                    <i 
+                        className="fa-solid fa-bars icon_bars navbar-toggler"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                        
+                    </i>
+                    
 
                     {/* Navbar links */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
