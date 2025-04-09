@@ -36,7 +36,7 @@ export default function ListProductCard({ product }) {
                     <div className="col-md-7 d-flex align-items-center">
                         <div className="card-body d-flex flex-column gap-3 gap-xl-5">
                             <Link
-                                className="d-flex justify-content-between flex-column flex-md-row"
+                                className="d-flex justify-content-between flex-column flex-lg-row"
                                 to={`/products/${slug}`}
                                 onClick={() => window.scrollTo(0, 0)}
                             >
