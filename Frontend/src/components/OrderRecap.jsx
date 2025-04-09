@@ -200,7 +200,7 @@ export default function OrderRecap() {
                     <span className="input-group-text">
                         <strong>TOTALE PARZIALE : </strong></span>
                     <div
-                        className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                        className={"input-group-text "}
                     >
                         <span className="w-100">
                             <strong>{total.toFixed(2)} €</strong>
