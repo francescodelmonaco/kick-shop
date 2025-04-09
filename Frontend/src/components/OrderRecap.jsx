@@ -84,8 +84,9 @@ export default function OrderRecap() {
                             </button>
                         </NavLink>
                         da collezione.
-                        <hr />
                     </p>
+
+                    <hr />
 
                     <div>
                         <p>Oppure ricerca il tuo stile</p>

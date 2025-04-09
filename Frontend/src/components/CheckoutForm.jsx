@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function CheckoutForm() {
     const { submitCheckout, formData, setFieldValue } = useGlobalContext();
     const navigate = useNavigate();
-    
+
     // Stato per il checkbox dei termini e condizioni
     const [acceptTerms, setAcceptTerms] = useState(false);
 
@@ -85,7 +85,6 @@ export default function CheckoutForm() {
                         type="text"
                         placeholder="Es: Mario"
                         required
-                        isInvalid={formData.userName.trim() === ""}
                     />
                     <Form.Text className="invalid-feedback">
                         {formData.userName.trim() === "" ? "Questo campo è obbligatorio e non può contenere solo spazi." : ""}
@@ -101,7 +100,6 @@ export default function CheckoutForm() {
                         type="text"
                         placeholder="Es: Rossi"
                         required
-                        isInvalid={formData.userSurname.trim() === ""}
                     />
                     <Form.Text className="invalid-feedback">
                         {formData.userSurname.trim() === "" ? "Questo campo è obbligatorio e non può contenere solo spazi." : ""}
@@ -120,7 +118,6 @@ export default function CheckoutForm() {
                         placeholder="Es: mariorossi@gmail.com
 "
                         required
-                        isInvalid={!/\S+@\S+\.\S+/.test(formData.userEmail)}
                     />
                     <Form.Text className="invalid-feedback">
                         {!/\S+@\S+\.\S+/.test(formData.userEmail) ? "L'email non è valida." : ""}
@@ -136,7 +133,6 @@ export default function CheckoutForm() {
                         type="phone"
                         placeholder="Es: 3284756834"
                         required
-                        isInvalid={!/^\+?[0-9]{7,15}$/.test(formData.telephone)}
                     />
                     <Form.Text className="invalid-feedback">
                         {!/^\+?[0-9]{7,15}$/.test(formData.telephone) ? "Il numero di cellulare non è valido." : ""}
@@ -155,7 +151,6 @@ export default function CheckoutForm() {
                     type="text"
                     placeholder="Es: Via Aspromonte 12, Napoli, 80013"
                     required
-                    isInvalid={formData.addressShipping.trim() === ""}
                 />
                 <Form.Text className="invalid-feedback">
                     {formData.addressShipping.trim() === "" ? "Questo campo è obbligatorio." : ""}
@@ -176,11 +171,11 @@ export default function CheckoutForm() {
             <hr />
 
             <Form.Group className="mb-3" id="formGridCheckbox">
-                <Form.Check 
-                    type="checkbox" 
+                <Form.Check
+                    type="checkbox"
                     label="Accetta i termini e condizioni"
                     checked={acceptTerms}
-                    onChange={() => setAcceptTerms(!acceptTerms)} 
+                    onChange={() => setAcceptTerms(!acceptTerms)}
                     isInvalid={!acceptTerms}
                 />
                 <Form.Text className="invalid-feedback">
