@@ -139,6 +139,14 @@ main {
     overflow: hidden;
 }
 
+.font-nav-header{
+    font-family: "Black Ops One", system-ui;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.1rem;
+    color: white;
+}
+
 .font::before {
     content: "";
     position: absolute;
@@ -188,6 +196,17 @@ main {
 .category-title {
     font-family: "Black Ops One", system-ui;
     font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--blue);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.category-title-riep {
+    font-family: "Black Ops One", system-ui;
+    font-size: 1.5rem;
     font-weight: bold;
     color: var(--blue);
     text-align: center;

@@ -53,7 +53,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/`}
                                     onClick={() => {
@@ -68,7 +68,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/man`}
                                     onClick={() => {
@@ -82,7 +82,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/woman`}
                                     onClick={() => {
@@ -96,7 +96,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/summer`}
                                     onClick={() => {
@@ -110,7 +110,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/winter`}
                                     onClick={() => {
@@ -124,7 +124,7 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavLink
                                     className={({ isActive }) =>
-                                        `nav-link ${isActive ? "text-light underline" : "text-light"}`
+                                        `nav-link font-nav-header ${isActive ? "text-light underline" : "text-light"}`
                                     }
                                     to={`/ballon`}
                                     onClick={() => {

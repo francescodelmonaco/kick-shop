@@ -9,7 +9,7 @@ export default function CheckoutPage() {
                 {/* Colonna Riepilogo + Metodi di pagamento */}
                 <Col xs={12} lg={5}>
                     <div className="py-3">
-                        <h1 className="category-title py-3">Riepilogo ordine</h1>
+                        <h1 className="category-title-riep py-3">Riepilogo ordine</h1>
 
                         <OrderRecap />
 
