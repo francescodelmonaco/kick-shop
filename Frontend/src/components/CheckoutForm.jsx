@@ -10,100 +10,110 @@ export default function CheckoutForm() {
     const { submitCheckout, formData, setFieldValue } = useGlobalContext();
     const navigate = useNavigate();
 
-    // Stato per il checkbox dei termini e condizioni
-    const [acceptTerms, setAcceptTerms] = useState(false);
+    const [acceptTerms, setAcceptTerms] = useState(true);
+    const [errors, setErrors] = useState({}); // Stato per gestire gli errori in tempo reale
 
-    // Funzione di validazione
-    const validateForm = () => {
-        const errors = {};
+    // Funzione per validare un singolo campo
+    const validateField = (name, value) => {
+        let error = "";
 
-        // Verifica che nome, cognome, email e telefono non contengano spazi vuoti
-        if (!formData.userName.trim()) {
-            errors.userName = "Il nome inserito non è valido";
+        switch (name) {
+            case "userName":
+                if (!value.trim()) {
+                    error = "Il nome non può essere vuoto.";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(value)) {
+                    error = "Il nome può contenere solo lettere, accenti e spazi.";
+                }
+                break;
+
+            case "userSurname":
+                if (!value.trim()) {
+                    error = "Il cognome non può essere vuoto.";
+                } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(value)) {
+                    error = "Il cognome può contenere solo lettere, accenti e spazi.";
+                }
+                break;
+
+            case "userEmail":
+                if (!value.trim()) {
+                    error = "L'email non può essere vuota.";
+                } else if (!/\S+@\S+\.\S+/.test(value)) {
+                    error = "L'email non è valida.";
+                }
+                break;
+
+            case "telephone":
+                if (!value.trim()) {
+                    error = "Il numero di cellulare non può essere vuoto.";
+                } else if (!/^\d{7,15}$/.test(value)) {
+                    error = "Il numero di cellulare deve contenere solo numeri e avere tra 7 e 15 cifre.";
+                }
+                break;
+
+            case "addressShipping":
+                if (!value.trim()) {
+                    error = "L'indirizzo di spedizione non può essere vuoto.";
+                }
+                break;
+
+            default:
+                break;
         }
 
-        if (!formData.userSurname.trim()) {
-            errors.userSurname = "Il cognome inserito non è valido";
-        }
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: error,
+        }));
+    };
 
-        if (!formData.userEmail.trim()) {
-            errors.userEmail = "L'email non può essere vuota o contenere solo spazi.";
-        } else if (!/\S+@\S+\.\S+/.test(formData.userEmail)) {
-            errors.userEmail = "L'email non è valida.";
-        }
-
-        if (!formData.telephone.trim()) {
-            errors.telephone = "Il numero di cellulare non può essere vuoto o contenere solo spazi.";
-        } else if (!/^\+?[0-9]{7,15}$/.test(formData.telephone)) {
-            errors.telephone = "Il numero di cellulare non è valido. Deve contenere solo numeri e avere almeno 7 cifre.";
-        }
-
-        if (!formData.addressShipping.trim()) {
-            errors.addressShipping = "L'indirizzo di spedizione non può essere vuoto o contenere solo spazi.";
-        }
-
-        // Verifica che i termini e condizioni siano accettati
-        if (!acceptTerms) {
-            errors.acceptTerms = "Devi accettare i termini e condizioni.";
-        }
-
-        return errors;
+    // Funzione per gestire il cambiamento dei campi
+    const handleFieldChange = (e) => {
+        const { name, value } = e.target;
+        setFieldValue(e); // Aggiorna il valore nel contesto globale
+        validateField(name, value); // Valida il campo in tempo reale
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const errors = validateForm();
-        const form = e.currentTarget;
 
-        // Se ci sono errori, mostra i messaggi di errore
-        if (Object.keys(errors).length > 0) {
+        // Controlla se ci sono errori
+        const formErrors = Object.values(errors).filter((error) => error !== "");
+        if (formErrors.length > 0) {
             e.stopPropagation();
-            Object.keys(errors).forEach((field) => {
-                form.querySelector(`#${field}`).setCustomValidity(errors[field]);
-            });
-            form.reportValidity();
             return;
         }
 
-        // Altrimenti, continua con la funzione di submit
         submitCheckout(e, navigate);
     };
 
     return (
-        <Form
-            className='py-3 w-100 px-3 px-md-5'
-            onSubmit={handleSubmit}
-        >
-            <h5 className='text-center pb-3'>Inserisci i dati necessari per procederere con l'ordine</h5>
+        <Form className="py-3 w-100 px-3 px-md-5" onSubmit={handleSubmit}>
+            <h5 className="text-center pb-3">Inserisci i dati necessari per procedere con l'ordine</h5>
             <Row className="mb-3">
                 <Form.Group as={Col} controlId="userName">
                     <Form.Label>Nome</Form.Label>
                     <Form.Control
-                        name='userName'
-                        onChange={setFieldValue}
+                        name="userName"
+                        onChange={handleFieldChange}
                         value={formData.userName}
                         type="text"
                         placeholder="Es: Mario"
                         required
                     />
-                    <Form.Text className="invalid-feedback">
-                        {formData.userName.trim() === "" ? "Questo campo è obbligatorio e non può contenere solo spazi." : ""}
-                    </Form.Text>
+                    {errors.userName && <div className="alert alert-danger mt-2">{errors.userName}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="userSurname">
                     <Form.Label>Cognome</Form.Label>
                     <Form.Control
                         name="userSurname"
-                        onChange={setFieldValue}
+                        onChange={handleFieldChange}
                         value={formData.userSurname}
                         type="text"
                         placeholder="Es: Rossi"
                         required
                     />
-                    <Form.Text className="invalid-feedback">
-                        {formData.userSurname.trim() === "" ? "Questo campo è obbligatorio e non può contenere solo spazi." : ""}
-                    </Form.Text>
+                    {errors.userSurname && <div className="alert alert-danger mt-2">{errors.userSurname}</div>}
                 </Form.Group>
             </Row>
 
@@ -112,31 +122,26 @@ export default function CheckoutForm() {
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                         name="userEmail"
-                        onChange={setFieldValue}
+                        onChange={handleFieldChange}
                         value={formData.userEmail}
                         type="email"
-                        placeholder="Es: mariorossi@gmail.com
-"
+                        placeholder="Es: mariorossi@gmail.com"
                         required
                     />
-                    <Form.Text className="invalid-feedback">
-                        {!/\S+@\S+\.\S+/.test(formData.userEmail) ? "L'email non è valida." : ""}
-                    </Form.Text>
+                    {errors.userEmail && <div className="alert alert-danger mt-2">{errors.userEmail}</div>}
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="telephone">
                     <Form.Label>Cellulare</Form.Label>
                     <Form.Control
                         name="telephone"
-                        onChange={setFieldValue}
+                        onChange={handleFieldChange}
                         value={formData.telephone}
-                        type="phone"
+                        type="text"
                         placeholder="Es: 3284756834"
                         required
                     />
-                    <Form.Text className="invalid-feedback">
-                        {!/^\+?[0-9]{7,15}$/.test(formData.telephone) ? "Il numero di cellulare non è valido." : ""}
-                    </Form.Text>
+                    {errors.telephone && <div className="alert alert-danger mt-2">{errors.telephone}</div>}
                 </Form.Group>
             </Row>
 
@@ -146,22 +151,20 @@ export default function CheckoutForm() {
                 <Form.Label>Indirizzo di spedizione</Form.Label>
                 <Form.Control
                     name="addressShipping"
-                    onChange={setFieldValue}
+                    onChange={handleFieldChange}
                     value={formData.addressShipping}
                     type="text"
                     placeholder="Es: Via Aspromonte 12, Napoli, 80013"
                     required
                 />
-                <Form.Text className="invalid-feedback">
-                    {formData.addressShipping.trim() === "" ? "Questo campo è obbligatorio." : ""}
-                </Form.Text>
+                {errors.addressShipping && <div className="alert alert-danger mt-2">{errors.addressShipping}</div>}
             </Form.Group>
 
             <Form.Group as={Col} className="mb-3" controlId="addressInvoice">
                 <Form.Label>Indirizzo di Fatturazione</Form.Label>
                 <Form.Control
                     name="addressInvoice"
-                    onChange={setFieldValue}
+                    onChange={handleFieldChange}
                     value={formData.addressInvoice}
                     type="text"
                     placeholder="Es: Via Aspromonte 12, Napoli, 80013"
@@ -176,11 +179,8 @@ export default function CheckoutForm() {
                     label="Accetta i termini e condizioni"
                     checked={acceptTerms}
                     onChange={() => setAcceptTerms(!acceptTerms)}
-                    isInvalid={!acceptTerms}
                 />
-                <Form.Text className="invalid-feedback">
-                    {!acceptTerms ? "Devi accettare i termini e condizioni." : ""}
-                </Form.Text>
+                {!acceptTerms && <div className="alert alert-danger mt-2">Devi accettare i termini e condizioni.</div>}
             </Form.Group>
 
             <Button variant="primary" type="submit" disabled={!acceptTerms}>
@@ -188,4 +188,4 @@ export default function CheckoutForm() {
             </Button>
         </Form>
     );
-};
+}
