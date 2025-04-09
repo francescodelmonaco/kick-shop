@@ -10,7 +10,7 @@ export default function CheckoutForm() {
     const { submitCheckout, formData, setFieldValue } = useGlobalContext();
     const navigate = useNavigate();
 
-    const [acceptTerms, setAcceptTerms] = useState(false);
+    const [acceptTerms, setAcceptTerms] = useState(true);
     const [errors, setErrors] = useState({}); // Stato per gestire gli errori in tempo reale
 
     // Funzione per validare un singolo campo
