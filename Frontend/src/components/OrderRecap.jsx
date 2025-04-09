@@ -83,7 +83,21 @@ export default function OrderRecap() {
                                 Palloni
                             </button>
                         </NavLink>
-                        da collezione.
+                        da collezione. Oppure le nostre
+                        <NavLink
+                            aria-current="page"
+                            to={`/search?q=scarpe&sortField=name&sortOrder=asc`}
+                            onClick={() => window.scrollTo(0, 0)}
+                        >
+                            <button
+                                type="button"
+                                className="btn btn-outline-dark mx-2 mb-2 mt-1"
+                                data-bs-dismiss="offcanvas"
+                                aria-label="Close"
+                            >
+                                Maglie
+                            </button>
+                        </NavLink>
                         <hr />
                     </p>
 
