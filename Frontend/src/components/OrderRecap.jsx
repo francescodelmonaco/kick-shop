@@ -96,13 +96,13 @@ export default function OrderRecap() {
     return (
         <div className="offcanvas-body">
             {/* Banner di spedizione */}
-            <div className="banner-container">
-                <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
+            {/*  <div className="banner-container">
+                 <div className="banner-content" style={{ transform: `translateX(-${scroll}px)` }}>
                     <p className="text"><strong className="text-warning">OFFERTA</strong> speciale Kick Shop!!! 🚚 Approfitta della
                         <strong className="text-warning"> SPEDIZIONE GRATUITA!!! </strong> Per ordini superiori a 200€! Non lasciarti sfuggire questa occasione!
                     </p>
                 </div>
-            </div>
+            </div> */}
 
             {/* Barra di ricerca */}
             <div className="search-bar-container my-3">
