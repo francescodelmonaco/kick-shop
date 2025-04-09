@@ -18,7 +18,7 @@ export default function Header() {
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     {/* Logo */}
-                    <Link
+                    <NavLink
                         className="navbar-brand"
                         to={`/`}
                         onClick={() => {
@@ -31,7 +31,7 @@ export default function Header() {
                             src="/src/assets/img/logo-kick-shop.png"
                             alt="Logo Kick Shop"
                         />
-                    </Link>
+                    </NavLink>
 
                     {/* Navbar toggler */}
                     <button
