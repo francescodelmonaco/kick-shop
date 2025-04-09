@@ -40,7 +40,8 @@ export default function Search() {
                 value={query}
                 onChange={handleInputChange} // Aggiorna la query ma non esegue la ricerca
             />
-            <button className="btn btn-light" type="submit">
+            <button className="btn btn-light" type="submit" data-bs-dismiss="offcanvas"
+                aria-label="Close">
                 Cerca
             </button>
         </form>
