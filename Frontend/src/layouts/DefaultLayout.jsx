@@ -12,7 +12,7 @@ export default function DefaultLayout() {
             {/* Header principale sotto la barra di scorrimento */}
             <Header />
 
-            <main>
+            <main className="bg-light">
                 {/* Questo è il contenuto dinamico delle rotte */}
                 <Outlet />
                 <FootballCollection />
