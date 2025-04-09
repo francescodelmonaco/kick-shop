@@ -55,7 +55,7 @@ export default function Footer({ className = "" }) {
                             <li>
                                 <Link
                                     onClick={() => window.scrollTo(0, 0)}
-                                    to="/ball"
+                                    to="/ballon"
                                     className="footer-link">
                                     Palloni
                                 </Link>
