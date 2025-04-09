@@ -7,25 +7,26 @@ export default function DefaultLayout() {
   const isThankYouPage = location.pathname === "/thankyou";
 
   return (
-    <>
+    <div className="layout-container d-flex flex-column min-vh-100">
       <Header />
-      <main className="bg-light">
+      <main className="flex-grow-1 bg-light">
         <Outlet />
       </main>
       <Footer
-        className=""
-        style={isThankYouPage ? {
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          width: "100%",
+        className="footer"
+        style={{
           backgroundColor: "#000",
           color: "#fff",
-          zIndex: 9999,
-          textAlign: "center"
-        } : {}}
+          textAlign: "center",
+          ...(isThankYouPage && {
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            zIndex: 9999,
+          }),
+        }}
       />
-
-    </>
+    </div>
   );
 }
