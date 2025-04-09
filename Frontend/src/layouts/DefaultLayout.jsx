@@ -1,26 +1,19 @@
-import FootballCollection from "../components/FootballCollection";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
-import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
-// import BannerScroll from "../components/BannerScroll";
 
 export default function DefaultLayout() {
-    return (
-        <>
-            {/* <BannerScroll/> */}
+  const location = useLocation();
+  const isThankYouPage = location.pathname === "/thankyou";
 
-            {/* Header principale sotto la barra di scorrimento */}
-            <Header />
+  return (
+    <>
+      <Header />
+      <main className="bg-light">
+        <Outlet />
+      </main>
+      <Footer className={isThankYouPage ? "fixed-bottom" : ""} />
 
-            <main>
-                {/* Questo è il contenuto dinamico delle rotte */}
-                <Outlet />
-                <FootballCollection />
-            </main>
-
-            <footer>
-                <Footer />
-            </footer>
-        </>
-    );
+    </>
+  );
 }
