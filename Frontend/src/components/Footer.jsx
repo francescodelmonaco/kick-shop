@@ -18,6 +18,14 @@ export default function Footer() {
                             </li>
 
                             <li>
+                                <li>
+                                    <Link
+                                        onClick={() => window.scrollTo(0, 0)}
+                                        to="/man"
+                                        className="footer-link">
+                                        Uomo
+                                    </Link>
+                                </li>
                                 <Link
                                     onClick={() => window.scrollTo(0, 0)}
                                     to="/woman"
@@ -39,16 +47,17 @@ export default function Footer() {
                                     onClick={() => window.scrollTo(0, 0)}
                                     to="/winter"
                                     className="footer-link">
-
+                                    Inverno
                                 </Link>
                             </li>
+
 
                             <li>
                                 <Link
                                     onClick={() => window.scrollTo(0, 0)}
-                                    to="/man"
+                                    to="/ball"
                                     className="footer-link">
-                                    Uomo
+                                    Palloni
                                 </Link>
                             </li>
                         </ul>
