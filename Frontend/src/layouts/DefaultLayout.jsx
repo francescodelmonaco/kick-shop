@@ -6,13 +6,17 @@ import FootballCollection from "../components/FootballCollection";
 export default function DefaultLayout() {
   const location = useLocation();
   const isThankYouPage = location.pathname === "/thankyou";
+  const isCheckoutPage = location.pathname === "/checkout";
+  const isBallonPage = location.pathname === "/ballon";
 
   return (
     <div className="layout-container d-flex flex-column min-vh-100">
       <Header />
       <main className="flex-grow-1 bg-light">
         <Outlet />
-        <FootballCollection />
+        
+        {/* Render FootballCollection solo se non siamo nella pagina /checkout */}
+        {!isCheckoutPage || !isBallonPage && <FootballCollection />}
       </main>
       <Footer
         className="footer"
