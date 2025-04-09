@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createContext, useContext, useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 const GlobalContext = createContext();
 
@@ -31,20 +31,34 @@ const GlobalProvider = ({ children }) => {
     const [quantities, setQuantities] = useState([]);
     const [total, setTotal] = useState(0);
     const [shippingCost, setShippingCost] = useState(0);
-    
 
+    const navigate = useNavigate();
+
+    
     // Gestione ricerca
-    const handleSubmit = (searchTerm) => {
+    const handleSubmit = (searchTerm, shouldNavigate = true) => {
+        if (!searchTerm.trim()) return;
+    
+        if (shouldNavigate) {
+            const currentParams = new URLSearchParams(searchParams);
+            currentParams.set("q", searchTerm);
+            if (sortCriteria.field) currentParams.set("sortField", sortCriteria.field);
+            if (sortCriteria.order) currentParams.set("sortOrder", sortCriteria.order);
+    
+            navigate(`/search?${currentParams.toString()}`);
+        }
+    
+        // Fetch dei prodotti
         axios.get(`http://localhost:3000/search/${searchTerm}`)
             .then((res) => {
                 if (res.data && Array.isArray(res.data)) {
-                    setSearchProducts(res.data); 
+                    setSearchProducts(res.data);
                 } else {
                     setSearchProducts([]);
                 }
             })
             .catch((error) => {
-                if (error.response && error.response.status === 404) {
+                if (error.response?.status === 404) {
                     setSearchProducts([]);
                     console.log("Nessun prodotto trovato per questa ricerca.");
                 } else {
@@ -94,15 +108,20 @@ const GlobalProvider = ({ children }) => {
     
     useEffect(() => {
         const queryParam = searchParams.get('q') || '';
-
-        const sortField = searchParams.get('sortField') ;
-        const sortOrder = searchParams.get('sortOrder') ;
-
+        const sortField = searchParams.get('sortField');
+        const sortOrder = searchParams.get('sortOrder');
+    
         setQuery(queryParam);
-       
-       
-        handleSubmit(queryParam, sortField, sortOrder);
-    }, [searchParams]); // Attivato quando searchParams cambia
+    
+        if (queryParam) {
+            // ⚠️ Non vogliamo che questo chiami navigate
+            handleSubmit(queryParam, false);
+        }
+    
+        if (sortField && sortOrder) {
+            setSortCriteria({ field: sortField, order: sortOrder });
+        }
+    }, [searchParams]);
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
