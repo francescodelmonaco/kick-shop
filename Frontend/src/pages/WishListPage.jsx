@@ -8,7 +8,9 @@ export default function WishListPage() {
             <div className="container">
                 <WishRecap />
             </div>
-            <CategorySection />
+            <div className="px-5">
+                <CategorySection />
+            </div>
         </>
     );
 }

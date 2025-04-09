@@ -7,7 +7,7 @@ import winterCategory from "../assets/img/category/winterCategory.jpg";
 export default function CategorySection() {
     return (
         <>
-            <h2 className="text-center py-3 category-title">Categorie</h2>
+            <h2 className="text-center py-4 category-title">Categorie</h2>
 
             <ul className="row">
 

@@ -8,8 +8,8 @@ export default function HorizontalProductCard({ product }) {
     return (
         <div key={id} className="container-fluid py-3 px-5">
             <div className="card">
-                <div className="row p-3">
-                    <div id={`carousel-${id}`} className="carousel slide col-md-3" data-bs-theme="dark">
+                <div className="row p-3 d-flex align-items-center">
+                    <div id={`carousel-${id}`} className="carousel slide col-md-4 col-xl-3" data-bs-theme="dark">
                         <div className="carousel-inner cardBox">
                             {images && images.map((image, index) => {
                                 const { id: imageId, image_url } = image;
@@ -37,7 +37,7 @@ export default function HorizontalProductCard({ product }) {
                     </div>
 
                     {/* info prodotto */}
-                    <div className="col-md-9">
+                    <div className="col-md-8 col-xl-9 d-flex align-items-center">
                         <div className="card-body">
                             <div className="d-flex justify-content-between flex-column flex-md-row">
                                 <h5 className="card-title">{name}</h5>
