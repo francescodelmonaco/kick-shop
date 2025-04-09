@@ -112,12 +112,12 @@ export default function VerticalProductCard({ product, viewMode }) {
 
                 {/* Dettagli del prodotto */}
                 <Link
-                    className={`d-flex ${viewMode === "list" ? "flex-column" : "justify-content-between"}`}
+                    className={`d-flex ${viewMode === "list" ? "flex-column" : "justify-content-between flex-column flex-xl-row"}`}
                     to={`/products/${slug}`}
                     onClick={() => window.scrollTo(0, 0)}
                 >
                     <h5 className="card-title"><strong>{name}</strong></h5>
-                    <h5 className="fonts"><strong>€ {price}</strong></h5>
+                    <h5 className="fonts"><strong>{price} €</strong></h5>
                 </Link>
 
             </div>

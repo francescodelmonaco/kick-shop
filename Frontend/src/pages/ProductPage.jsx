@@ -81,7 +81,7 @@ export default function ProductPage() {
                 <HorizontalProductCard product={product} />
 
                 {/* prodotti correlati */}
-                < h2 className="text-center my-3" > Prodotti correlati</h2 >
+                < h2 className="text-center my-3" >Prodotti correlati</h2 >
 
                 <div className="px-5">
                     <FilterSection />

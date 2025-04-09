@@ -39,9 +39,9 @@ export default function HorizontalProductCard({ product }) {
                     {/* info prodotto */}
                     <div className="col-md-9">
                         <div className="card-body">
-                            <div className="d-flex justify-content-between">
+                            <div className="d-flex justify-content-between flex-column flex-md-row">
                                 <h5 className="card-title">{name}</h5>
-                                <h5 className="card-text price"><strong>€ {price}</strong></h5>
+                                <h5 className="card-text price"><strong>{price} €</strong></h5>
                             </div>
 
                             {/* metti map sizes */}

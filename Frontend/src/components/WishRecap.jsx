@@ -51,7 +51,7 @@ export default function WishRecap() {
 
                                 <div className="d-flex flex-column w-100">
                                     <p>
-                                        <strong>{item.name} - € {item.price}</strong>
+                                        <strong>{item.name}</strong> - {item.price} €
                                     </p>
 
                                     <div className="d-flex justify-content-between gap-3">

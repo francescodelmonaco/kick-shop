@@ -65,9 +65,9 @@ export default function OrderRecap() {
         } else {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
-                <div className="alert alert-warning mt-3">
-                    <span>Mancano
-                        <strong> {amountLeft}€ </strong>
+                <div className="alert alert-warning">
+                    <p>Mancano
+                        <strong> {amountLeft} € </strong>
                         per ottenere la spedizione gratuita. Potrebbero interessarti: i  nostri
                         <NavLink
                             aria-current="page"
@@ -76,18 +76,23 @@ export default function OrderRecap() {
                         >
                             <button
                                 type="button"
-                                className="btn btn-primary mx-2 mb-2 mt-1"
+                                className="btn btn-outline-dark mx-2 mb-2 mt-1"
                                 data-bs-dismiss="offcanvas"
                                 aria-label="Close"
                             >
                                 Palloni
                             </button>
-                            da collezione.
-                            <br /> Oppure ricerca il tuo stile
                         </NavLink>
-                    </span>
-                    <Search />
+                        da collezione.
+                        <hr />
+                    </p>
+
+                    <div>
+                        <p>Oppure ricerca il tuo stile</p>
+                        <Search />
+                    </div>
                 </div>
+
 
             );
         }
@@ -103,10 +108,6 @@ export default function OrderRecap() {
                     </p>
                 </div>
             </div> */}
-
-            {/* Barra di ricerca */}
-            <div className="search-bar-container my-3">
-            </div>
 
             {cart.length === 0 ? (
                 <>
@@ -175,45 +176,46 @@ export default function OrderRecap() {
                 </ul>
             )}
 
-            {/* Totale */}
-            <div className="input-group pt-3 d-flex justify-content-start">
-                <span className="input-group-text">
-                    <strong>TOTALE PARZIALE : </strong></span>
-                <div
-                    className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
-                >
-                    <h6>
-                        <strong>{total.toFixed(2)} €</strong>
-                    </h6>
+            <div className="d-flex flex-column gap-2 py-3 w-100">
+                {/* Totale parziale */}
+                <div className="input-group w-100">
+                    <span className="input-group-text">
+                        <strong>TOTALE PARZIALE : </strong></span>
+                    <div
+                        className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                    >
+                        <span className="w-100">
+                            <strong>{total.toFixed(2)} €</strong>
+                        </span>
+                    </div>
+                </div>
+
+                {/* Costo di spedizione */}
+                <div className="input-group w-100">
+                    <span className="input-group-text"><strong>Costo di spedizione : </strong></span>
+                    <div
+                        className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
+                    >
+                        <span className="w-100">
+                            <strong>{ShippingCost.toFixed(2)} €</strong>
+                        </span>
+                    </div>
+
                 </div>
             </div>
 
-            {/* Costo di spedizione */}
-            <div className="input-group pt-3 d-flex justify-content-start">
-                <span className="input-group-text"><strong>+ Costo di spedizione : </strong></span>
-                <div
-                    className={`input-group-text ${subtotal >= 200 ? "text-decoration-line-through text-danger" : ""}`}
-                >
-                    <h5>
-                        <strong>{ShippingCost.toFixed(2)} €</strong>
-                    </h5>
-                </div>
-
-            </div>
 
             {/* Messaggio di spedizione gratuita */}
             {freeShipping()}
 
             {/* Nuovo totale */}
-            <div className="input-group pt-3 d-flex justify-content-start">
-                <span className="input-group-text">
-                    <h4><strong>PREZZO FINALE: </strong></h4>
-                </span>
-                <Badge className='bg-success'>
-                    <h4>
+            <div className="input-group w-100">
+                <span className="input-group-text"><strong>PREZZO FINALE: </strong></span>
+                <div className="input-group-text bg-success text-light border border-success">
+                    <span className="w-100">
                         <strong>{newTotal.toFixed(2)} €</strong>
-                    </h4>
-                </Badge>
+                    </span>
+                </div>
             </div>
 
             {/* Modal di conferma */}

@@ -4,7 +4,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 export default function ListProductCard({ product }) {
     const { addToCart, addToWish } = useGlobalContext();
 
-    const { id, name, price, images, slug } = product;
+    const { id, name, price, images, slug, description } = product;
 
     return (
         <div key={id}>
@@ -34,15 +34,17 @@ export default function ListProductCard({ product }) {
 
                     {/* info prodotto */}
                     <div className="col-md-7 d-flex align-items-center">
-                        <div className="card-body">
+                        <div className="card-body d-flex flex-column gap-3 gap-xl-5">
                             <Link
-                                className="d-flex justify-content-between pb-5"
+                                className="d-flex justify-content-between flex-column flex-md-row"
                                 to={`/products/${slug}`}
                                 onClick={() => window.scrollTo(0, 0)}
                             >
                                 <h5 className="card-title fs-2">{name}</h5>
-                                <h5 className="card-text price fs-2"><strong>€ {price}</strong></h5>
+                                <h5 className="card-text price fs-2"><strong>{price} €</strong></h5>
                             </Link>
+
+                            <p><strong>Descrizione del prodotto:</strong> {description}</p>
 
                             <div className="d-flex justify-content-between gap-3">
                                 {/* bottone per aggiunta del prodotto alla whishlist */}
