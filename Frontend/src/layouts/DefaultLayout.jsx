@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import FootballCollection from "../components/FootballCollection";
 
 export default function DefaultLayout() {
   const location = useLocation();
@@ -11,6 +12,7 @@ export default function DefaultLayout() {
       <Header />
       <main className="flex-grow-1 bg-light">
         <Outlet />
+        <FootballCollection />
       </main>
       <Footer
         className="footer"
