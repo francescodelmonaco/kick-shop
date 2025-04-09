@@ -121,7 +121,7 @@ export default function OrderRecap() {
                     >
                         <button
                             type="button"
-                            className="btn btn-outline-dark mx-2"
+                            className="btn btn-outline-dark w-100"
                             data-bs-dismiss="offcanvas"
                             aria-label="Close"
                         >
