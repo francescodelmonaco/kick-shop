@@ -66,9 +66,13 @@ export default function OrderRecap() {
             const amountLeft = (200 - subtotal).toFixed(2);
             return (
                 <div className="alert alert-warning">
-                    <p>Mancano
+                    <span>Mancano
                         <strong> {amountLeft} € </strong>
-                        per ottenere la spedizione gratuita. Potrebbero interessarti: i  nostri
+                        per ottenere la spedizione gratuita.
+
+                        <br />
+
+                        Potrebbero interessarti i  nostri
                         <NavLink
                             aria-current="page"
                             to={`/ballon`}
@@ -76,14 +80,15 @@ export default function OrderRecap() {
                         >
                             <button
                                 type="button"
-                                className="btn btn-outline-dark mx-2 mb-2 mt-1"
+                                className="btn btn-outline-dark mx-2"
                                 data-bs-dismiss="offcanvas"
                                 aria-label="Close"
                             >
                                 Palloni
                             </button>
                         </NavLink>
-                        {/* da collezione. Oppure le nostre */}
+                        da collezione.
+                        {/* Oppure le nostre */}
                         {/* <NavLink
                             aria-current="page"
                             to={`/search?q=scarpe&sortField=name&sortOrder=asc`}
@@ -98,8 +103,7 @@ export default function OrderRecap() {
                                 Maglie
                             </button>
                         </NavLink> */}
-                        {/* <hr /> */}
-                    </p>
+                    </span>
 
                     {/* <div>
                         <p>Oppure ricerca il tuo stile</p>
