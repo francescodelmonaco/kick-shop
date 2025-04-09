@@ -20,8 +20,8 @@ export default function Header() {
                     {/* Logo */}
                     <Link
                         className="navbar-brand"
+                        to={`/`}
                         onClick={() => {
-                            navigate(`/`);
                             window.scrollTo(0, 0);
                         }}
                     >
