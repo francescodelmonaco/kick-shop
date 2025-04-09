@@ -16,7 +16,7 @@ export default function DefaultLayout() {
         <Outlet />
         
         {/* Render FootballCollection solo se non siamo nella pagina /checkout */}
-        {!isCheckoutPage || !isBallonPage && <FootballCollection />}
+        {!isCheckoutPage && !isBallonPage && <FootballCollection />}
       </main>
       <Footer
         className="footer"
