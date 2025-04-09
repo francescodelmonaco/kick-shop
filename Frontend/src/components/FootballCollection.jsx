@@ -3,7 +3,7 @@ import bunnerballs from "../assets/img/bunner-balls.webp";
 
 export default function FootballCollection() {
     // Nascondi la canvas nella pagina di checkout
-    // if (location.pathname === "/ballon") return null;
+    if (location.pathname === "/thankyou") return null;
 
     return (
         <>

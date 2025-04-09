@@ -41,9 +41,10 @@ function App() {
                         <Route path="/checkout" Component={Checkout} />
                         <Route path="/search" Component={SearchPage} />
                         <Route path="/ballon" Component={BallonPage} />
+                        <Route path="/thankyou" Component={ThankYou} />
+
                     </Route>
                     <Route path="*" Component={NotFound} />
-                    <Route path="/thankyou" Component={ThankYou} />
                 </Routes>
             </GlobalProvider>
         </BrowserRouter>

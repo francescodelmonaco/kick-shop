@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 export default function thankYou() {
     return (
         <>
+           <h1 className="text-center py-3 font">Kick Shop</h1>
             <div className="container-fluid text-center mt-5">
                 <div className="alert alert-success" role="alert">
                     <h2>Ordine effettuato con successo!</h2>
