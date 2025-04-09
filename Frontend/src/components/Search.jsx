@@ -1,49 +1,36 @@
 import { useGlobalContext } from "../context/GlobalContext";
-import { useSearchParams, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+
 
 export default function Search() {
     const { query, setQuery, handleSubmit } = useGlobalContext();
-    const [searchParams, setSearchParams] = useSearchParams();
-    const navigate = useNavigate();
-
-    // Imposta la query dall'URL solo al primo render
-    useEffect(() => {
-        const queryParam = searchParams.get("q") || "";
-        setQuery(queryParam); // Imposta la query iniziale basata sull'URL
-    }, [searchParams, setQuery]);
 
     const handleInputChange = (e) => {
-        setQuery(e.target.value); // Cambia il valore del campo di ricerca senza eseguire la ricerca
+        setQuery(e.target.value); // Solo aggiornamento del valore in context
     };
 
     const handleFormSubmit = (e) => {
-        e.preventDefault(); // Prevenire il submit standard del form
-
-        // Se la query è vuota, non fare nulla
+        e.preventDefault();
         if (query.trim() === "") return;
 
-        // Cambia l'URL per riflettere la ricerca
-        navigate(`/search?q=${query}`);
-
-        // Esegui la ricerca con il valore della query
-        handleSubmit(query); // Chiama la funzione di ricerca nel contesto
+        handleSubmit(query); // Tutta la logica ora è gestita nel context
     };
+
+
 
     return (
         <form className="d-flex px-2" role="search" onSubmit={handleFormSubmit}>
-            <input
-                className="form-control me-2"
-                type="text"
-                placeholder="Cerca"
-                aria-label="Cerca"
-                value={query}
-                onChange={handleInputChange} // Aggiorna la query ma non esegue la ricerca
-            />
-            <button className="btn btn-light" type="submit" data-bs-dismiss="offcanvas"
+        <input
+            className="form-control me-2"
+            type="text"
+            placeholder="Cerca"
+            aria-label="Cerca"
+            value={query}
+            onChange={handleInputChange}
+        />
+        <button className="btn btn-light" type="submit" data-bs-dismiss="offcanvas"
                 aria-label="Close">
                 Cerca
             </button>
-        </form>
+    </form>
     );
 }

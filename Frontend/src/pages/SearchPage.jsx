@@ -3,6 +3,8 @@ import ResultSearch from "../components/ResultSearch";
 import { useGlobalContext } from "../context/GlobalContext";
 
 
+
+
 export default function SearchPage() {
 
     const { searchProducts } = useGlobalContext();
